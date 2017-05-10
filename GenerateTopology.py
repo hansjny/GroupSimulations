@@ -14,10 +14,10 @@ def parseOptions():
     parser = OptionParser()
     #Width
     parser.add_option("-x", "--width", action="store", type="int",
-            dest="width", default=100, help="Width of topology in meters. Default: 100")
+            dest="width", default=500, help="Width of topology in meters. Default: 100")
     #Height
     parser.add_option("-y", "--height", action="store", type="int",
-            dest="height", default=100, help="Height of topology in meters. Default: 100")
+            dest="height", default=500, help="Height of topology in meters. Default: 100")
     #Spacing
     parser.add_option("-s", "--space", action="store", type="int",
             dest="spacing", default=10,
@@ -42,17 +42,21 @@ class Node:
     _freq = 0
     _constant  = -27.55
     _minimumInterference = 0
+    group = None
     name = None
     x = 0
     y = 0
 
-    def __init__(self, posx, posy, n, freq, thresh):
+    def __init__(self, posx, posy, n, freq, thresh, name = None):
         self._neighbours = []
         self._minimumInterference = thresh*-1
         self.x = posx
         self.y = posy
         self._freq = freq
-        self.name = "NODE" + str(n)
+        if (name == None):
+            self.name = "NODE" + str(n)
+        else:
+            self.name = name
         self._ssid = self.name
 
     def distanceTo(self, node):
@@ -60,6 +64,15 @@ class Node:
         y = node.y - self.y
         return math.sqrt(x**2+y**2)
 
+    def getMostDisturbing(self):
+        highest = -100
+        nodeinfo = None
+        for n in self._neighbours:
+            if n["dbi"] > highest:
+                highestName = n["ssid"]
+                nodeinfo = n
+        return nodeinfo
+ 
     def calculateInterferenceTo(self, nodeObject):
         if self == nodeObject:
             return
@@ -98,6 +111,7 @@ class Topology:
     _height = None
     _spacing = None
     _nodes = []
+    _nodesDict = {}
     _nodeCount = None
     _frequency = 2437
     _thresh = 0
@@ -109,10 +123,26 @@ class Topology:
         self._height = height
         self._spacing = spacing
         self._nodeCount = nodeCount
+
+    def newTopology(self):
         self.initMap() 
         self.createMinimumRadiusVectors()
         self.populateMap()
         self.measureInterference()
+    
+    def getNodeCount(self):
+        return self._nodeCount
+
+    def getNodeByName(self, name):
+        return self._nodesDict[name]
+        #for n in self._nodes:
+            #if n.name == name:
+                #return n
+        #return None
+    
+    def getNodes(self):
+        return self._nodes;
+
 
     def initMap(self):
         topo = [[[] for i in range(self._height)] for i in range(self._width)]
@@ -188,6 +218,7 @@ def main():
     args = parseOptions()
     print("Width: ", args.width, " height: ", args.height, "spacing: ", args.spacing)
     topo = Topology(args.width, args.height, args.spacing, args.nodes, args.thresh)
+    topo.newTopology()
     topo.writeData(args.output)
     #topo.printTopology()
 
