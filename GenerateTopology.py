@@ -79,7 +79,7 @@ class Node:
         dist = round(self.distanceTo(nodeObject))
         dBi  = self.measureDbi(dist)*-1
         if (dBi > self._minimumInterference):
-            self._neighbours.append({"ssid": nodeObject._ssid, "dbi": dBi})
+            self._neighbours.append({"ssid": nodeObject._ssid, "dbi": dBi, "obj:": nodeObject})
             #print("Distance:", dist, "m,  dBi:", dBi)
 
     def getData(self):
@@ -91,7 +91,8 @@ class Node:
         data.update(neighbourCount = len(self._neighbours))
         data.update(neighbours = {})
         for i in range(len(self._neighbours)):
-            data["neighbours"].update({i : self._neighbours[i]})
+            data["neighbours"].update({i : {"ssid" : self._neighbours[i]["ssid"],
+                                            "dbi" : self._neighbours[i]["dbi"]}})
         return data
 
 
@@ -133,8 +134,8 @@ class Topology:
     def getNodeCount(self):
         return self._nodeCount
 
-    def getNodeByName(self, name):
-        return self._nodesDict[name]
+    #def getNodeByName(self, name):
+        #return self._nodesDict[name]
         #for n in self._nodes:
             #if n.name == name:
                 #return n

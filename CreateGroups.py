@@ -6,6 +6,8 @@ from optparse import OptionParser
 
 MAXSIZE = 128
 topology = None
+groupCollection = None
+
 #Parse commandline arguments
 def parseOptions():
     parser = OptionParser()
@@ -18,31 +20,50 @@ def parseOptions():
 
 class Simulation:
     global topology
-    groupCollection = None;
     def __init__(self, topo):
-        self.groupCollection = GroupCollection()
+        global groupCollection
+        groupCollection = GroupCollection()
     
-    def start(self):
+    def start(self): 
         self.initiateGroups()
         self.runIteration()
 
     #Create one group for each node as initiation
     def initiateGroups(self):
+        global topology
+        global groupCollection
         for node in topology.getNodes():
-            node.group = self.groupCollection.newGroup(node)
-        print("Groups created: ", self.groupCollection.size())
+            node.group = groupCollection.newGroup(node)
+        print("Number of groups created: ", groupCollection.size())
+        groupCollection.dumpGroups()
+        input("Press enter to start simulation...") 
     
-    def runIteration(self):
-        self.groupCollection.iterateGroups()
+    def runIteration(self): 
+        global groupCollection 
+        while (groupCollection.iterateGroups() != 0):
+            groupCollection.dumpGroups()
+            input("Press enter to run next iteration...") 
+        groupCollection.dumpGroups()
+        
 
 class GroupCollection:
     groups = None
+    groupDict = {}
     groupCount = 0
+
     def __init__(self):
         self.groups = []
            
     def size(self):
         return self.groupCount;
+
+    def dumpGroups(self):
+        for g in self.groups:
+            print("#############################")
+            print("GROUP ID:", g.name)
+            for node in g.members:
+                print("     >", node)
+
 
     def newGroup(self, member):
         group = "GROUP"+str(self.groupCount)
@@ -52,13 +73,26 @@ class GroupCollection:
     def appendGroup(self, group):
         self.groupCount += 1
         self.groups.append(group)
+        self.groupDict[group.name] = group
     
     def iterateGroups(self):
+        
+        print("Num groups", len(self.groups))
+        if len(self.groups) == 1:
+            return 0
+        
         for g in self.groups:
             g.iteration()
+        return 1
+
+    def removeGroupByName(self, name):
+        if name in self.groupDict: del self.groupDict[name] 
+        for g in self.groups:
+            if name == g.name:
+                self.groups.remove(g)
+                break
 
 class Group:
-    global topology
     members = None
     name = None
     def __init__(self, node, name):
@@ -67,36 +101,55 @@ class Group:
         self.members.append(node)
         self.name = name
 
-    def merge(self, nodename):
-        node = topology.getNodeByName(nodename)
-        print(node.group)
+    def merge(self, node):
+        global topology 
+        global groupCollection
+        
+        oldName = node.group
+        oldMembers = groupCollection.groupDict[node.group]
+        
+        #Update group name for members
+        for n in oldMembers.members:
+            n.group = self.name
+
+        #Extend this groups members with the other groups members
+        self.members = self.members + oldMembers.members
+
+        ##Remove old group
+        groupCollection.removeGroupByName(oldName) 
+        return 1
         
         #TODO: 
         #If exceed MAXSIZE, start removal of members
 
-    def iteration(self):
-        
+    def iteration(self):    
         disturber = self.getMostDisturbing()
+        ret = 0
         if disturber != None:
-            self.merge(disturber)
-            #print("Disturbs most", disturber)
-
-        #TODO:
-        #Merge groups of disturbers
-        #Remove old groups
-
-        return
+            ret = self.merge(disturber)
+        else:
+            print("All done!")
+        return ret
 
     def getMostDisturbing(self):
         highest = -100
-        name = None
+        disturber = None
         for n in self.members:
             node = n.getMostDisturbing()
             if node != None:
                 if (node["dbi"] > highest):
                     highest = node["dbi"]
-                    name = node["ssid"]
-        return name
+                    disturber = node["obj"]
+        return disturber
+
+    def __str__(self):
+        return self.name
+    def __repr__(self):
+        return self.name
+    def __unicode__(self):
+        return self.name
+
+
 
 
 def getNodeData(n):
@@ -117,6 +170,11 @@ def getTopoData(t):
         topo._nodesDict[node.name] = node
         
     topo._nodes = nodes;
+
+    for i in topo._nodes:
+        for n in i._neighbours:
+            n["obj"] = topo._nodesDict[n["ssid"]]
+
     return topo
     
 def main():
