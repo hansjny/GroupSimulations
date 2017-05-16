@@ -68,7 +68,7 @@ class Node:
         highest = -100
         nodeinfo = None
         for n in self._neighbours:
-            if n["dbi"] > highest:
+            if n["dbi"] > highest and n["obj"].group != self.group:
                 highestName = n["ssid"]
                 nodeinfo = n
         return nodeinfo

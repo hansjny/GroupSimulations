@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<style>
+.render_area {
+	position: relative;
+	width: 800px;
+	height: 800px; 
+	border: 1px solid black;
+	padding: 3px 3px 3px 3px;
+}
+
+.node {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background-color:black;	
+	border-radius: 5px;
+}
+
+</style>
+<html>
+	<body>
+		<div class="topoInfo">
+		Height: <div style="display:inline" id="topoHeight">0</div>
+		Width: <div style="display:inline" id="topoWidth">0</div>
+		Node count: <div style="display:inline" id="nodeCount">0</div>
+		</div>
+		<div id="renderArea" class="render_area">
+		</div>
+		<div id="uploadTopo"><label>Step 1: Upload topology JSON-file: </label><input type='file' accept='text/json' onchange='openFile(event, 1)'><br></div>
+	</body>
+</html>
+
+
+
+
+<script type="text/javascript">
+var height = 800
+var width = 800
+
+var hstep;
+var wstep;
+document.getElementById("renderArea").style.height = height + "px";
+document.getElementById("renderArea").style.width = width + "px";
+
+function openFile(event, action) {
+	var input = event.target;
+	var reader = new FileReader();
+	reader.onload = function(){
+		var text = reader.result;
+		if (action == 1)
+			parseJson(text);
+		else if (action == 2)
+			addGroups(text)
+
+	};
+	text = reader.readAsText(input.files[0]);
+}
+
+function parseJson(txt) {
+	data = JSON.parse(txt);
+	hstep = height/data.mapHeight;
+	wstep = width/data.mapWidth;
+	document.getElementById("topoHeight").innerHTML = data.mapHeight;
+	document.getElementById("topoWidth").innerHTML = data.mapWidth;
+	document.getElementById("nodeCount").innerHTML = data.nodeCount;
+	for (var i = 0; i < data.nodeCount; i++) {
+		addNewNode(data.nodes[i].ssid, data.nodes[i].posX, data.nodes[i].posY);
+	}
+
+	var uploadIterations = "<label>Step 2: Upload group creations JSON-file: </label><input type='file' accept='text/json' onchange='openFile(event, 2)'><br></div>"
+
+	document.getElementById("uploadTopo").innerHTML = uploadIterations
+	
+}
+
+function addNewNode(name, posx, posy) {
+	var area = document.getElementById("renderArea");
+	var newNode =  "<div id='" + name + "' class='node'></div>";
+	area.insertAdjacentHTML('beforeend', newNode);
+	document.getElementById(name).style.top = wstep * posx + "px";	
+	document.getElementById(name).style.left = hstep * posy + "px";	
+}
+
+function addGroups(txt) {
+	data = JSON.parse(txt);
+	initializeColors(data);
+//	for (var i = 0; i < data.iterationCount
+	
+}
+
+function initializeColors() {
+	var colors;
+	for (var i = 0; i < data[0].groupCount; i++) {
+		color = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+		colors[data[0][i].groupName] = color;
+	}
+	console.log(colors);
+}
+
+</script>
+
+
+

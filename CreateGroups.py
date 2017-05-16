@@ -2,7 +2,10 @@
 
 import json
 import GenerateTopology as gt
+import sys
+from collections import OrderedDict
 from optparse import OptionParser
+
 
 MAXSIZE = 128
 topology = None
@@ -15,13 +18,18 @@ def parseOptions():
     ##parser.add_option("-x", "--width", action="store", type="int",
             #dest="width", default=500, help="Width of topology in meters. Default: 100")
     parser.add_option("-f", "--file", action="store", type="string",
-            dest="input", default="output.txt", help="Input filename, from GenerateTopology")
+            dest="input", default="output.txt", help="Input filename, from GenerateTopology.py")
+    parser.add_option("-o", "--output", action="store", type="string",
+            dest="output", default="grouplog.json", help="Output file in Json.")
+
     return parser.parse_args()[0]
 
 class Simulation:
     global topology
-    def __init__(self, topo):
+    output = None
+    def __init__(self, outfile):
         global groupCollection
+        self.output = outfile
         groupCollection = GroupCollection()
     
     def start(self): 
@@ -34,14 +42,19 @@ class Simulation:
         global groupCollection
         for node in topology.getNodes():
             node.group = groupCollection.newGroup(node)
+
+        groupCollection.writeOutput(self.output, 0)
         print("Number of groups created: ", groupCollection.size())
         groupCollection.dumpGroups()
         input("Press enter to start simulation...") 
     
     def runIteration(self): 
         global groupCollection 
+        i = 1
         while (groupCollection.iterateGroups() != 0):
             groupCollection.dumpGroups()
+            groupCollection.writeOutput(self.output, i)
+            i += 1
             input("Press enter to run next iteration...") 
         groupCollection.dumpGroups()
         
@@ -56,8 +69,31 @@ class GroupCollection:
            
     def size(self):
         return self.groupCount;
+    
+ #   1:
+ #       1: groupName : GRUP
+ #          members : { }
+ 
+    def writeOutput(self, f, iteration):
+        data = OrderedDict()
+        data[iteration] = {}
+        for i in range(len(self.groups)):
+            data["iterationCount"] = iteration
+            data[iteration]["groupCount"] = len(self.groups)
+            data[iteration][i] = {}
+            data[iteration][i]["groupName"] = self.groups[i].name 
+            data[iteration][i]["memberCount"] = len(self.groups[i].members)
+            data[iteration][i]["members"] = {}
+            for n in range(len(self.groups[i].members)):
+                data[iteration][i]["members"][n] = self.groups[i].members[n].name
+
+        #print(data)
+        j = json.dumps(data, indent=2)
+        f.write(j)
+        
 
     def dumpGroups(self):
+        #return 
         for g in self.groups:
             print("#############################")
             print("GROUP ID:", g.name)
@@ -104,7 +140,11 @@ class Group:
     def merge(self, node):
         global topology 
         global groupCollection
-        
+        print("Merging", node.group, "into", self.name)  
+        if (node.group == self.name):
+            print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
+            print("MEMBERS", self.members)
+            sys.exit(0)
         oldName = node.group
         oldMembers = groupCollection.groupDict[node.group]
         
@@ -181,11 +221,13 @@ def main():
     global topology
     args = parseOptions()
     infile = open(args.input, "r")
+    outfile = open(args.output, "w")
     cont = infile.read()
     topoDict = json.loads(cont)
     topology = getTopoData(topoDict)
-    s = Simulation(topology)
+    s = Simulation(outfile)
     s.start()
+    outfile.close()
 
 if __name__ == "__main__":
     main()
