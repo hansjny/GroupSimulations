@@ -10,6 +10,7 @@ from optparse import OptionParser
 MAXSIZE = 128
 topology = None
 groupCollection = None
+jsonOutput = None
 
 #Parse commandline arguments
 def parseOptions():
@@ -29,6 +30,10 @@ class Simulation:
     output = None
     def __init__(self, outfile):
         global groupCollection
+        global jsonOutput
+        jsonOutput = OrderedDict()
+        jsonOutput["iterations"] = {}
+
         self.output = outfile
         groupCollection = GroupCollection()
     
@@ -43,7 +48,7 @@ class Simulation:
         for node in topology.getNodes():
             node.group = groupCollection.newGroup(node)
 
-        groupCollection.writeOutput(self.output, 0)
+        jsonOutput["iterations"][0] = groupCollection.getOutput()
         print("Number of groups created: ", groupCollection.size())
         groupCollection.dumpGroups()
         input("Press enter to start simulation...") 
@@ -53,9 +58,12 @@ class Simulation:
         i = 1
         while (groupCollection.iterateGroups() != 0):
             groupCollection.dumpGroups()
-            groupCollection.writeOutput(self.output, i)
+            jsonOutput["iterations"][0] = groupCollection.getOutput()
             i += 1
             input("Press enter to run next iteration...") 
+        jsonOutput["iterationCount"] = i
+        j = json.dumps(jsonOutput)
+        self.output.write(j)
         groupCollection.dumpGroups()
         
 
@@ -74,22 +82,20 @@ class GroupCollection:
  #       1: groupName : GRUP
  #          members : { }
  
-    def writeOutput(self, f, iteration):
-        data = OrderedDict()
-        data[iteration] = {}
+    def getOutput(self):
+        data = {}
         for i in range(len(self.groups)):
-            data["iterationCount"] = iteration
-            data[iteration]["groupCount"] = len(self.groups)
-            data[iteration][i] = {}
-            data[iteration][i]["groupName"] = self.groups[i].name 
-            data[iteration][i]["memberCount"] = len(self.groups[i].members)
-            data[iteration][i]["members"] = {}
+            data["groupCount"] = len(self.groups)
+            data[i] = {}
+            data[i]["groupName"] = self.groups[i].name 
+            data[i]["memberCount"] = len(self.groups[i].members)
+            data[i]["members"] = {}
             for n in range(len(self.groups[i].members)):
-                data[iteration][i]["members"][n] = self.groups[i].members[n].name
+                data[i]["members"][n] = self.groups[i].members[n].name
 
         #print(data)
-        j = json.dumps(data, indent=2)
-        f.write(j)
+        return data
+        #jsonOutput += json.dumps(data, indent=2)
         
 
     def dumpGroups(self):
@@ -219,6 +225,7 @@ def getTopoData(t):
     
 def main():
     global topology
+    global jsonOutput
     args = parseOptions()
     infile = open(args.input, "r")
     outfile = open(args.output, "w")
