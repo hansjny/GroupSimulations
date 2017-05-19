@@ -28,7 +28,7 @@ def parseOptions():
             dest="nodes", default=128, help="Number of nodes. Default: 128")
 
     parser.add_option("-o", "--output", action="store", type="string",
-            dest="output", default="output.txt", help="Output filename")
+            dest="output", default="topology.json", help="Output filename")
 
     parser.add_option("-d", "--dbithresh", action="store", type="int",
             dest="thresh", default=87, help="Absolute value. Threshold to consider neighbours non-interfering")
@@ -68,10 +68,18 @@ class Node:
         highest = -100
         nodeinfo = None
         for n in self._neighbours:
-            if n["dbi"] > highest and n["obj"].group != self.group:
-                highestName = n["ssid"]
+            if n["dbi"] > highest and n["obj"].group.name != self.group and not self.group.locked:
                 nodeinfo = n
         return nodeinfo
+
+    def getLeastDisturbingCompanion(self):
+        lowest = 100
+        nodeinfo = None
+        for n in self._neighbours:
+            if n["dbi"] < lowest and n["obj"].group.name == self.group:
+                nodeinfo = n
+        return nodeinfo
+
  
     def calculateInterferenceTo(self, nodeObject):
         if self == nodeObject:

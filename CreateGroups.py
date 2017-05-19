@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-
 import json
 import GenerateTopology as gt
 import sys
 from collections import OrderedDict
 from optparse import OptionParser
 
-
-MAXSIZE = 128
 topology = None
 groupCollection = None
 jsonOutput = None
+maxSize = 0
 
 #Parse commandline arguments
 def parseOptions():
@@ -19,9 +17,11 @@ def parseOptions():
     ##parser.add_option("-x", "--width", action="store", type="int",
             #dest="width", default=500, help="Width of topology in meters. Default: 100")
     parser.add_option("-f", "--file", action="store", type="string",
-            dest="input", default="output.txt", help="Input filename, from GenerateTopology.py")
+            dest="input", default="topology.json", help="Input filename, from GenerateTopology.py")
     parser.add_option("-o", "--output", action="store", type="string",
-            dest="output", default="grouplog.json", help="Output file in Json.")
+            dest="output", default="iteration_data.json", help="Output file in JSON file format.")
+    parser.add_option("-s", "--size", action="store", type=int,
+            dest="maxsize", default=128, help="Max group size.")
 
     return parser.parse_args()[0]
 
@@ -58,11 +58,11 @@ class Simulation:
         i = 1
         while (groupCollection.iterateGroups() != 0):
             groupCollection.dumpGroups()
-            jsonOutput["iterations"][0] = groupCollection.getOutput()
+            jsonOutput["iterations"][i] = groupCollection.getOutput()
             i += 1
             input("Press enter to run next iteration...") 
         jsonOutput["iterationCount"] = i
-        j = json.dumps(jsonOutput)
+        j = json.dumps(jsonOutput, indent=2)
         self.output.write(j)
         groupCollection.dumpGroups()
         
@@ -77,11 +77,8 @@ class GroupCollection:
            
     def size(self):
         return self.groupCount;
-    
- #   1:
- #       1: groupName : GRUP
- #          members : { }
- 
+     
+    #Structure dictionairy suitable for JSON-output
     def getOutput(self):
         data = {}
         for i in range(len(self.groups)):
@@ -92,11 +89,7 @@ class GroupCollection:
             data[i]["members"] = {}
             for n in range(len(self.groups[i].members)):
                 data[i]["members"][n] = self.groups[i].members[n].name
-
-        #print(data)
         return data
-        #jsonOutput += json.dumps(data, indent=2)
-        
 
     def dumpGroups(self):
         #return 
@@ -108,8 +101,11 @@ class GroupCollection:
 
 
     def newGroup(self, member):
-        group = "GROUP"+str(self.groupCount)
-        self.appendGroup(Group(member, group)) 
+        groupName = "GROUP"+str(self.groupCount)
+        group = Group(member, groupName)
+        member.group = group
+        self.appendGroup(group)
+        print("Made new group: ", group.name, "for node", member.name)
         return group
 
     def appendGroup(self, group):
@@ -118,14 +114,14 @@ class GroupCollection:
         self.groupDict[group.name] = group
     
     def iterateGroups(self):
-        
+        changes = 0
         print("Num groups", len(self.groups))
         if len(self.groups) == 1:
-            return 0
+            return changes
         
         for g in self.groups:
-            g.iteration()
-        return 1
+            changes += g.iteration()
+        return changes
 
     def removeGroupByName(self, name):
         if name in self.groupDict: del self.groupDict[name] 
@@ -137,36 +133,61 @@ class GroupCollection:
 class Group:
     members = None
     name = None
+    locked = False
     def __init__(self, node, name):
         self.members = []
-        node.group = name
         self.members.append(node)
         self.name = name
 
     def merge(self, node):
         global topology 
         global groupCollection
+        global maxSize
         print("Merging", node.group, "into", self.name)  
         if (node.group == self.name):
             print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
             print("MEMBERS", self.members)
             sys.exit(0)
-        oldName = node.group
-        oldMembers = groupCollection.groupDict[node.group]
-        
+        oldName = node.group.name
+        oldMembers = node.group
+        print("OLDMEMBERS", oldMembers.members)
+
         #Update group name for members
         for n in oldMembers.members:
-            n.group = self.name
+            n.group = self
 
         #Extend this groups members with the other groups members
         self.members = self.members + oldMembers.members
 
         ##Remove old group
         groupCollection.removeGroupByName(oldName) 
+
+        #If exceed MAXSIZE, start removal of members
+        #if (len(self.members) > maxSize):
+            #self.removeExcessMembers(maxSize)        
+            #self.locked = True
         return 1
         
-        #TODO: 
-        #If exceed MAXSIZE, start removal of members
+    def removeExcessMembers(self, maxSize):
+        global groupCollection
+        while (len(self.members) > maxSize):
+            n = self.findLeastDisturbingMember()
+            node = list(filter(lambda x: x.name == n.name, self.members))[0]
+            self.members.remove(node)
+            input();
+            groupCollection.newGroup(node)
+            print("REMOVING NODE", node.name, "FROM:", self.name)
+            
+    def findLeastDisturbingMember(self): 
+        least = 100
+        disturber = None
+        for n in self.members:
+            node = n.getLeastDisturbingCompanion()
+            if node != None:
+                if (node["dbi"] < least):
+                    least = node["dbi"]
+                    disturber = node["obj"]
+        return disturber
 
     def iteration(self):    
         disturber = self.getMostDisturbing()
@@ -174,7 +195,7 @@ class Group:
         if disturber != None:
             ret = self.merge(disturber)
         else:
-            print("All done!")
+            print("No changes")
         return ret
 
     def getMostDisturbing(self):
@@ -183,7 +204,8 @@ class Group:
         for n in self.members:
             node = n.getMostDisturbing()
             if node != None:
-                if (node["dbi"] > highest):
+                gr = node["obj"].group
+                if (node["dbi"] > highest and not gr.locked):
                     highest = node["dbi"]
                     disturber = node["obj"]
         return disturber
@@ -194,9 +216,6 @@ class Group:
         return self.name
     def __unicode__(self):
         return self.name
-
-
-
 
 def getNodeData(n):
     node = gt.Node(n["posX"], n["posY"], 0, n["frequency"], 0,  name = n["ssid"])
@@ -220,13 +239,14 @@ def getTopoData(t):
     for i in topo._nodes:
         for n in i._neighbours:
             n["obj"] = topo._nodesDict[n["ssid"]]
-
     return topo
     
 def main():
     global topology
     global jsonOutput
+    global maxSize
     args = parseOptions()
+    maxSize = args.maxsize
     infile = open(args.input, "r")
     outfile = open(args.output, "w")
     cont = infile.read()
