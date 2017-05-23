@@ -68,7 +68,7 @@ class Node:
         highest = -100
         nodeinfo = None
         for n in self._neighbours:
-            if n["dbi"] > highest and n["obj"].group.name != self.group and not self.group.locked:
+            if n["dbi"] > highest and n["obj"].group.name != self.group.name and not n["obj"].group.locked:
                 nodeinfo = n
         return nodeinfo
 
@@ -76,7 +76,7 @@ class Node:
         lowest = 100
         nodeinfo = None
         for n in self._neighbours:
-            if n["dbi"] < lowest and n["obj"].group.name == self.group:
+            if n["dbi"] < lowest and n["obj"].group.name == self.group.name:
                 nodeinfo = n
         return nodeinfo
 

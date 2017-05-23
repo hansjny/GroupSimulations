@@ -60,7 +60,6 @@ class Simulation:
             groupCollection.dumpGroups()
             jsonOutput["iterations"][i] = groupCollection.getOutput()
             i += 1
-            input("Press enter to run next iteration...") 
         jsonOutput["iterationCount"] = i
         j = json.dumps(jsonOutput, indent=2)
         self.output.write(j)
@@ -143,29 +142,30 @@ class Group:
         global topology 
         global groupCollection
         global maxSize
-        print("Merging", node.group, "into", self.name)  
-        if (node.group == self.name):
+        print("Merging", node.group.name, "into", self.name)  
+        if (node.group.name == self.name):
             print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
             print("MEMBERS", self.members)
             sys.exit(0)
         oldName = node.group.name
-        oldMembers = node.group
-        print("OLDMEMBERS", oldMembers.members)
+        oldMembers = node.group.members
+        print("OLDMEMBERS", oldMembers)
 
         #Update group name for members
-        for n in oldMembers.members:
+        for n in oldMembers:
             n.group = self
+            print("Setting group for", n.name, "to", self.name)
 
         #Extend this groups members with the other groups members
-        self.members = self.members + oldMembers.members
+        self.members = self.members + oldMembers
 
         ##Remove old group
         groupCollection.removeGroupByName(oldName) 
 
         #If exceed MAXSIZE, start removal of members
-        #if (len(self.members) > maxSize):
-            #self.removeExcessMembers(maxSize)        
-            #self.locked = True
+        if (len(self.members) > maxSize):
+            self.removeExcessMembers(maxSize)        
+            self.locked = True
         return 1
         
     def removeExcessMembers(self, maxSize):
@@ -174,7 +174,6 @@ class Group:
             n = self.findLeastDisturbingMember()
             node = list(filter(lambda x: x.name == n.name, self.members))[0]
             self.members.remove(node)
-            input();
             groupCollection.newGroup(node)
             print("REMOVING NODE", node.name, "FROM:", self.name)
             
@@ -190,6 +189,8 @@ class Group:
         return disturber
 
     def iteration(self):    
+        if self.locked:
+            return 0
         disturber = self.getMostDisturbing()
         ret = 0
         if disturber != None:
