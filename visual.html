@@ -27,13 +27,15 @@
 		Height: <div style="display:inline" id="topoHeight">0</div>
 		Width: <div style="display:inline" id="topoWidth">0</div>
 		Node count: <div style="display:inline" id="nodeCount">0</div>
+		Selected node: <div style="display:inline" id="selected"></div>
 		</div>
 		<div id="renderArea" class="render_area">
 		</div>
 		<div id="uploadTopo"><label>Step 1: Upload topology JSON-file: </label><input type='file' accept='text/json' onchange='openFile(event, 1)'><br></div>
 		<img style="width:40px; height: 40px;" src="https://image.freepik.com/free-icon/arrow-bold-left-ios-7-interface-symbol_318-34824.jpg" id="decreaseIter"></img>
 
-		<img style="width:40px; height: 40px;" src="https://image.freepik.com/free-icon/arrow-bold-right-ios-7-symbol_318-35504.jpg" id="increaseIter"></img>
+		<img style="width:40px; height: 40px;" src="https://image.freepik.com/free-icon/arrow-bold-right-ios-7-symbol_318-35504.jpg" id="increaseIter"></img><br>
+		Iteration <span id="iter">0</span> out of <span id="iterMax"></span>
 	</body>
 </html>
 
@@ -41,8 +43,8 @@
 
 
 <script type="text/javascript">
-var height = 800
-var width = 800
+var height = 500
+var width = 500
 
 var hstep;
 var wstep;
@@ -69,6 +71,11 @@ function openFile(event, action) {
 
 function parseJson(txt) {
 	data = JSON.parse(txt);
+	ratio = data.mapWidth/data.mapHeight
+	//width = height * ratio
+	document.getElementById("renderArea").style.height = height + "px";
+	document.getElementById("renderArea").style.width = width + "px";
+
 	hstep = height/data.mapHeight;
 	wstep = width/data.mapWidth;
 	document.getElementById("topoHeight").innerHTML = data.mapHeight;
@@ -84,18 +91,22 @@ function parseJson(txt) {
 	
 	}
 
+function updateSelected(obj) {
+	document.getElementById("selected").innerHTML = obj.id
+}
 function addNewNode(name, posx, posy) {
 	var area = document.getElementById("renderArea");
-	var newNode =  "<div data='' id='" + name + "' class='node'></div>";
+	var newNode =  "<div onClick='updateSelected(this)' data='' id='" + name + "' class='node'></div>";
 	area.insertAdjacentHTML('beforeend', newNode);
-	document.getElementById(name).style.top = wstep * posx + "px";	
-	document.getElementById(name).style.left = hstep * posy + "px";	
+	document.getElementById(name).style.top = hstep * posy + "px";	
+	document.getElementById(name).style.left = wstep * posx + "px";	
 }
 
 function addGroups(txt) {
 	data = JSON.parse(txt);
 	colors = initializeColors(data);
 	maxstep = data['iterationCount'];
+	document.getElementById("iterMax").innerHTML = maxstep
 	iterData = data;
 	drawGroups();
 //	for (var i = 0; i < data.iterationCount
@@ -136,20 +147,33 @@ nodeOut = function(e) {
 function initializeColors(data) {
 	var colors = {}
 	for (var i = 0; i < data['iterations'][0].groupCount; i++) {
-		console.log(data['iterations'][0].groupCount)
-		color = '#'+(0x1000000+(Math.random())*0xffff55).toString(16).substr(1,6);
-		colors[data['iterations'][0][i].groupName] = color;
+		colors[data['iterations'][0][i].groupName] = randomColor();
 	}
 	return colors
 }
 
+function randomColor() {
+	return '#'+(0x1000000+(Math.random())*0xffff55).toString(16).substr(1,6);
+
+}
+
 function drawGroups() {
+	var childDivs = document.getElementById('renderArea').getElementsByTagName('div');
+
+	for( i=0; i< childDivs.length; i++ ) {
+		var childDiv = childDivs[i];
+		childDiv.style.backgroundColor = "#000";
+		childDiv.setAttribute("data", "penis");
+	}
 	d = data["iterations"][step];
 	groupCount = d.groupCount;
 	for (var i = 0; i < groupCount; i++) {
 		memberCount = d[i].memberCount;	
 		for (var j = 0; j < memberCount; j++) {
 			node = document.getElementById(d[i].members[j]);
+			color = colors[d[i].groupName];
+			if (typeof color == "undefined")
+				colors[d[i].groupName] = randomColor();
 			node.style.backgroundColor = colors[d[i].groupName];
 			node.setAttribute("data", d[i].groupName);
 			node.onmouseenter = nodeHover;
@@ -162,6 +186,7 @@ function drawGroups() {
 document.getElementById("increaseIter").onclick = function() {
 	if (step < maxstep - 1) {
 		step++;
+		document.getElementById("iter").innerHTML = step + 1
 		drawGroups();
 	}
 
@@ -170,6 +195,7 @@ document.getElementById("increaseIter").onclick = function() {
 document.getElementById("decreaseIter").onclick = function() {
 	if (step > 0) {
 		step--;
+		document.getElementById("iter").innerHTML = step + 1
 		drawGroups();
 	}
 }

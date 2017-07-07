@@ -3,6 +3,7 @@ from optparse import OptionParser
 import numpy as np
 import random
 import math
+import sys
 import json
 from collections import OrderedDict
 
@@ -70,6 +71,7 @@ class Node:
         for n in self._neighbours:
             if n["dbi"] > highest and n["obj"].group.name != self.group.name and not n["obj"].group.locked:
                 nodeinfo = n
+                highest = n["dbi"]
         return nodeinfo
 
     def getLeastDisturbingCompanion(self):
@@ -77,6 +79,7 @@ class Node:
         nodeinfo = None
         for n in self._neighbours:
             if n["dbi"] < lowest and n["obj"].group.name == self.group.name:
+                lowest = n["dbi"]
                 nodeinfo = n
         return nodeinfo
 
@@ -85,7 +88,10 @@ class Node:
         if self == nodeObject:
             return
         dist = round(self.distanceTo(nodeObject))
-        dBi  = self.measureDbi(dist)*-1
+        if (dist == 0):
+            dBi = -40
+        else:
+            dBi  = self.measureDbi(dist)*-1
         if (dBi > self._minimumInterference):
             self._neighbours.append({"ssid": nodeObject._ssid, "dbi": dBi, "obj:": nodeObject})
             #print("Distance:", dist, "m,  dBi:", dBi)
@@ -103,7 +109,6 @@ class Node:
                                             "dbi" : self._neighbours[i]["dbi"]}})
         return data
 
-
     def measureDbi(self, dist):
         return (20 * math.log(self._freq, 10)) + (20 * math.log(dist, 10)) + self._constant
 
@@ -115,26 +120,31 @@ class Node:
         return self.name
 
 class Topology: 
-    _map = None
+    _map = {}
     _width = None
     _height = None
     _spacing = None
     _nodes = []
     _nodesDict = {}
-    _nodeCount = None
+    _nodeCount = 0
     _frequency = 2437
     _thresh = 0
     _minimumRadiusVectors = None
+    premadeNodes = None
 
-    def __init__(self, width, height, spacing, nodeCount, dbThresh):
+    def __init__(self, width, height, spacing, nodeCount, dbThresh, premadeNodes = None):
         self._thresh = dbThresh
         self._width = width
         self._height = height
         self._spacing = spacing
-        self._nodeCount = nodeCount
+        self.premadeNodes = premadeNodes
+        if (premadeNodes != None):
+            self._nodeCount = len(premadeNodes)
+        else:
+            self._nodeCount = nodeCount
 
     def newTopology(self):
-        self.initMap() 
+        #self.initMap() 
         self.createMinimumRadiusVectors()
         self.populateMap()
         self.measureInterference()
@@ -142,42 +152,63 @@ class Topology:
     def getNodeCount(self):
         return self._nodeCount
 
-    #def getNodeByName(self, name):
-        #return self._nodesDict[name]
-        #for n in self._nodes:
-            #if n.name == name:
-                #return n
-        #return None
-    
     def getNodes(self):
         return self._nodes;
 
-
     def initMap(self):
-        topo = [[[] for i in range(self._height)] for i in range(self._width)]
-        for y in range(len(topo)):
-            for x in range(len(topo[y])):
-                topo[y][x] = None
-        self._map = topo
+        print("Generated topo")
+        print("Generated filled topo with None objects")
 
     def measureInterference(self):
+        print("> Calculating interference between all nodes.")
+        i = 0
+        printPercentage = 5
+        percentageMark = len(self._nodes) / (100 / 5)
+
         for nodeSubject in self._nodes:  
+            if (i % percentageMark == 0):
+                print(" *", i, "of", len(self._nodes), "nodes done.")
             for nodeObject in self._nodes:
                 nodeSubject.calculateInterferenceTo(nodeObject) 
+            i += 1
+     
 
-    def populateMap(self): 
+    def createNode(self, posx, posy, nodeNumber, nodeFreq, nodeDbiThresh, name=None):
+        node =  Node(posx, posy, nodeNumber, nodeFreq, nodeDbiThresh, name=name)
+        try: 
+            self._map[posy][posx] = node
+        except KeyError:
+            self._map[posy] = {}
+            self._map[posy][posx] = node
+
+        self._nodes.append(node)
+
+    def generateRandomNodes(self):
         nodeCount = 0
         for i in range(self._nodeCount): 
             while 1:
                 y = random.randint(0, self._height - 1)
                 x = random.randint(0, self._width - 1)
                 if self.isPositionAvailable(x, y) == True:
-                    node =  Node(x, y, nodeCount, self._frequency, self._thresh)
-                    self._map[y][x] = node
-                    self._nodes.append(node)
+                    self.createNode(x, y, nodeCount, self._frequency, self._thresh)
                     nodeCount += 1
                     break
 
+    def placeExistingNodes(self):
+        nodeCount = 0
+        print("> Placing nodes in topology.")
+        for n in self.premadeNodes:
+            self.createNode(n['x'], n['y'], nodeCount, self._frequency, self._thresh)
+            nodeCount += 1
+
+        print("> Nodes placed.")
+
+    def populateMap(self): 
+        if self.premadeNodes == None:
+            self.generateRandomNodes()
+        else:
+            self.placeExistingNodes()
+         
     def isPositionAvailable(self, testx, testy):
         for pos in self._minimumRadiusVectors:
             x = testx + pos[0]
@@ -185,15 +216,15 @@ class Topology:
             node = None
             try:
                 node = self._map[y][x]
-            except IndexError:
-                node = None 
+            except KeyError:
+                return True
 
-            if node != None:
-                return False
-
-        return True
+        return False
 
     def createMinimumRadiusVectors(self):
+        """Creates a list of relative positions to a node, where
+        no other node can be placed because of the minimum spacing
+        between nodes."""
         positions = []
         for i in range(-self._spacing, self._spacing + 1):
             for j in range(-self._spacing, self._spacing + 1): 
@@ -221,7 +252,7 @@ class Topology:
         f = open(outfile, "w")
         f.write(j)
         f.close()
-        print("Data written to file", outfile)
+        print("> Topology data written to file: ", outfile)
 
 def main(): 
     args = parseOptions()
@@ -229,7 +260,6 @@ def main():
     topo = Topology(args.width, args.height, args.spacing, args.nodes, args.thresh)
     topo.newTopology()
     topo.writeData(args.output)
-    #topo.printTopology()
 
 if __name__ == "__main__":
     main()
