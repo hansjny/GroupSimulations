@@ -65,6 +65,9 @@ class Node:
         y = node.y - self.y
         return math.sqrt(x**2+y**2)
 
+    def getNeighbourCount(self):
+        return len(self._neighbours)
+
     def getMostDisturbing(self):
         highest = -100
         nodeinfo = None
@@ -83,7 +86,13 @@ class Node:
                 nodeinfo = n
         return nodeinfo
 
- 
+
+    def getDBSum(self):
+        sum = 0;
+        for n in self._neighbours:
+            sum += n["dbi"]
+        return sum
+
     def calculateInterferenceTo(self, nodeObject):
         if self == nodeObject:
             return

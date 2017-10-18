@@ -12,8 +12,8 @@ def parseOptions():
     #Width
             #dest="width", default=500, help="Width of topology in meters. Default: 100")
     parser.add_option("-o", "--output", action="store", type="string",
-             dest="output", default="wigledata.json",
-             help="Store data. Can be used for input later, to not to network requests for data")
+            dest="output", default="wigledata.json",
+            help="Store data. Can be used for input later, to not to network requests for data")
 
     parser.add_option("-i", "--input", action="store", type="string", dest="input",
             help="Input file, data parsed with this program before, that is fetched from wigle")
@@ -99,7 +99,7 @@ def getMapSize(data):
     y = distanceBetweenCoordinates(startY, stopY, 0, 0)
     x = distanceBetweenCoordinates(0, 0, startX, stopX)
     return x, y
-    
+
 def main():
     global data 
     parse = parseOptions() 
@@ -118,6 +118,6 @@ def main():
     topo = gt.Topology(width, height, 10, 0, abs(parse.dbi), premadeNodes = nodes)
     topo.newTopology()
     topo.writeData("wigletopo.topo")
-        
+
 if __name__ == "__main__": 
     main()
