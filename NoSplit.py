@@ -65,7 +65,6 @@ class Simulation:
         jsonOutput["iterationCount"] = i
         j = json.dumps(jsonOutput, indent=2)
         self.output.write(j)
-        print("Writing to group iterations to file...")
         groupCollection.dumpGroups()
         
 
@@ -147,10 +146,15 @@ class Group:
         global groupCollection
         global maxSize
         print("Merging", node.group.name, "into", self.name)  
+
         if (node.group.name == self.name):
             print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
             print("MEMBERS", self.members)
             sys.exit(0)
+        
+        if (len(self.members) + len(node.group.members) > maxSize):
+            return 0
+
         oldName = node.group.name
         oldMembers = node.group.members
         print("OLDMEMBERS", oldMembers)

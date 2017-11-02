@@ -52,21 +52,21 @@ class Simulation:
 
         jsonOutput["iterations"][0] = groupCollection.getOutput()
         print("Number of groups created: ", groupCollection.size())
-        groupCollection.dumpGroups()
+        #groupCollection.dumpGroups()
         input("Press enter to start simulation...") 
     
     def runIteration(self): 
         global groupCollection 
         i = 1
         while (groupCollection.iterateGroups() != 0):
-            groupCollection.dumpGroups()
+            #groupCollection.dumpGroups()
             jsonOutput["iterations"][i] = groupCollection.getOutput()
             i += 1
         jsonOutput["iterationCount"] = i
         j = json.dumps(jsonOutput, indent=2)
         self.output.write(j)
         print("Writing to group iterations to file...")
-        groupCollection.dumpGroups()
+        #groupCollection.dumpGroups()
         
 
 class GroupCollection:
@@ -107,7 +107,6 @@ class GroupCollection:
         group = Group(member, groupName)
         member.group = group
         self.appendGroup(group)
-        print("Made new group: ", group.name, "for node", member.name)
         return group
 
     def appendGroup(self, group):
@@ -146,36 +145,31 @@ class Group:
         global topology 
         global groupCollection
         global maxSize
-        print("Merging", node.group.name, "into", self.name)  
+        #print("Merging", node.group.name, "into", self.name)  
         if (node.group.name == self.name):
-            print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
-            print("MEMBERS", self.members)
+            print("NODE", node.name, "of group", node.group, "wants to merge with itself", self.name, initiator.name)
+            print("Error... exiting!")
             sys.exit(0)
+
         oldName = node.group.name
         oldMembers = node.group.members
-        print("OLDMEMBERS", oldMembers)
-
-        #Update group name for members
-        for n in oldMembers:
-            n.group = self
-            print("Setting group for", n.name, "to", self.name)
-
-        #Extend this groups members with the other groups members
-        self.members = self.members + oldMembers
-
-        ##Remove old group
-        groupCollection.removeGroupByName(oldName) 
 
         #If exceed MAXSIZE, start removal of members
         #Split algorithm
-        if (len(self.members) > maxSize):
-            point1 = self.findNodeWithMostNeighbours()
-            point2 = node.group.findNodeWithMostNeighbours()
+        if (len(self.members) + len(oldMembers) > maxSize):
+            point1 = initiator
+            point2 = node
             #self.KmeansSplit((initiator.x, initiator.y), (node.x, node.y))
-            self.KmeansSplit((point1.x, point1.y), (point2.x, point2.y))
-            self.merges = self.merges - 1
-        if (self.merges == 0):     
-            self.locked = True
+            split = self.KmeansSplit((point1.x, point1.y), (point2.x, point2.y), self.members, oldMembers)
+            if split == 0: 
+                return 0
+            groupCollection.removeGroupByName(oldName) 
+        else:
+            for n in oldMembers:
+                n.group = self
+            #print("Setting group for", n.name, "to", self.name)
+            self.members = self.members + oldMembers
+            groupCollection.removeGroupByName(oldName) 
 
         return 1
         
@@ -195,32 +189,48 @@ class Group:
     #Instead of regular K-means, using random values 
     # for mu, instead use the position of the nodes
     # who wants to merge
-    def KmeansSplit(self, point1, point2): 
+    def KmeansSplit(self, point1, point2, origGroup1, origGroup2): 
         global GroupCollection
-        print(point1, point2)
         old = [(0,0), (0,0)]
         mu = [point1, point2]
-        groups = (self.members, [])
+        groups = (origGroup1 + origGroup2, [])
         while not mu == old:
             groups = self.assignGroups(mu, groups)
             old = mu;
-            mu = self.computeNewMu(mu, groups)
+            mu = self.computeMu(groups, mu)
     
+        originalMu = self.computeMu([origGroup1, origGroup2])
+
+        newDist1 = self.nodeClosestToPoint(groups[0], mu[1])
+        newDist2 = self.nodeClosestToPoint(groups[1], mu[0])
+        oldDist1 = self.nodeClosestToPoint(origGroup1, point2)
+        oldDist2 = self.nodeClosestToPoint(origGroup2, point1)
+         
+        newDistSum = newDist1 + newDist2
+        oldDistSum = oldDist1 + oldDist2
+        if (newDistSum < oldDistSum):
+            return 0
+
         try:
             newGroup = groupCollection.newGroup(groups[1][0])
         except IndexError:
-            return
-        
-        newGroup.locked = True
+            return 0
 
         for node in groups[1]:
-            self.members.remove(node)
+            if node in self.members:
+                self.members.remove(node)
             newGroup.members.append(node)
- 
-    def computeNewMu(self, oldMu, groups): 
+            node.group = newGroup
+        for node in groups[0]:
+            if node not in self.members:
+                node.group = self
+                self.members.append(node)
+        print("Confirmed split")
+        return 1
+    def computeMu(self, groups, oldMu = [(0,0), (0,0)]):
         newMu = []
         arrayVals = [[], []]
-        for g in range(0, 2):
+        for g in range(0, len(oldMu)):
             x = 0
             y = 0
             for node in groups[g]:
@@ -231,6 +241,16 @@ class Group:
             else:
                 newMu.append(oldMu[g])
         return newMu
+
+    def nodeClosestToPoint(self, group, point):
+        dist = 0
+        node = 0
+        for n in group:
+            d = self.distanceToPoint((n.x, n.y), point)
+            if d > dist:
+                dist = d
+                node = n
+        return dist
 
     def assignGroups(self, mu, groups):
         nodes = groups[0] + groups[1]
@@ -266,7 +286,7 @@ class Group:
     def iteration(self):    
         if self.locked:
             return 0
-        disturber, initiator = self.getMostDisturbing()
+        disturber, initiator, dbi = self.getMostDisturbing()
         ret = 0
         if disturber != None:
             ret = self.merge(disturber, initiator)
@@ -286,7 +306,7 @@ class Group:
                     highest = node["dbi"]
                     disturber = node["obj"]
                     initiator = n
-        return disturber, initiator
+        return disturber, initiator, highest
 
     def __str__(self):
         return self.name
