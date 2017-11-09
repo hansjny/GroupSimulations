@@ -6,7 +6,7 @@ import math
 import sys
 import json
 from collections import OrderedDict
-
+import networkx as nx 
 #Global arguments
 args = None
 
@@ -40,6 +40,7 @@ class Node:
     _ssid = None
     _channel = None
     _neighbours = None
+    gg_neighbourMembers = None
     _freq = 0
     _constant  = -27.55
     _minimumInterference = 0
@@ -50,6 +51,8 @@ class Node:
 
     def __init__(self, posx, posy, n, freq, thresh, name = None):
         self._neighbours = []
+        #Data structure 
+        self.edges = {}
         self._minimumInterference = thresh*-1
         self.x = posx
         self.y = posy
@@ -59,6 +62,12 @@ class Node:
         else:
             self.name = name
         self._ssid = self.name
+
+    def __hash__(self):
+        return hash(self.name)
+
+    #def __eq__(self, other):
+        #return self.name == other.name
 
     def distanceTo(self, node):
         x = node.x - self.x

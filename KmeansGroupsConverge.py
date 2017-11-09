@@ -116,7 +116,7 @@ class GroupCollection:
     
     def iterateGroups(self):
         changes = 0
-        print("Num groups", len(self.groups))
+        #print("Num groups", len(self.groups))
         if len(self.groups) == 1:
             return changes
         
@@ -135,7 +135,7 @@ class Group:
     members = None
     name = None
     locked = False
-    merges = 1
+    merges = 500
     def __init__(self, node, name):
         self.members = []
         self.members.append(node)
@@ -157,6 +157,8 @@ class Group:
         #If exceed MAXSIZE, start removal of members
         #Split algorithm
         if (len(self.members) + len(oldMembers) > maxSize):
+            if (self.merges <= 1):
+                return 0
             point1 = initiator
             point2 = node
             #self.KmeansSplit((initiator.x, initiator.y), (node.x, node.y))
@@ -164,6 +166,8 @@ class Group:
             if split == 0: 
                 return 0
             groupCollection.removeGroupByName(oldName) 
+            self.merges = self.merges - 1
+            print("MERGES", self.merges)
         else:
             for n in oldMembers:
                 n.group = self
@@ -208,11 +212,12 @@ class Group:
          
         newDistSum = newDist1 + newDist2
         oldDistSum = oldDist1 + oldDist2
-        if (newDistSum < oldDistSum):
+        if (newDistSum + 100 < oldDistSum):
             return 0
 
         try:
             newGroup = groupCollection.newGroup(groups[1][0])
+            newGroup.merges = self.merges - 1
         except IndexError:
             return 0
 
@@ -225,8 +230,8 @@ class Group:
             if node not in self.members:
                 node.group = self
                 self.members.append(node)
-        print("Confirmed split")
         return 1
+
     def computeMu(self, groups, oldMu = [(0,0), (0,0)]):
         newMu = []
         arrayVals = [[], []]

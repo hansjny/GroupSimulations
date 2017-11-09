@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 import json
 import GenerateTopology as gt
+from GroupEvaluation import Evaluation 
 import sys
 import math
 import numpy as np
 from collections import OrderedDict
 from optparse import OptionParser
+import networkx as nx
 
 topology = None
 groupCollection = None
@@ -24,20 +26,22 @@ def parseOptions():
             dest="output", default="iteration_data.json", help="Output file in JSON file format.")
     parser.add_option("-s", "--size", action="store", type=int,
             dest="maxsize", default=128, help="Max group size.")
+    parser.add_option("-t", "--type", action="store", help = "Splitting type. None, mincut, or kmeans.", 
+            dest="type", default="none")
 
     return parser.parse_args()[0]
 
 class Simulation:
     global topology
     output = None
-    def __init__(self, outfile):
+    def __init__(self, outfile, splitMethod):
         global groupCollection
         global jsonOutput
         jsonOutput = OrderedDict()
         jsonOutput["iterations"] = {}
 
         self.output = outfile
-        groupCollection = GroupCollection()
+        groupCollection = GroupCollection(splitMethod)
     
     def start(self): 
         self.initiateGroups()
@@ -51,29 +55,31 @@ class Simulation:
             node.group = groupCollection.newGroup(node)
 
         jsonOutput["iterations"][0] = groupCollection.getOutput()
-        print("Number of groups created: ", groupCollection.size())
-        groupCollection.dumpGroups()
+        #print("Number of groups created: ", groupCollection.size())
+        #groupCollection.dumpGroups()
         input("Press enter to start simulation...") 
     
     def runIteration(self): 
         global groupCollection 
         i = 1
         while (groupCollection.iterateGroups() != 0):
-            groupCollection.dumpGroups()
+            #groupCollection.dumpGroups()
             jsonOutput["iterations"][i] = groupCollection.getOutput()
             i += 1
         jsonOutput["iterationCount"] = i
         j = json.dumps(jsonOutput, indent=2)
         self.output.write(j)
-        groupCollection.dumpGroups()
+        #groupCollection.dumpGroups()
         
 
 class GroupCollection:
     groups = None
     groupDict = {}
     groupCount = 0
+    splitMethod = None
 
-    def __init__(self):
+    def __init__(self, sm):
+        self.splitMethod = sm
         self.groups = []
            
     def size(self):
@@ -106,7 +112,7 @@ class GroupCollection:
         group = Group(member, groupName)
         member.group = group
         self.appendGroup(group)
-        print("Made new group: ", group.name, "for node", member.name)
+        #print("Made new group: ", group.name, "for node", member.name)
         return group
 
     def appendGroup(self, group):
@@ -116,7 +122,7 @@ class GroupCollection:
     
     def iterateGroups(self):
         changes = 0
-        print("Num groups", len(self.groups))
+       # print("Num groups", len(self.groups))
         if len(self.groups) == 1:
             return changes
         
@@ -134,44 +140,18 @@ class GroupCollection:
 class Group:
     members = None
     name = None
+    graph = None
     locked = False
     merges = 1
+
     def __init__(self, node, name):
         self.members = []
         self.members.append(node)
         self.name = name
+        self.graph = nx.Graph() 
+        self.graph.add_node(node)
 
-    def merge(self, node, initiator):
-        global topology 
-        global groupCollection
-        global maxSize
-        print("Merging", node.group.name, "into", self.name)  
-
-        if (node.group.name == self.name):
-            print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
-            print("MEMBERS", self.members)
-            sys.exit(0)
-        
-        if (len(self.members) + len(node.group.members) > maxSize):
-            return 0
-
-        oldName = node.group.name
-        oldMembers = node.group.members
-        print("OLDMEMBERS", oldMembers)
-
-        #Update group name for members
-        for n in oldMembers:
-            n.group = self
-            print("Setting group for", n.name, "to", self.name)
-
-        #Extend this groups members with the other groups members
-        self.members = self.members + oldMembers
-
-        ##Remove old group
-        groupCollection.removeGroupByName(oldName) 
-
-        #If exceed MAXSIZE, start removal of members
-        #Split algorithm
+    def kmeans(self, node, initiator):
         if (len(self.members) > maxSize):
             point1 = self.findNodeWithMostNeighbours()
             point2 = node.group.findNodeWithMostNeighbours()
@@ -181,8 +161,87 @@ class Group:
         if (self.merges == 0):     
             self.locked = True
 
+        return 0
+
+    def nosplit(self, node, initiator):
+        oldName = node.group.name
+        oldMembers = node.group.members
+        #print("OLDMEMBERS", oldMembers)
+        
+        if (len(self.members) + len(node.group.members) > maxSize):
+            return 0
+        #Update group name for members
+        for n in oldMembers:
+            n.group = self
+        #    print("Setting group for", n.name, "to", self.name)
+
+        self.members = self.members + oldMembers
+        groupCollection.removeGroupByName(oldName) 
+
+
+                #Split algorithm
         return 1
         
+    def mincut(self, receiver, initiator): 
+        oldName = receiver.group.name
+        oldMembers = receiver.group.members
+
+        if (len(self.members) + len(receiver.group.members) > maxSize):
+            return 0
+
+
+        I = receiver.group.graph 
+        print(receiver.group.name, nx.number_of_edges(I))
+        print(self.name, nx.number_of_edges(self.graph))
+
+        self.joinGraphs(I, initiator, receiver)
+
+        for n in oldMembers:
+            n.group = self
+        self.members = self.members + oldMembers
+        groupCollection.removeGroupByName(oldName) 
+
+        print(self.name, nx.number_of_edges(self.graph))
+        return 1
+    
+    def joinGraphs(self, graph2, initiator, receiver): 
+        #print("ORIGIN", nx.number_of_edges(graph1))
+        #G = nx.disjoint_union(graph1, graph2)
+        self.graph.add_edge(initiator, receiver, weight=4.7)
+        for n in graph2.edges_iter(data=True):
+            self.graph.add_edge(n[0], n[1], weight=n[2])
+
+
+        #print(dict(self.graph.edges))
+        #self.graph = nx.disjoint_union(G, I)
+        #self.graph.add_edge(initiator, receiver, weight=4.7 )
+        #print(list(I.edges_iter(data=True)))
+
+
+
+        #self.graph.add_nodes_from(self.graph.nodes()+I.nodes())
+
+
+
+    def merge(self, node, initiator):
+        global groupCollection
+        global topology 
+        global maxSize
+
+        #print("Merging", node.group.name, "into", self.name)  
+
+        if (node.group.name == self.name):
+            print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
+            print("MEMBERS", self.members)
+            sys.exit(0)
+
+        if groupCollection.splitMethod == "none":
+            return self.nosplit(node, initiator)
+        elif groupCollection.splitMethod == "mincut":
+            return self.mincut(node, initiator)
+        elif groupCollection.splitMethod == "kmeans":
+            return self.kmeans(node, initiator)
+    
 
     #
     def findNodeWithMostNeighbours(self):
@@ -316,8 +375,7 @@ def getTopoData(t):
         nodes.append(node)
         topo._nodesDict[node.name] = node
         
-    topo._nodes = nodes;
-
+    topo._nodes = nodes
     for i in topo._nodes:
         for n in i._neighbours:
             n["obj"] = topo._nodesDict[n["ssid"]]
@@ -334,9 +392,12 @@ def main():
     cont = infile.read()
     topoDict = json.loads(cont)
     topology = getTopoData(topoDict)
-    s = Simulation(outfile)
+    s = Simulation(outfile, args.type)
     s.start()
     outfile.close()
+    print("Groups written to file.")
+    ev = Evaluation(topology)
+    ev.prioritizeClosest()
 
 if __name__ == "__main__":
     main()
