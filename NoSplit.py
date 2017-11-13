@@ -9,11 +9,12 @@ from collections import OrderedDict
 from optparse import OptionParser
 import networkx as nx
 
+
 topology = None
 groupCollection = None
 jsonOutput = None
 maxSize = 0
-
+times = 0
 #Parse commandline arguments
 def parseOptions():
     parser = OptionParser()
@@ -182,34 +183,76 @@ class Group:
                 #Split algorithm
         return 1
         
-    def mincut(self, receiver, initiator): 
+    def mincut(self, receiver, initiator, dbi): 
         oldName = receiver.group.name
         oldMembers = receiver.group.members
+        I = receiver.group.graph 
+        global times
 
         if (len(self.members) + len(receiver.group.members) > maxSize):
+            #minimum_cut(inode, init
+            split = self.joinGraphs(self.graph, I, initiator, receiver, dbi)
+            mincut = 10000
+            subset = None
+            source = None
+            #Fint best mincut, change source node
+            for n in self.members:     
+                cut, partition = nx.minimum_cut(split, n, receiver)
+                print(cut)
+                if cut < mincut:
+                    mincut = cut
+                    subset = partition
+                    source = n
+            print(mincut)
+
+            thresh = initiator.rssiNeighbour(receiver)
+            for n in partition[0]:
+                rssi = n.rssiNeighbour(receiver)
+                if rssi != None:
+                    if (rssi > thresh):
+                        return 0
+            
+            
+            #accept cut
+            self.graph = split
+            self.members = self.members + receiver.group.members
+            for n in oldMembers:
+                n.group = self
+            
+            for n in partition[0]:
+                receiver.group.members.append(n)
+                n.group = receiver.group
+
+            print(partition[1])
+            print(nx.minimum_edge_cut(split, source, receiver))
+            sys.exit(0)
             return 0
 
 
-        I = receiver.group.graph 
         print(receiver.group.name, nx.number_of_edges(I))
         print(self.name, nx.number_of_edges(self.graph))
 
-        self.joinGraphs(I, initiator, receiver)
+        self.graph = self.joinGraphs(self.graph, I, initiator, receiver, dbi)
 
         for n in oldMembers:
             n.group = self
+
         self.members = self.members + oldMembers
         groupCollection.removeGroupByName(oldName) 
 
         print(self.name, nx.number_of_edges(self.graph))
         return 1
     
-    def joinGraphs(self, graph2, initiator, receiver): 
+    def joinGraphs(self, graph1, graph2, initiator, receiver, dbi): 
         #print("ORIGIN", nx.number_of_edges(graph1))
         #G = nx.disjoint_union(graph1, graph2)
-        self.graph.add_edge(initiator, receiver, weight=4.7)
+        G = nx.Graph()
+        G.add_edge(initiator, receiver, capacity=100-dbi)
+        for n in graph1.edges_iter(data=True):
+            G.add_edge(n[0], n[1], capacity=n[2]["capacity"])
         for n in graph2.edges_iter(data=True):
-            self.graph.add_edge(n[0], n[1], weight=n[2])
+            G.add_edge(n[0], n[1], capacity=n[2]["capacity"])
+        return G
 
 
         #print(dict(self.graph.edges))
@@ -223,7 +266,7 @@ class Group:
 
 
 
-    def merge(self, node, initiator):
+    def merge(self, node, initiator, dbi):
         global groupCollection
         global topology 
         global maxSize
@@ -238,7 +281,7 @@ class Group:
         if groupCollection.splitMethod == "none":
             return self.nosplit(node, initiator)
         elif groupCollection.splitMethod == "mincut":
-            return self.mincut(node, initiator)
+            return self.mincut(node, initiator, dbi)
         elif groupCollection.splitMethod == "kmeans":
             return self.kmeans(node, initiator)
     
@@ -329,10 +372,10 @@ class Group:
     def iteration(self):    
         if self.locked:
             return 0
-        disturber, initiator = self.getMostDisturbing()
+        disturber, initiator, dbi = self.getMostDisturbing()
         ret = 0
         if disturber != None:
-            ret = self.merge(disturber, initiator)
+            ret = self.merge(disturber, initiator, dbi)
         else:
             print("No changes")
         return ret
@@ -349,7 +392,7 @@ class Group:
                     highest = node["dbi"]
                     disturber = node["obj"]
                     initiator = n
-        return disturber, initiator
+        return disturber, initiator, highest
 
     def __str__(self):
         return self.name

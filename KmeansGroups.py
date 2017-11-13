@@ -58,10 +58,19 @@ class Simulation:
     def runIteration(self): 
         global groupCollection 
         i = 1
-        while (groupCollection.iterateGroups() != 0):
+        changes = groupCollection.iterateGroups() 
+        twice = 0
+        while (changes != 0 and twice != 1):
             groupCollection.dumpGroups()
             jsonOutput["iterations"][i] = groupCollection.getOutput()
+            if (changes == 0):
+                    twice = 1
+            else:
+                twice = 0
+
+            changes = groupCollection.iterateGroups() 
             i += 1
+
         jsonOutput["iterationCount"] = i
         j = json.dumps(jsonOutput, indent=2)
         self.output.write(j)
@@ -151,33 +160,27 @@ class Group:
             print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
             print("MEMBERS", self.members)
             sys.exit(0)
+
         oldName = node.group.name
         oldMembers = node.group.members
-        print("OLDMEMBERS", oldMembers)
 
         #Update group name for members
+               #If exceed MAXSIZE, start removal of members
+        #Split algorithm
+        if (len(self.members) + len(oldMembers) > maxSize):
+            #point1 = self.findNodeWithMostNeighbours()
+            #point2 = node.group.findNodeWithMostNeighbours()
+            #self.KmeansSplit((initiator.x, initiator.y), (node.x, node.y))
+            startMu = self.computeNewMu([(0,0), (0,0)], [self.members, oldMembers])
+            return self.KmeansSplit(startMu[0], startMu[1], self, node.group)
+        
+        self.members = self.members + oldMembers
         for n in oldMembers:
             n.group = self
-            print("Setting group for", n.name, "to", self.name)
-
-        #Extend this groups members with the other groups members
-        self.members = self.members + oldMembers
-
-        ##Remove old group
-        groupCollection.removeGroupByName(oldName) 
-
-        #If exceed MAXSIZE, start removal of members
-        #Split algorithm
-        if (len(self.members) > maxSize):
-            point1 = self.findNodeWithMostNeighbours()
-            point2 = node.group.findNodeWithMostNeighbours()
-            #self.KmeansSplit((initiator.x, initiator.y), (node.x, node.y))
-            self.KmeansSplit((point1.x, point1.y), (point2.x, point2.y))
-            self.merges = self.merges - 1
-        if (self.merges == 0):     
-            self.locked = True
-
+        
+        groupCollection.removeGroupByName(oldName)
         return 1
+
         
 
     #
@@ -195,27 +198,38 @@ class Group:
     #Instead of regular K-means, using random values 
     # for mu, instead use the position of the nodes
     # who wants to merge
-    def KmeansSplit(self, point1, point2): 
+    def KmeansSplit(self, point1, point2, group1, group2): 
         global GroupCollection
+        global maxSize
+        changes = 0
         print(point1, point2)
         old = [(0,0), (0,0)]
         mu = [point1, point2]
-        groups = (self.members, [])
+        groups = (group1.members, group2.members)
         while not mu == old:
             groups = self.assignGroups(mu, groups)
             old = mu;
-            mu = self.computeNewMu(mu, groups)
-    
-        try:
-            newGroup = groupCollection.newGroup(groups[1][0])
-        except IndexError:
-            return
+            mu = self.computeNewMu(mu, groups) 
         
-        newGroup.locked = True
+        if len(groups[0]) > maxSize or len(groups[1]) > maxSize:
+            return 0
+
+        for node in groups[0]:
+            if node in group2.members: 
+                changes = changes + 1
+                group2.members.remove(node)
+                group1.members.append(node)
+                node.group = group1
 
         for node in groups[1]:
-            self.members.remove(node)
-            newGroup.members.append(node)
+            if node in group1.members:
+                changes = changes + 1
+                group1.members.remove(node)
+                group2.members.append(node)
+                node.group = group2
+
+        return changes
+
  
     def computeNewMu(self, oldMu, groups): 
         newMu = []

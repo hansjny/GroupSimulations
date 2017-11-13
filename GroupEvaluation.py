@@ -19,6 +19,8 @@ class Evaluation:
         #Find most disturbing. Share group? Penalty 0.
         #Not sharing group, find node N with highest disturbance that shares group
         #and penalize Ndisturbing + (mostDisturbing *-1)
+        if 1 == 1:
+            return 
         for n in self.topology._nodes:
             neighbs = sorted(n._neighbours, key=dbKey, reverse=True)
             nearest = self.topology._nodesDict[neighbs[0]["ssid"]]

@@ -69,6 +69,11 @@ class Node:
     #def __eq__(self, other):
         #return self.name == other.name
 
+    def rssiNeighbour(self, node):
+        for n in self._neighbours:
+            if n["ssid"] == node.name:
+                return n["dbi"]
+        return None
     def distanceTo(self, node):
         x = node.x - self.x
         y = node.y - self.y
