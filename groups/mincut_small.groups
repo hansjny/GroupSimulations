@@ -1,0 +1,5684 @@
+{
+  "iterations": {
+    "0": {
+      "0": {
+        "groupName": "GROUP0",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE0"
+        }
+      },
+      "1": {
+        "groupName": "GROUP1",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE1"
+        }
+      },
+      "2": {
+        "groupName": "GROUP2",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE2"
+        }
+      },
+      "3": {
+        "groupName": "GROUP3",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE3"
+        }
+      },
+      "4": {
+        "groupName": "GROUP4",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE4"
+        }
+      },
+      "5": {
+        "groupName": "GROUP5",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE5"
+        }
+      },
+      "6": {
+        "groupName": "GROUP6",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE6"
+        }
+      },
+      "7": {
+        "groupName": "GROUP7",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE7"
+        }
+      },
+      "8": {
+        "groupName": "GROUP8",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE8"
+        }
+      },
+      "9": {
+        "groupName": "GROUP9",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE9"
+        }
+      },
+      "10": {
+        "groupName": "GROUP10",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE10"
+        }
+      },
+      "11": {
+        "groupName": "GROUP11",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE11"
+        }
+      },
+      "12": {
+        "groupName": "GROUP12",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE12"
+        }
+      },
+      "13": {
+        "groupName": "GROUP13",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE13"
+        }
+      },
+      "14": {
+        "groupName": "GROUP14",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE14"
+        }
+      },
+      "15": {
+        "groupName": "GROUP15",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE15"
+        }
+      },
+      "16": {
+        "groupName": "GROUP16",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE16"
+        }
+      },
+      "17": {
+        "groupName": "GROUP17",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE17"
+        }
+      },
+      "18": {
+        "groupName": "GROUP18",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE18"
+        }
+      },
+      "19": {
+        "groupName": "GROUP19",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE19"
+        }
+      },
+      "20": {
+        "groupName": "GROUP20",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE20"
+        }
+      },
+      "21": {
+        "groupName": "GROUP21",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE21"
+        }
+      },
+      "22": {
+        "groupName": "GROUP22",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE22"
+        }
+      },
+      "23": {
+        "groupName": "GROUP23",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE23"
+        }
+      },
+      "24": {
+        "groupName": "GROUP24",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE24"
+        }
+      },
+      "25": {
+        "groupName": "GROUP25",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE25"
+        }
+      },
+      "26": {
+        "groupName": "GROUP26",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE26"
+        }
+      },
+      "27": {
+        "groupName": "GROUP27",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE27"
+        }
+      },
+      "28": {
+        "groupName": "GROUP28",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE28"
+        }
+      },
+      "29": {
+        "groupName": "GROUP29",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE29"
+        }
+      },
+      "30": {
+        "groupName": "GROUP30",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE30"
+        }
+      },
+      "31": {
+        "groupName": "GROUP31",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE31"
+        }
+      },
+      "32": {
+        "groupName": "GROUP32",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE32"
+        }
+      },
+      "33": {
+        "groupName": "GROUP33",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE33"
+        }
+      },
+      "34": {
+        "groupName": "GROUP34",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE34"
+        }
+      },
+      "35": {
+        "groupName": "GROUP35",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE35"
+        }
+      },
+      "36": {
+        "groupName": "GROUP36",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE36"
+        }
+      },
+      "37": {
+        "groupName": "GROUP37",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE37"
+        }
+      },
+      "38": {
+        "groupName": "GROUP38",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE38"
+        }
+      },
+      "39": {
+        "groupName": "GROUP39",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE39"
+        }
+      },
+      "40": {
+        "groupName": "GROUP40",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE40"
+        }
+      },
+      "41": {
+        "groupName": "GROUP41",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE41"
+        }
+      },
+      "42": {
+        "groupName": "GROUP42",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE42"
+        }
+      },
+      "43": {
+        "groupName": "GROUP43",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE43"
+        }
+      },
+      "44": {
+        "groupName": "GROUP44",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE44"
+        }
+      },
+      "45": {
+        "groupName": "GROUP45",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE45"
+        }
+      },
+      "46": {
+        "groupName": "GROUP46",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE46"
+        }
+      },
+      "47": {
+        "groupName": "GROUP47",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE47"
+        }
+      },
+      "48": {
+        "groupName": "GROUP48",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE48"
+        }
+      },
+      "49": {
+        "groupName": "GROUP49",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE49"
+        }
+      },
+      "50": {
+        "groupName": "GROUP50",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE50"
+        }
+      },
+      "51": {
+        "groupName": "GROUP51",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE51"
+        }
+      },
+      "52": {
+        "groupName": "GROUP52",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE52"
+        }
+      },
+      "53": {
+        "groupName": "GROUP53",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE53"
+        }
+      },
+      "54": {
+        "groupName": "GROUP54",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE54"
+        }
+      },
+      "55": {
+        "groupName": "GROUP55",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE55"
+        }
+      },
+      "56": {
+        "groupName": "GROUP56",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE56"
+        }
+      },
+      "57": {
+        "groupName": "GROUP57",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE57"
+        }
+      },
+      "58": {
+        "groupName": "GROUP58",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE58"
+        }
+      },
+      "59": {
+        "groupName": "GROUP59",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE59"
+        }
+      },
+      "60": {
+        "groupName": "GROUP60",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE60"
+        }
+      },
+      "61": {
+        "groupName": "GROUP61",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE61"
+        }
+      },
+      "62": {
+        "groupName": "GROUP62",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE62"
+        }
+      },
+      "63": {
+        "groupName": "GROUP63",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE63"
+        }
+      },
+      "64": {
+        "groupName": "GROUP64",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE64"
+        }
+      },
+      "65": {
+        "groupName": "GROUP65",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE65"
+        }
+      },
+      "66": {
+        "groupName": "GROUP66",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE66"
+        }
+      },
+      "67": {
+        "groupName": "GROUP67",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE67"
+        }
+      },
+      "68": {
+        "groupName": "GROUP68",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE68"
+        }
+      },
+      "69": {
+        "groupName": "GROUP69",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE69"
+        }
+      },
+      "70": {
+        "groupName": "GROUP70",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE70"
+        }
+      },
+      "71": {
+        "groupName": "GROUP71",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE71"
+        }
+      },
+      "72": {
+        "groupName": "GROUP72",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE72"
+        }
+      },
+      "73": {
+        "groupName": "GROUP73",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE73"
+        }
+      },
+      "74": {
+        "groupName": "GROUP74",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE74"
+        }
+      },
+      "75": {
+        "groupName": "GROUP75",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE75"
+        }
+      },
+      "76": {
+        "groupName": "GROUP76",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE76"
+        }
+      },
+      "77": {
+        "groupName": "GROUP77",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE77"
+        }
+      },
+      "78": {
+        "groupName": "GROUP78",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE78"
+        }
+      },
+      "79": {
+        "groupName": "GROUP79",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE79"
+        }
+      },
+      "80": {
+        "groupName": "GROUP80",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE80"
+        }
+      },
+      "81": {
+        "groupName": "GROUP81",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE81"
+        }
+      },
+      "82": {
+        "groupName": "GROUP82",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE82"
+        }
+      },
+      "83": {
+        "groupName": "GROUP83",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE83"
+        }
+      },
+      "84": {
+        "groupName": "GROUP84",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE84"
+        }
+      },
+      "85": {
+        "groupName": "GROUP85",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE85"
+        }
+      },
+      "86": {
+        "groupName": "GROUP86",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE86"
+        }
+      },
+      "87": {
+        "groupName": "GROUP87",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE87"
+        }
+      },
+      "88": {
+        "groupName": "GROUP88",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE88"
+        }
+      },
+      "89": {
+        "groupName": "GROUP89",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE89"
+        }
+      },
+      "90": {
+        "groupName": "GROUP90",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE90"
+        }
+      },
+      "91": {
+        "groupName": "GROUP91",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE91"
+        }
+      },
+      "92": {
+        "groupName": "GROUP92",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE92"
+        }
+      },
+      "93": {
+        "groupName": "GROUP93",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE93"
+        }
+      },
+      "94": {
+        "groupName": "GROUP94",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE94"
+        }
+      },
+      "95": {
+        "groupName": "GROUP95",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE95"
+        }
+      },
+      "96": {
+        "groupName": "GROUP96",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE96"
+        }
+      },
+      "97": {
+        "groupName": "GROUP97",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE97"
+        }
+      },
+      "98": {
+        "groupName": "GROUP98",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE98"
+        }
+      },
+      "99": {
+        "groupName": "GROUP99",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE99"
+        }
+      },
+      "100": {
+        "groupName": "GROUP100",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE100"
+        }
+      },
+      "101": {
+        "groupName": "GROUP101",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE101"
+        }
+      },
+      "102": {
+        "groupName": "GROUP102",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE102"
+        }
+      },
+      "103": {
+        "groupName": "GROUP103",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE103"
+        }
+      },
+      "104": {
+        "groupName": "GROUP104",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE104"
+        }
+      },
+      "105": {
+        "groupName": "GROUP105",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE105"
+        }
+      },
+      "106": {
+        "groupName": "GROUP106",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE106"
+        }
+      },
+      "107": {
+        "groupName": "GROUP107",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE107"
+        }
+      },
+      "108": {
+        "groupName": "GROUP108",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE108"
+        }
+      },
+      "109": {
+        "groupName": "GROUP109",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE109"
+        }
+      },
+      "110": {
+        "groupName": "GROUP110",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE110"
+        }
+      },
+      "111": {
+        "groupName": "GROUP111",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE111"
+        }
+      },
+      "112": {
+        "groupName": "GROUP112",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE112"
+        }
+      },
+      "113": {
+        "groupName": "GROUP113",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE113"
+        }
+      },
+      "114": {
+        "groupName": "GROUP114",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE114"
+        }
+      },
+      "115": {
+        "groupName": "GROUP115",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE115"
+        }
+      },
+      "116": {
+        "groupName": "GROUP116",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE116"
+        }
+      },
+      "117": {
+        "groupName": "GROUP117",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE117"
+        }
+      },
+      "118": {
+        "groupName": "GROUP118",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE118"
+        }
+      },
+      "119": {
+        "groupName": "GROUP119",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE119"
+        }
+      },
+      "120": {
+        "groupName": "GROUP120",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE120"
+        }
+      },
+      "121": {
+        "groupName": "GROUP121",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE121"
+        }
+      },
+      "122": {
+        "groupName": "GROUP122",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE122"
+        }
+      },
+      "123": {
+        "groupName": "GROUP123",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE123"
+        }
+      },
+      "124": {
+        "groupName": "GROUP124",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE124"
+        }
+      },
+      "125": {
+        "groupName": "GROUP125",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE125"
+        }
+      },
+      "126": {
+        "groupName": "GROUP126",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE126"
+        }
+      },
+      "127": {
+        "groupName": "GROUP127",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE127"
+        }
+      },
+      "128": {
+        "groupName": "GROUP128",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE128"
+        }
+      },
+      "129": {
+        "groupName": "GROUP129",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE129"
+        }
+      },
+      "130": {
+        "groupName": "GROUP130",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE130"
+        }
+      },
+      "131": {
+        "groupName": "GROUP131",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE131"
+        }
+      },
+      "132": {
+        "groupName": "GROUP132",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE132"
+        }
+      },
+      "133": {
+        "groupName": "GROUP133",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE133"
+        }
+      },
+      "134": {
+        "groupName": "GROUP134",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE134"
+        }
+      },
+      "135": {
+        "groupName": "GROUP135",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE135"
+        }
+      },
+      "136": {
+        "groupName": "GROUP136",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE136"
+        }
+      },
+      "137": {
+        "groupName": "GROUP137",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE137"
+        }
+      },
+      "138": {
+        "groupName": "GROUP138",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE138"
+        }
+      },
+      "139": {
+        "groupName": "GROUP139",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE139"
+        }
+      },
+      "140": {
+        "groupName": "GROUP140",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE140"
+        }
+      },
+      "141": {
+        "groupName": "GROUP141",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE141"
+        }
+      },
+      "142": {
+        "groupName": "GROUP142",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE142"
+        }
+      },
+      "143": {
+        "groupName": "GROUP143",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE143"
+        }
+      },
+      "144": {
+        "groupName": "GROUP144",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE144"
+        }
+      },
+      "145": {
+        "groupName": "GROUP145",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE145"
+        }
+      },
+      "146": {
+        "groupName": "GROUP146",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE146"
+        }
+      },
+      "147": {
+        "groupName": "GROUP147",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE147"
+        }
+      },
+      "148": {
+        "groupName": "GROUP148",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE148"
+        }
+      },
+      "149": {
+        "groupName": "GROUP149",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE149"
+        }
+      },
+      "150": {
+        "groupName": "GROUP150",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE150"
+        }
+      },
+      "151": {
+        "groupName": "GROUP151",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE151"
+        }
+      },
+      "152": {
+        "groupName": "GROUP152",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE152"
+        }
+      },
+      "153": {
+        "groupName": "GROUP153",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE153"
+        }
+      },
+      "154": {
+        "groupName": "GROUP154",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE154"
+        }
+      },
+      "155": {
+        "groupName": "GROUP155",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE155"
+        }
+      },
+      "156": {
+        "groupName": "GROUP156",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE156"
+        }
+      },
+      "157": {
+        "groupName": "GROUP157",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE157"
+        }
+      },
+      "158": {
+        "groupName": "GROUP158",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE158"
+        }
+      },
+      "159": {
+        "groupName": "GROUP159",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE159"
+        }
+      },
+      "160": {
+        "groupName": "GROUP160",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE160"
+        }
+      },
+      "161": {
+        "groupName": "GROUP161",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE161"
+        }
+      },
+      "162": {
+        "groupName": "GROUP162",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE162"
+        }
+      },
+      "163": {
+        "groupName": "GROUP163",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE163"
+        }
+      },
+      "164": {
+        "groupName": "GROUP164",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE164"
+        }
+      },
+      "165": {
+        "groupName": "GROUP165",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE165"
+        }
+      },
+      "166": {
+        "groupName": "GROUP166",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE166"
+        }
+      },
+      "167": {
+        "groupName": "GROUP167",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE167"
+        }
+      },
+      "168": {
+        "groupName": "GROUP168",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE168"
+        }
+      },
+      "169": {
+        "groupName": "GROUP169",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE169"
+        }
+      },
+      "170": {
+        "groupName": "GROUP170",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE170"
+        }
+      },
+      "171": {
+        "groupName": "GROUP171",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE171"
+        }
+      },
+      "172": {
+        "groupName": "GROUP172",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE172"
+        }
+      },
+      "173": {
+        "groupName": "GROUP173",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE173"
+        }
+      },
+      "174": {
+        "groupName": "GROUP174",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE174"
+        }
+      },
+      "175": {
+        "groupName": "GROUP175",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE175"
+        }
+      },
+      "176": {
+        "groupName": "GROUP176",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE176"
+        }
+      },
+      "177": {
+        "groupName": "GROUP177",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE177"
+        }
+      },
+      "178": {
+        "groupName": "GROUP178",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE178"
+        }
+      },
+      "179": {
+        "groupName": "GROUP179",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE179"
+        }
+      },
+      "180": {
+        "groupName": "GROUP180",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE180"
+        }
+      },
+      "181": {
+        "groupName": "GROUP181",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE181"
+        }
+      },
+      "182": {
+        "groupName": "GROUP182",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE182"
+        }
+      },
+      "183": {
+        "groupName": "GROUP183",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE183"
+        }
+      },
+      "184": {
+        "groupName": "GROUP184",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE184"
+        }
+      },
+      "185": {
+        "groupName": "GROUP185",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE185"
+        }
+      },
+      "186": {
+        "groupName": "GROUP186",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE186"
+        }
+      },
+      "187": {
+        "groupName": "GROUP187",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE187"
+        }
+      },
+      "188": {
+        "groupName": "GROUP188",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE188"
+        }
+      },
+      "189": {
+        "groupName": "GROUP189",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE189"
+        }
+      },
+      "190": {
+        "groupName": "GROUP190",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE190"
+        }
+      },
+      "191": {
+        "groupName": "GROUP191",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE191"
+        }
+      },
+      "192": {
+        "groupName": "GROUP192",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE192"
+        }
+      },
+      "193": {
+        "groupName": "GROUP193",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE193"
+        }
+      },
+      "194": {
+        "groupName": "GROUP194",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE194"
+        }
+      },
+      "195": {
+        "groupName": "GROUP195",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE195"
+        }
+      },
+      "196": {
+        "groupName": "GROUP196",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE196"
+        }
+      },
+      "197": {
+        "groupName": "GROUP197",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE197"
+        }
+      },
+      "198": {
+        "groupName": "GROUP198",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE198"
+        }
+      },
+      "199": {
+        "groupName": "GROUP199",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE199"
+        }
+      },
+      "200": {
+        "groupName": "GROUP200",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE200"
+        }
+      },
+      "201": {
+        "groupName": "GROUP201",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE201"
+        }
+      },
+      "202": {
+        "groupName": "GROUP202",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE202"
+        }
+      },
+      "203": {
+        "groupName": "GROUP203",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE203"
+        }
+      },
+      "204": {
+        "groupName": "GROUP204",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE204"
+        }
+      },
+      "205": {
+        "groupName": "GROUP205",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE205"
+        }
+      },
+      "206": {
+        "groupName": "GROUP206",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE206"
+        }
+      },
+      "207": {
+        "groupName": "GROUP207",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE207"
+        }
+      },
+      "208": {
+        "groupName": "GROUP208",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE208"
+        }
+      },
+      "209": {
+        "groupName": "GROUP209",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE209"
+        }
+      },
+      "210": {
+        "groupName": "GROUP210",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE210"
+        }
+      },
+      "211": {
+        "groupName": "GROUP211",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE211"
+        }
+      },
+      "212": {
+        "groupName": "GROUP212",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE212"
+        }
+      },
+      "213": {
+        "groupName": "GROUP213",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE213"
+        }
+      },
+      "214": {
+        "groupName": "GROUP214",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE214"
+        }
+      },
+      "215": {
+        "groupName": "GROUP215",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE215"
+        }
+      },
+      "216": {
+        "groupName": "GROUP216",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE216"
+        }
+      },
+      "217": {
+        "groupName": "GROUP217",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE217"
+        }
+      },
+      "218": {
+        "groupName": "GROUP218",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE218"
+        }
+      },
+      "219": {
+        "groupName": "GROUP219",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE219"
+        }
+      },
+      "220": {
+        "groupName": "GROUP220",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE220"
+        }
+      },
+      "221": {
+        "groupName": "GROUP221",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE221"
+        }
+      },
+      "222": {
+        "groupName": "GROUP222",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE222"
+        }
+      },
+      "223": {
+        "groupName": "GROUP223",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE223"
+        }
+      },
+      "224": {
+        "groupName": "GROUP224",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE224"
+        }
+      },
+      "225": {
+        "groupName": "GROUP225",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE225"
+        }
+      },
+      "226": {
+        "groupName": "GROUP226",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE226"
+        }
+      },
+      "227": {
+        "groupName": "GROUP227",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE227"
+        }
+      },
+      "228": {
+        "groupName": "GROUP228",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE228"
+        }
+      },
+      "229": {
+        "groupName": "GROUP229",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE229"
+        }
+      },
+      "230": {
+        "groupName": "GROUP230",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE230"
+        }
+      },
+      "231": {
+        "groupName": "GROUP231",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE231"
+        }
+      },
+      "232": {
+        "groupName": "GROUP232",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE232"
+        }
+      },
+      "233": {
+        "groupName": "GROUP233",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE233"
+        }
+      },
+      "234": {
+        "groupName": "GROUP234",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE234"
+        }
+      },
+      "235": {
+        "groupName": "GROUP235",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE235"
+        }
+      },
+      "236": {
+        "groupName": "GROUP236",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE236"
+        }
+      },
+      "237": {
+        "groupName": "GROUP237",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE237"
+        }
+      },
+      "238": {
+        "groupName": "GROUP238",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE238"
+        }
+      },
+      "239": {
+        "groupName": "GROUP239",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE239"
+        }
+      },
+      "240": {
+        "groupName": "GROUP240",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE240"
+        }
+      },
+      "241": {
+        "groupName": "GROUP241",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE241"
+        }
+      },
+      "242": {
+        "groupName": "GROUP242",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE242"
+        }
+      },
+      "243": {
+        "groupName": "GROUP243",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE243"
+        }
+      },
+      "244": {
+        "groupName": "GROUP244",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE244"
+        }
+      },
+      "245": {
+        "groupName": "GROUP245",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE245"
+        }
+      },
+      "246": {
+        "groupName": "GROUP246",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE246"
+        }
+      },
+      "247": {
+        "groupName": "GROUP247",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE247"
+        }
+      },
+      "248": {
+        "groupName": "GROUP248",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE248"
+        }
+      },
+      "249": {
+        "groupName": "GROUP249",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE249"
+        }
+      },
+      "250": {
+        "groupName": "GROUP250",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE250"
+        }
+      },
+      "251": {
+        "groupName": "GROUP251",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE251"
+        }
+      },
+      "252": {
+        "groupName": "GROUP252",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE252"
+        }
+      },
+      "253": {
+        "groupName": "GROUP253",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE253"
+        }
+      },
+      "254": {
+        "groupName": "GROUP254",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE254"
+        }
+      },
+      "255": {
+        "groupName": "GROUP255",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE255"
+        }
+      },
+      "256": {
+        "groupName": "GROUP256",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE256"
+        }
+      },
+      "257": {
+        "groupName": "GROUP257",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE257"
+        }
+      },
+      "258": {
+        "groupName": "GROUP258",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE258"
+        }
+      },
+      "259": {
+        "groupName": "GROUP259",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE259"
+        }
+      },
+      "260": {
+        "groupName": "GROUP260",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE260"
+        }
+      },
+      "261": {
+        "groupName": "GROUP261",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE261"
+        }
+      },
+      "262": {
+        "groupName": "GROUP262",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE262"
+        }
+      },
+      "263": {
+        "groupName": "GROUP263",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE263"
+        }
+      },
+      "264": {
+        "groupName": "GROUP264",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE264"
+        }
+      },
+      "265": {
+        "groupName": "GROUP265",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE265"
+        }
+      },
+      "266": {
+        "groupName": "GROUP266",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE266"
+        }
+      },
+      "267": {
+        "groupName": "GROUP267",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE267"
+        }
+      },
+      "268": {
+        "groupName": "GROUP268",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE268"
+        }
+      },
+      "269": {
+        "groupName": "GROUP269",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE269"
+        }
+      },
+      "270": {
+        "groupName": "GROUP270",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE270"
+        }
+      },
+      "271": {
+        "groupName": "GROUP271",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE271"
+        }
+      },
+      "272": {
+        "groupName": "GROUP272",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE272"
+        }
+      },
+      "273": {
+        "groupName": "GROUP273",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE273"
+        }
+      },
+      "274": {
+        "groupName": "GROUP274",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE274"
+        }
+      },
+      "275": {
+        "groupName": "GROUP275",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE275"
+        }
+      },
+      "276": {
+        "groupName": "GROUP276",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE276"
+        }
+      },
+      "277": {
+        "groupName": "GROUP277",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE277"
+        }
+      },
+      "278": {
+        "groupName": "GROUP278",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE278"
+        }
+      },
+      "279": {
+        "groupName": "GROUP279",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE279"
+        }
+      },
+      "280": {
+        "groupName": "GROUP280",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE280"
+        }
+      },
+      "281": {
+        "groupName": "GROUP281",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE281"
+        }
+      },
+      "282": {
+        "groupName": "GROUP282",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE282"
+        }
+      },
+      "283": {
+        "groupName": "GROUP283",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE283"
+        }
+      },
+      "284": {
+        "groupName": "GROUP284",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE284"
+        }
+      },
+      "285": {
+        "groupName": "GROUP285",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE285"
+        }
+      },
+      "286": {
+        "groupName": "GROUP286",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE286"
+        }
+      },
+      "287": {
+        "groupName": "GROUP287",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE287"
+        }
+      },
+      "288": {
+        "groupName": "GROUP288",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE288"
+        }
+      },
+      "289": {
+        "groupName": "GROUP289",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE289"
+        }
+      },
+      "290": {
+        "groupName": "GROUP290",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE290"
+        }
+      },
+      "291": {
+        "groupName": "GROUP291",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE291"
+        }
+      },
+      "292": {
+        "groupName": "GROUP292",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE292"
+        }
+      },
+      "293": {
+        "groupName": "GROUP293",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE293"
+        }
+      },
+      "294": {
+        "groupName": "GROUP294",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE294"
+        }
+      },
+      "295": {
+        "groupName": "GROUP295",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE295"
+        }
+      },
+      "296": {
+        "groupName": "GROUP296",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE296"
+        }
+      },
+      "297": {
+        "groupName": "GROUP297",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE297"
+        }
+      },
+      "298": {
+        "groupName": "GROUP298",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE298"
+        }
+      },
+      "299": {
+        "groupName": "GROUP299",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE299"
+        }
+      },
+      "groupCount": 300
+    },
+    "1": {
+      "0": {
+        "groupName": "GROUP1",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE1",
+          "1": "NODE75"
+        }
+      },
+      "1": {
+        "groupName": "GROUP2",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE2",
+          "1": "NODE89"
+        }
+      },
+      "2": {
+        "groupName": "GROUP3",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE3",
+          "1": "NODE132"
+        }
+      },
+      "3": {
+        "groupName": "GROUP6",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE6",
+          "1": "NODE0",
+          "2": "NODE60"
+        }
+      },
+      "4": {
+        "groupName": "GROUP8",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE8",
+          "1": "NODE85"
+        }
+      },
+      "5": {
+        "groupName": "GROUP9",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE9",
+          "1": "NODE93"
+        }
+      },
+      "6": {
+        "groupName": "GROUP11",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE11",
+          "1": "NODE154"
+        }
+      },
+      "7": {
+        "groupName": "GROUP12",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE12",
+          "1": "NODE178"
+        }
+      },
+      "8": {
+        "groupName": "GROUP16",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE16",
+          "1": "NODE98"
+        }
+      },
+      "9": {
+        "groupName": "GROUP17",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE17",
+          "1": "NODE92"
+        }
+      },
+      "10": {
+        "groupName": "GROUP18",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE18",
+          "1": "NODE104"
+        }
+      },
+      "11": {
+        "groupName": "GROUP20",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE20",
+          "1": "NODE243"
+        }
+      },
+      "12": {
+        "groupName": "GROUP23",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE23",
+          "1": "NODE125"
+        }
+      },
+      "13": {
+        "groupName": "GROUP25",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE25",
+          "1": "NODE239"
+        }
+      },
+      "14": {
+        "groupName": "GROUP26",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE26",
+          "1": "NODE129"
+        }
+      },
+      "15": {
+        "groupName": "GROUP27",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE27",
+          "1": "NODE254"
+        }
+      },
+      "16": {
+        "groupName": "GROUP41",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE41",
+          "1": "NODE224"
+        }
+      },
+      "17": {
+        "groupName": "GROUP42",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE42",
+          "1": "NODE33",
+          "2": "NODE4",
+          "3": "NODE141"
+        }
+      },
+      "18": {
+        "groupName": "GROUP47",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE47",
+          "1": "NODE65"
+        }
+      },
+      "19": {
+        "groupName": "GROUP48",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE48",
+          "1": "NODE276"
+        }
+      },
+      "20": {
+        "groupName": "GROUP49",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE49",
+          "1": "NODE103"
+        }
+      },
+      "21": {
+        "groupName": "GROUP50",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE50",
+          "1": "NODE277"
+        }
+      },
+      "22": {
+        "groupName": "GROUP51",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE51",
+          "1": "NODE170"
+        }
+      },
+      "23": {
+        "groupName": "GROUP52",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE52",
+          "1": "NODE292"
+        }
+      },
+      "24": {
+        "groupName": "GROUP54",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE54",
+          "1": "NODE238"
+        }
+      },
+      "25": {
+        "groupName": "GROUP55",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE55",
+          "1": "NODE13",
+          "2": "NODE252"
+        }
+      },
+      "26": {
+        "groupName": "GROUP56",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE56"
+        }
+      },
+      "27": {
+        "groupName": "GROUP61",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE61",
+          "1": "NODE185"
+        }
+      },
+      "28": {
+        "groupName": "GROUP62",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE62",
+          "1": "NODE21",
+          "2": "NODE81"
+        }
+      },
+      "29": {
+        "groupName": "GROUP64",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE64",
+          "1": "NODE112"
+        }
+      },
+      "30": {
+        "groupName": "GROUP67",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE67",
+          "1": "NODE257"
+        }
+      },
+      "31": {
+        "groupName": "GROUP69",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE69",
+          "1": "NODE219"
+        }
+      },
+      "32": {
+        "groupName": "GROUP70",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE70",
+          "1": "NODE78"
+        }
+      },
+      "33": {
+        "groupName": "GROUP71",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE71",
+          "1": "NODE59",
+          "2": "NODE229"
+        }
+      },
+      "34": {
+        "groupName": "GROUP73",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE73"
+        }
+      },
+      "35": {
+        "groupName": "GROUP76",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE76"
+        }
+      },
+      "36": {
+        "groupName": "GROUP77",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE77",
+          "1": "NODE158"
+        }
+      },
+      "37": {
+        "groupName": "GROUP79",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE79",
+          "1": "NODE165"
+        }
+      },
+      "38": {
+        "groupName": "GROUP80",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE80",
+          "1": "NODE278"
+        }
+      },
+      "39": {
+        "groupName": "GROUP83",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE83",
+          "1": "NODE24",
+          "2": "NODE68"
+        }
+      },
+      "40": {
+        "groupName": "GROUP87",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE87",
+          "1": "NODE220"
+        }
+      },
+      "41": {
+        "groupName": "GROUP88",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE88",
+          "1": "NODE94"
+        }
+      },
+      "42": {
+        "groupName": "GROUP99",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE99"
+        }
+      },
+      "43": {
+        "groupName": "GROUP100",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE100",
+          "1": "NODE84"
+        }
+      },
+      "44": {
+        "groupName": "GROUP102",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE102",
+          "1": "NODE174"
+        }
+      },
+      "45": {
+        "groupName": "GROUP105",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE105",
+          "1": "NODE37",
+          "2": "NODE234"
+        }
+      },
+      "46": {
+        "groupName": "GROUP106",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE106"
+        }
+      },
+      "47": {
+        "groupName": "GROUP107",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE107",
+          "1": "NODE284"
+        }
+      },
+      "48": {
+        "groupName": "GROUP109",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE109"
+        }
+      },
+      "49": {
+        "groupName": "GROUP110",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE110",
+          "1": "NODE152"
+        }
+      },
+      "50": {
+        "groupName": "GROUP113",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE113"
+        }
+      },
+      "51": {
+        "groupName": "GROUP114",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE114",
+          "1": "NODE294"
+        }
+      },
+      "52": {
+        "groupName": "GROUP115",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE115",
+          "1": "NODE183"
+        }
+      },
+      "53": {
+        "groupName": "GROUP119",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE119"
+        }
+      },
+      "54": {
+        "groupName": "GROUP122",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE122",
+          "1": "NODE46",
+          "2": "NODE227"
+        }
+      },
+      "55": {
+        "groupName": "GROUP123",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE123"
+        }
+      },
+      "56": {
+        "groupName": "GROUP126",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE126"
+        }
+      },
+      "57": {
+        "groupName": "GROUP127",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE127",
+          "1": "NODE195"
+        }
+      },
+      "58": {
+        "groupName": "GROUP128",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE128",
+          "1": "NODE91"
+        }
+      },
+      "59": {
+        "groupName": "GROUP131",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE131",
+          "1": "NODE130"
+        }
+      },
+      "60": {
+        "groupName": "GROUP134",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE134",
+          "1": "NODE190"
+        }
+      },
+      "61": {
+        "groupName": "GROUP135",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE135",
+          "1": "NODE10",
+          "2": "NODE298"
+        }
+      },
+      "62": {
+        "groupName": "GROUP136",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE136"
+        }
+      },
+      "63": {
+        "groupName": "GROUP137",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE137",
+          "1": "NODE266"
+        }
+      },
+      "64": {
+        "groupName": "GROUP142",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE142",
+          "1": "NODE230"
+        }
+      },
+      "65": {
+        "groupName": "GROUP143",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE143",
+          "1": "NODE34"
+        }
+      },
+      "66": {
+        "groupName": "GROUP144",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE144"
+        }
+      },
+      "67": {
+        "groupName": "GROUP145",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE145",
+          "1": "NODE193"
+        }
+      },
+      "68": {
+        "groupName": "GROUP148",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE148"
+        }
+      },
+      "69": {
+        "groupName": "GROUP149",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE149",
+          "1": "NODE171"
+        }
+      },
+      "70": {
+        "groupName": "GROUP151",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE151"
+        }
+      },
+      "71": {
+        "groupName": "GROUP155",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE155",
+          "1": "NODE96",
+          "2": "NODE19",
+          "3": "NODE86"
+        }
+      },
+      "72": {
+        "groupName": "GROUP156",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE156"
+        }
+      },
+      "73": {
+        "groupName": "GROUP159",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE159",
+          "1": "NODE138",
+          "2": "NODE166"
+        }
+      },
+      "74": {
+        "groupName": "GROUP160",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE160"
+        }
+      },
+      "75": {
+        "groupName": "GROUP161",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE161",
+          "1": "NODE153",
+          "2": "NODE164"
+        }
+      },
+      "76": {
+        "groupName": "GROUP163",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE163",
+          "1": "NODE40",
+          "2": "NODE45"
+        }
+      },
+      "77": {
+        "groupName": "GROUP167",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE167"
+        }
+      },
+      "78": {
+        "groupName": "GROUP168",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE168",
+          "1": "NODE162"
+        }
+      },
+      "79": {
+        "groupName": "GROUP173",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE173",
+          "1": "NODE177"
+        }
+      },
+      "80": {
+        "groupName": "GROUP175",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE175",
+          "1": "NODE74",
+          "2": "NODE29",
+          "3": "NODE72"
+        }
+      },
+      "81": {
+        "groupName": "GROUP176",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE176"
+        }
+      },
+      "82": {
+        "groupName": "GROUP179",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE179",
+          "1": "NODE111",
+          "2": "NODE15",
+          "3": "NODE58"
+        }
+      },
+      "83": {
+        "groupName": "GROUP181",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE181",
+          "1": "NODE184"
+        }
+      },
+      "84": {
+        "groupName": "GROUP186",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE186"
+        }
+      },
+      "85": {
+        "groupName": "GROUP189",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE189",
+          "1": "NODE5",
+          "2": "NODE118"
+        }
+      },
+      "86": {
+        "groupName": "GROUP191",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE191"
+        }
+      },
+      "87": {
+        "groupName": "GROUP192",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE192",
+          "1": "NODE213"
+        }
+      },
+      "88": {
+        "groupName": "GROUP194",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE194",
+          "1": "NODE210"
+        }
+      },
+      "89": {
+        "groupName": "GROUP197",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE197",
+          "1": "NODE43"
+        }
+      },
+      "90": {
+        "groupName": "GROUP198",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE198"
+        }
+      },
+      "91": {
+        "groupName": "GROUP200",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE200",
+          "1": "NODE108",
+          "2": "NODE22",
+          "3": "NODE157"
+        }
+      },
+      "92": {
+        "groupName": "GROUP201",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE201"
+        }
+      },
+      "93": {
+        "groupName": "GROUP202",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE202",
+          "1": "NODE32",
+          "2": "NODE53"
+        }
+      },
+      "94": {
+        "groupName": "GROUP205",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE205"
+        }
+      },
+      "95": {
+        "groupName": "GROUP206",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE206",
+          "1": "NODE121"
+        }
+      },
+      "96": {
+        "groupName": "GROUP207",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE207"
+        }
+      },
+      "97": {
+        "groupName": "GROUP209",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE209"
+        }
+      },
+      "98": {
+        "groupName": "GROUP211",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE211",
+          "1": "NODE187",
+          "2": "NODE150",
+          "3": "NODE120",
+          "4": "NODE7"
+        }
+      },
+      "99": {
+        "groupName": "GROUP215",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE215",
+          "1": "NODE258"
+        }
+      },
+      "100": {
+        "groupName": "GROUP216",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE216",
+          "1": "NODE95",
+          "2": "NODE214"
+        }
+      },
+      "101": {
+        "groupName": "GROUP217",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE217"
+        }
+      },
+      "102": {
+        "groupName": "GROUP218",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE218",
+          "1": "NODE117",
+          "2": "NODE31",
+          "3": "NODE57"
+        }
+      },
+      "103": {
+        "groupName": "GROUP221",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE221"
+        }
+      },
+      "104": {
+        "groupName": "GROUP222",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE222",
+          "1": "NODE82",
+          "2": "NODE97"
+        }
+      },
+      "105": {
+        "groupName": "GROUP225",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE225"
+        }
+      },
+      "106": {
+        "groupName": "GROUP226",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE226",
+          "1": "NODE30",
+          "2": "NODE259"
+        }
+      },
+      "107": {
+        "groupName": "GROUP228",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE228"
+        }
+      },
+      "108": {
+        "groupName": "GROUP232",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE232",
+          "1": "NODE101"
+        }
+      },
+      "109": {
+        "groupName": "GROUP233",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE233"
+        }
+      },
+      "110": {
+        "groupName": "GROUP235",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE235",
+          "1": "NODE36",
+          "2": "NODE39"
+        }
+      },
+      "111": {
+        "groupName": "GROUP236",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE236"
+        }
+      },
+      "112": {
+        "groupName": "GROUP240",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE240"
+        }
+      },
+      "113": {
+        "groupName": "GROUP242",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE242"
+        }
+      },
+      "114": {
+        "groupName": "GROUP244",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE244",
+          "1": "NODE237",
+          "2": "NODE212"
+        }
+      },
+      "115": {
+        "groupName": "GROUP245",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE245"
+        }
+      },
+      "116": {
+        "groupName": "GROUP246",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE246",
+          "1": "NODE172"
+        }
+      },
+      "117": {
+        "groupName": "GROUP247",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE247"
+        }
+      },
+      "118": {
+        "groupName": "GROUP248",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE248",
+          "1": "NODE90",
+          "2": "NODE14",
+          "3": "NODE251"
+        }
+      },
+      "119": {
+        "groupName": "GROUP249",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE249"
+        }
+      },
+      "120": {
+        "groupName": "GROUP250",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE250",
+          "1": "NODE241",
+          "2": "NODE182",
+          "3": "NODE44",
+          "4": "NODE169"
+        }
+      },
+      "121": {
+        "groupName": "GROUP255",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE255",
+          "1": "NODE203"
+        }
+      },
+      "122": {
+        "groupName": "GROUP256",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE256"
+        }
+      },
+      "123": {
+        "groupName": "GROUP261",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE261"
+        }
+      },
+      "124": {
+        "groupName": "GROUP262",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE262",
+          "1": "NODE180"
+        }
+      },
+      "125": {
+        "groupName": "GROUP264",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE264",
+          "1": "NODE260",
+          "2": "NODE199",
+          "3": "NODE265"
+        }
+      },
+      "126": {
+        "groupName": "GROUP267",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE267"
+        }
+      },
+      "127": {
+        "groupName": "GROUP268",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE268",
+          "1": "NODE270"
+        }
+      },
+      "128": {
+        "groupName": "GROUP269",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE269",
+          "1": "NODE253"
+        }
+      },
+      "129": {
+        "groupName": "GROUP271",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE271"
+        }
+      },
+      "130": {
+        "groupName": "GROUP272",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE272",
+          "1": "NODE133"
+        }
+      },
+      "131": {
+        "groupName": "GROUP273",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE273"
+        }
+      },
+      "132": {
+        "groupName": "GROUP275",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE275",
+          "1": "NODE208",
+          "2": "NODE66",
+          "3": "NODE116"
+        }
+      },
+      "133": {
+        "groupName": "GROUP279",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE279"
+        }
+      },
+      "134": {
+        "groupName": "GROUP280",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE280",
+          "1": "NODE139",
+          "2": "NODE274"
+        }
+      },
+      "135": {
+        "groupName": "GROUP281",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE281"
+        }
+      },
+      "136": {
+        "groupName": "GROUP282",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE282",
+          "1": "NODE63"
+        }
+      },
+      "137": {
+        "groupName": "GROUP283",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE283"
+        }
+      },
+      "138": {
+        "groupName": "GROUP285",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE285",
+          "1": "NODE124",
+          "2": "NODE28",
+          "3": "NODE231"
+        }
+      },
+      "139": {
+        "groupName": "GROUP286",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE286"
+        }
+      },
+      "140": {
+        "groupName": "GROUP287",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE287",
+          "1": "NODE204",
+          "2": "NODE188"
+        }
+      },
+      "141": {
+        "groupName": "GROUP288",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE288"
+        }
+      },
+      "142": {
+        "groupName": "GROUP289",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE289",
+          "1": "NODE263"
+        }
+      },
+      "143": {
+        "groupName": "GROUP290",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE290"
+        }
+      },
+      "144": {
+        "groupName": "GROUP291",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE291",
+          "1": "NODE140",
+          "2": "NODE147"
+        }
+      },
+      "145": {
+        "groupName": "GROUP293",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE293"
+        }
+      },
+      "146": {
+        "groupName": "GROUP295",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE295",
+          "1": "NODE146",
+          "2": "NODE35",
+          "3": "NODE196"
+        }
+      },
+      "147": {
+        "groupName": "GROUP296",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE296"
+        }
+      },
+      "148": {
+        "groupName": "GROUP297",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE297",
+          "1": "NODE38",
+          "2": "NODE223"
+        }
+      },
+      "149": {
+        "groupName": "GROUP299",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE299"
+        }
+      },
+      "groupCount": 150
+    },
+    "2": {
+      "0": {
+        "groupName": "GROUP8",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE8",
+          "1": "NODE85",
+          "2": "NODE27",
+          "3": "NODE254"
+        }
+      },
+      "1": {
+        "groupName": "GROUP12",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE12",
+          "1": "NODE178",
+          "2": "NODE160"
+        }
+      },
+      "2": {
+        "groupName": "GROUP16",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE16",
+          "1": "NODE98",
+          "2": "NODE286"
+        }
+      },
+      "3": {
+        "groupName": "GROUP18",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE18",
+          "1": "NODE104",
+          "2": "NODE114",
+          "3": "NODE294"
+        }
+      },
+      "4": {
+        "groupName": "GROUP23",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE23",
+          "1": "NODE125",
+          "2": "NODE285",
+          "3": "NODE124",
+          "4": "NODE28",
+          "5": "NODE231"
+        }
+      },
+      "5": {
+        "groupName": "GROUP42",
+        "memberCount": 7,
+        "members": {
+          "0": "NODE42",
+          "1": "NODE33",
+          "2": "NODE4",
+          "3": "NODE141",
+          "4": "NODE25",
+          "5": "NODE239",
+          "6": "NODE191"
+        }
+      },
+      "6": {
+        "groupName": "GROUP48",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE48",
+          "1": "NODE276",
+          "2": "NODE186"
+        }
+      },
+      "7": {
+        "groupName": "GROUP51",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE51",
+          "1": "NODE170",
+          "2": "NODE233"
+        }
+      },
+      "8": {
+        "groupName": "GROUP54",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE54",
+          "1": "NODE238",
+          "2": "NODE293"
+        }
+      },
+      "9": {
+        "groupName": "GROUP55",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE55",
+          "1": "NODE13",
+          "2": "NODE252",
+          "3": "NODE109"
+        }
+      },
+      "10": {
+        "groupName": "GROUP56",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE56",
+          "1": "NODE211",
+          "2": "NODE187",
+          "3": "NODE150",
+          "4": "NODE120",
+          "5": "NODE7"
+        }
+      },
+      "11": {
+        "groupName": "GROUP62",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE62",
+          "1": "NODE21",
+          "2": "NODE81",
+          "3": "NODE41",
+          "4": "NODE224",
+          "5": "NODE119"
+        }
+      },
+      "12": {
+        "groupName": "GROUP64",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE64",
+          "1": "NODE112"
+        }
+      },
+      "13": {
+        "groupName": "GROUP70",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE70",
+          "1": "NODE78"
+        }
+      },
+      "14": {
+        "groupName": "GROUP76",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE76",
+          "1": "NODE144"
+        }
+      },
+      "15": {
+        "groupName": "GROUP77",
+        "memberCount": 7,
+        "members": {
+          "0": "NODE77",
+          "1": "NODE158",
+          "2": "NODE67",
+          "3": "NODE257",
+          "4": "NODE71",
+          "5": "NODE59",
+          "6": "NODE229"
+        }
+      },
+      "16": {
+        "groupName": "GROUP80",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE80",
+          "1": "NODE278",
+          "2": "NODE61",
+          "3": "NODE185",
+          "4": "NODE149",
+          "5": "NODE171"
+        }
+      },
+      "17": {
+        "groupName": "GROUP83",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE83",
+          "1": "NODE24",
+          "2": "NODE68"
+        }
+      },
+      "18": {
+        "groupName": "GROUP87",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE87",
+          "1": "NODE220",
+          "2": "NODE296"
+        }
+      },
+      "19": {
+        "groupName": "GROUP88",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE88",
+          "1": "NODE94",
+          "2": "NODE189",
+          "3": "NODE5",
+          "4": "NODE118"
+        }
+      },
+      "20": {
+        "groupName": "GROUP99",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE99",
+          "1": "NODE79",
+          "2": "NODE165"
+        }
+      },
+      "21": {
+        "groupName": "GROUP100",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE100",
+          "1": "NODE84"
+        }
+      },
+      "22": {
+        "groupName": "GROUP107",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE107",
+          "1": "NODE284"
+        }
+      },
+      "23": {
+        "groupName": "GROUP113",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE113"
+        }
+      },
+      "24": {
+        "groupName": "GROUP115",
+        "memberCount": 7,
+        "members": {
+          "0": "NODE115",
+          "1": "NODE183",
+          "2": "NODE73",
+          "3": "NODE175",
+          "4": "NODE74",
+          "5": "NODE29",
+          "6": "NODE72"
+        }
+      },
+      "25": {
+        "groupName": "GROUP127",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE127",
+          "1": "NODE195",
+          "2": "NODE52",
+          "3": "NODE292",
+          "4": "NODE173",
+          "5": "NODE177"
+        }
+      },
+      "26": {
+        "groupName": "GROUP128",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE128",
+          "1": "NODE91"
+        }
+      },
+      "27": {
+        "groupName": "GROUP134",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE134",
+          "1": "NODE190",
+          "2": "NODE11",
+          "3": "NODE154",
+          "4": "NODE194",
+          "5": "NODE210"
+        }
+      },
+      "28": {
+        "groupName": "GROUP135",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE135",
+          "1": "NODE10",
+          "2": "NODE298"
+        }
+      },
+      "29": {
+        "groupName": "GROUP136",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE136",
+          "1": "NODE202",
+          "2": "NODE32",
+          "3": "NODE53"
+        }
+      },
+      "30": {
+        "groupName": "GROUP137",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE137",
+          "1": "NODE266",
+          "2": "NODE123",
+          "3": "NODE217"
+        }
+      },
+      "31": {
+        "groupName": "GROUP142",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE142",
+          "1": "NODE230"
+        }
+      },
+      "32": {
+        "groupName": "GROUP143",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE143",
+          "1": "NODE34",
+          "2": "NODE216",
+          "3": "NODE95",
+          "4": "NODE214"
+        }
+      },
+      "33": {
+        "groupName": "GROUP145",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE145",
+          "1": "NODE193",
+          "2": "NODE297",
+          "3": "NODE38",
+          "4": "NODE223"
+        }
+      },
+      "34": {
+        "groupName": "GROUP151",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE151"
+        }
+      },
+      "35": {
+        "groupName": "GROUP161",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE161",
+          "1": "NODE153",
+          "2": "NODE164"
+        }
+      },
+      "36": {
+        "groupName": "GROUP168",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE168",
+          "1": "NODE162"
+        }
+      },
+      "37": {
+        "groupName": "GROUP176",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE176",
+          "1": "NODE126",
+          "2": "NODE167"
+        }
+      },
+      "38": {
+        "groupName": "GROUP181",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE181",
+          "1": "NODE184"
+        }
+      },
+      "39": {
+        "groupName": "GROUP192",
+        "memberCount": 8,
+        "members": {
+          "0": "NODE192",
+          "1": "NODE213",
+          "2": "NODE106",
+          "3": "NODE50",
+          "4": "NODE277",
+          "5": "NODE105",
+          "6": "NODE37",
+          "7": "NODE234"
+        }
+      },
+      "40": {
+        "groupName": "GROUP197",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE197",
+          "1": "NODE43"
+        }
+      },
+      "41": {
+        "groupName": "GROUP200",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE200",
+          "1": "NODE108",
+          "2": "NODE22",
+          "3": "NODE157"
+        }
+      },
+      "42": {
+        "groupName": "GROUP205",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE205"
+        }
+      },
+      "43": {
+        "groupName": "GROUP206",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE206",
+          "1": "NODE121",
+          "2": "NODE2",
+          "3": "NODE89",
+          "4": "NODE221"
+        }
+      },
+      "44": {
+        "groupName": "GROUP207",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE207"
+        }
+      },
+      "45": {
+        "groupName": "GROUP209",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE209",
+          "1": "NODE283"
+        }
+      },
+      "46": {
+        "groupName": "GROUP215",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE215",
+          "1": "NODE258",
+          "2": "NODE226",
+          "3": "NODE30",
+          "4": "NODE259"
+        }
+      },
+      "47": {
+        "groupName": "GROUP218",
+        "memberCount": 11,
+        "members": {
+          "0": "NODE218",
+          "1": "NODE117",
+          "2": "NODE31",
+          "3": "NODE57",
+          "4": "NODE163",
+          "5": "NODE40",
+          "6": "NODE45",
+          "7": "NODE110",
+          "8": "NODE152",
+          "9": "NODE47",
+          "10": "NODE65"
+        }
+      },
+      "48": {
+        "groupName": "GROUP222",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE222",
+          "1": "NODE82",
+          "2": "NODE97"
+        }
+      },
+      "49": {
+        "groupName": "GROUP232",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE232",
+          "1": "NODE101",
+          "2": "NODE245"
+        }
+      },
+      "50": {
+        "groupName": "GROUP235",
+        "memberCount": 7,
+        "members": {
+          "0": "NODE235",
+          "1": "NODE36",
+          "2": "NODE39",
+          "3": "NODE148",
+          "4": "NODE122",
+          "5": "NODE46",
+          "6": "NODE227"
+        }
+      },
+      "51": {
+        "groupName": "GROUP236",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE236"
+        }
+      },
+      "52": {
+        "groupName": "GROUP244",
+        "memberCount": 11,
+        "members": {
+          "0": "NODE244",
+          "1": "NODE237",
+          "2": "NODE212",
+          "3": "NODE198",
+          "4": "NODE159",
+          "5": "NODE138",
+          "6": "NODE166",
+          "7": "NODE3",
+          "8": "NODE132",
+          "9": "NODE20",
+          "10": "NODE243"
+        }
+      },
+      "53": {
+        "groupName": "GROUP246",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE246",
+          "1": "NODE172"
+        }
+      },
+      "54": {
+        "groupName": "GROUP247",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE247",
+          "1": "NODE240",
+          "2": "NODE261"
+        }
+      },
+      "55": {
+        "groupName": "GROUP248",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE248",
+          "1": "NODE90",
+          "2": "NODE14",
+          "3": "NODE251"
+        }
+      },
+      "56": {
+        "groupName": "GROUP250",
+        "memberCount": 8,
+        "members": {
+          "0": "NODE250",
+          "1": "NODE241",
+          "2": "NODE182",
+          "3": "NODE44",
+          "4": "NODE169",
+          "5": "NODE131",
+          "6": "NODE130",
+          "7": "NODE249"
+        }
+      },
+      "57": {
+        "groupName": "GROUP256",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE256"
+        }
+      },
+      "58": {
+        "groupName": "GROUP262",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE262",
+          "1": "NODE180",
+          "2": "NODE228",
+          "3": "NODE289",
+          "4": "NODE263"
+        }
+      },
+      "59": {
+        "groupName": "GROUP264",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE264",
+          "1": "NODE260",
+          "2": "NODE199",
+          "3": "NODE265"
+        }
+      },
+      "60": {
+        "groupName": "GROUP267",
+        "memberCount": 7,
+        "members": {
+          "0": "NODE267",
+          "1": "NODE26",
+          "2": "NODE129",
+          "3": "NODE179",
+          "4": "NODE111",
+          "5": "NODE15",
+          "6": "NODE58"
+        }
+      },
+      "61": {
+        "groupName": "GROUP268",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE268",
+          "1": "NODE270"
+        }
+      },
+      "62": {
+        "groupName": "GROUP269",
+        "memberCount": 9,
+        "members": {
+          "0": "NODE269",
+          "1": "NODE253",
+          "2": "NODE155",
+          "3": "NODE96",
+          "4": "NODE19",
+          "5": "NODE86",
+          "6": "NODE102",
+          "7": "NODE174",
+          "8": "NODE225"
+        }
+      },
+      "63": {
+        "groupName": "GROUP271",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE271"
+        }
+      },
+      "64": {
+        "groupName": "GROUP272",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE272",
+          "1": "NODE133",
+          "2": "NODE1",
+          "3": "NODE75",
+          "4": "NODE17",
+          "5": "NODE92"
+        }
+      },
+      "65": {
+        "groupName": "GROUP273",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE273"
+        }
+      },
+      "66": {
+        "groupName": "GROUP275",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE275",
+          "1": "NODE208",
+          "2": "NODE66",
+          "3": "NODE116",
+          "4": "NODE242",
+          "5": "NODE279"
+        }
+      },
+      "67": {
+        "groupName": "GROUP281",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE281",
+          "1": "NODE280",
+          "2": "NODE139",
+          "3": "NODE274"
+        }
+      },
+      "68": {
+        "groupName": "GROUP282",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE282",
+          "1": "NODE63"
+        }
+      },
+      "69": {
+        "groupName": "GROUP287",
+        "memberCount": 10,
+        "members": {
+          "0": "NODE287",
+          "1": "NODE204",
+          "2": "NODE188",
+          "3": "NODE69",
+          "4": "NODE219",
+          "5": "NODE6",
+          "6": "NODE0",
+          "7": "NODE60",
+          "8": "NODE49",
+          "9": "NODE103"
+        }
+      },
+      "70": {
+        "groupName": "GROUP288",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE288"
+        }
+      },
+      "71": {
+        "groupName": "GROUP290",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE290",
+          "1": "NODE201",
+          "2": "NODE9",
+          "3": "NODE93",
+          "4": "NODE255",
+          "5": "NODE203"
+        }
+      },
+      "72": {
+        "groupName": "GROUP291",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE291",
+          "1": "NODE140",
+          "2": "NODE147"
+        }
+      },
+      "73": {
+        "groupName": "GROUP295",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE295",
+          "1": "NODE146",
+          "2": "NODE35",
+          "3": "NODE196",
+          "4": "NODE156"
+        }
+      },
+      "74": {
+        "groupName": "GROUP299",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE299"
+        }
+      },
+      "groupCount": 75
+    },
+    "3": {
+      "0": {
+        "groupName": "GROUP8",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE8",
+          "1": "NODE85",
+          "2": "NODE27",
+          "3": "NODE254",
+          "4": "NODE76",
+          "5": "NODE144"
+        }
+      },
+      "1": {
+        "groupName": "GROUP12",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE12",
+          "1": "NODE178",
+          "2": "NODE160",
+          "3": "NODE151"
+        }
+      },
+      "2": {
+        "groupName": "GROUP16",
+        "memberCount": 11,
+        "members": {
+          "0": "NODE16",
+          "1": "NODE98",
+          "2": "NODE286",
+          "3": "NODE250",
+          "4": "NODE241",
+          "5": "NODE182",
+          "6": "NODE44",
+          "7": "NODE169",
+          "8": "NODE131",
+          "9": "NODE130",
+          "10": "NODE249"
+        }
+      },
+      "3": {
+        "groupName": "GROUP48",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE48",
+          "1": "NODE276",
+          "2": "NODE186",
+          "3": "NODE54",
+          "4": "NODE238",
+          "5": "NODE293"
+        }
+      },
+      "4": {
+        "groupName": "GROUP70",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE70",
+          "1": "NODE78",
+          "2": "NODE236"
+        }
+      },
+      "5": {
+        "groupName": "GROUP88",
+        "memberCount": 12,
+        "members": {
+          "0": "NODE88",
+          "1": "NODE94",
+          "2": "NODE189",
+          "3": "NODE5",
+          "4": "NODE118",
+          "5": "NODE51",
+          "6": "NODE170",
+          "7": "NODE233",
+          "8": "NODE55",
+          "9": "NODE13",
+          "10": "NODE252",
+          "11": "NODE109"
+        }
+      },
+      "6": {
+        "groupName": "GROUP107",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE107",
+          "1": "NODE284",
+          "2": "NODE99",
+          "3": "NODE79",
+          "4": "NODE165"
+        }
+      },
+      "7": {
+        "groupName": "GROUP113",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE113"
+        }
+      },
+      "8": {
+        "groupName": "GROUP127",
+        "memberCount": 20,
+        "members": {
+          "0": "NODE127",
+          "1": "NODE195",
+          "2": "NODE52",
+          "3": "NODE292",
+          "4": "NODE173",
+          "5": "NODE177",
+          "6": "NODE77",
+          "7": "NODE158",
+          "8": "NODE67",
+          "9": "NODE257",
+          "10": "NODE71",
+          "11": "NODE59",
+          "12": "NODE229",
+          "13": "NODE115",
+          "14": "NODE183",
+          "15": "NODE73",
+          "16": "NODE175",
+          "17": "NODE74",
+          "18": "NODE29",
+          "19": "NODE72"
+        }
+      },
+      "9": {
+        "groupName": "GROUP134",
+        "memberCount": 14,
+        "members": {
+          "0": "NODE134",
+          "1": "NODE190",
+          "2": "NODE11",
+          "3": "NODE154",
+          "4": "NODE194",
+          "5": "NODE210",
+          "6": "NODE192",
+          "7": "NODE213",
+          "8": "NODE106",
+          "9": "NODE50",
+          "10": "NODE277",
+          "11": "NODE105",
+          "12": "NODE37",
+          "13": "NODE234"
+        }
+      },
+      "10": {
+        "groupName": "GROUP136",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE136",
+          "1": "NODE202",
+          "2": "NODE32",
+          "3": "NODE53"
+        }
+      },
+      "11": {
+        "groupName": "GROUP142",
+        "memberCount": 9,
+        "members": {
+          "0": "NODE142",
+          "1": "NODE230",
+          "2": "NODE235",
+          "3": "NODE36",
+          "4": "NODE39",
+          "5": "NODE148",
+          "6": "NODE122",
+          "7": "NODE46",
+          "8": "NODE227"
+        }
+      },
+      "12": {
+        "groupName": "GROUP161",
+        "memberCount": 19,
+        "members": {
+          "0": "NODE161",
+          "1": "NODE153",
+          "2": "NODE164",
+          "3": "NODE135",
+          "4": "NODE10",
+          "5": "NODE298",
+          "6": "NODE100",
+          "7": "NODE84",
+          "8": "NODE218",
+          "9": "NODE117",
+          "10": "NODE31",
+          "11": "NODE57",
+          "12": "NODE163",
+          "13": "NODE40",
+          "14": "NODE45",
+          "15": "NODE110",
+          "16": "NODE152",
+          "17": "NODE47",
+          "18": "NODE65"
+        }
+      },
+      "13": {
+        "groupName": "GROUP168",
+        "memberCount": 2,
+        "members": {
+          "0": "NODE168",
+          "1": "NODE162"
+        }
+      },
+      "14": {
+        "groupName": "GROUP176",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE176",
+          "1": "NODE126",
+          "2": "NODE167",
+          "3": "NODE268",
+          "4": "NODE270"
+        }
+      },
+      "15": {
+        "groupName": "GROUP181",
+        "memberCount": 13,
+        "members": {
+          "0": "NODE181",
+          "1": "NODE184",
+          "2": "NODE244",
+          "3": "NODE237",
+          "4": "NODE212",
+          "5": "NODE198",
+          "6": "NODE159",
+          "7": "NODE138",
+          "8": "NODE166",
+          "9": "NODE3",
+          "10": "NODE132",
+          "11": "NODE20",
+          "12": "NODE243"
+        }
+      },
+      "16": {
+        "groupName": "GROUP197",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE197",
+          "1": "NODE43",
+          "2": "NODE87",
+          "3": "NODE220",
+          "4": "NODE296"
+        }
+      },
+      "17": {
+        "groupName": "GROUP200",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE200",
+          "1": "NODE108",
+          "2": "NODE22",
+          "3": "NODE157"
+        }
+      },
+      "18": {
+        "groupName": "GROUP205",
+        "memberCount": 15,
+        "members": {
+          "0": "NODE205",
+          "1": "NODE143",
+          "2": "NODE34",
+          "3": "NODE216",
+          "4": "NODE95",
+          "5": "NODE214",
+          "6": "NODE42",
+          "7": "NODE33",
+          "8": "NODE4",
+          "9": "NODE141",
+          "10": "NODE25",
+          "11": "NODE239",
+          "12": "NODE191",
+          "13": "NODE282",
+          "14": "NODE63"
+        }
+      },
+      "19": {
+        "groupName": "GROUP206",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE206",
+          "1": "NODE121",
+          "2": "NODE2",
+          "3": "NODE89",
+          "4": "NODE221"
+        }
+      },
+      "20": {
+        "groupName": "GROUP207",
+        "memberCount": 10,
+        "members": {
+          "0": "NODE207",
+          "1": "NODE269",
+          "2": "NODE253",
+          "3": "NODE155",
+          "4": "NODE96",
+          "5": "NODE19",
+          "6": "NODE86",
+          "7": "NODE102",
+          "8": "NODE174",
+          "9": "NODE225"
+        }
+      },
+      "21": {
+        "groupName": "GROUP209",
+        "memberCount": 12,
+        "members": {
+          "0": "NODE209",
+          "1": "NODE283",
+          "2": "NODE62",
+          "3": "NODE21",
+          "4": "NODE81",
+          "5": "NODE41",
+          "6": "NODE224",
+          "7": "NODE119",
+          "8": "NODE137",
+          "9": "NODE266",
+          "10": "NODE123",
+          "11": "NODE217"
+        }
+      },
+      "22": {
+        "groupName": "GROUP222",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE222",
+          "1": "NODE82",
+          "2": "NODE97"
+        }
+      },
+      "23": {
+        "groupName": "GROUP246",
+        "memberCount": 8,
+        "members": {
+          "0": "NODE246",
+          "1": "NODE172",
+          "2": "NODE272",
+          "3": "NODE133",
+          "4": "NODE1",
+          "5": "NODE75",
+          "6": "NODE17",
+          "7": "NODE92"
+        }
+      },
+      "24": {
+        "groupName": "GROUP247",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE247",
+          "1": "NODE240",
+          "2": "NODE261",
+          "3": "NODE273"
+        }
+      },
+      "25": {
+        "groupName": "GROUP248",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE248",
+          "1": "NODE90",
+          "2": "NODE14",
+          "3": "NODE251",
+          "4": "NODE128",
+          "5": "NODE91"
+        }
+      },
+      "26": {
+        "groupName": "GROUP256",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE256"
+        }
+      },
+      "27": {
+        "groupName": "GROUP262",
+        "memberCount": 22,
+        "members": {
+          "0": "NODE262",
+          "1": "NODE180",
+          "2": "NODE228",
+          "3": "NODE289",
+          "4": "NODE263",
+          "5": "NODE80",
+          "6": "NODE278",
+          "7": "NODE61",
+          "8": "NODE185",
+          "9": "NODE149",
+          "10": "NODE171",
+          "11": "NODE56",
+          "12": "NODE211",
+          "13": "NODE187",
+          "14": "NODE150",
+          "15": "NODE120",
+          "16": "NODE7",
+          "17": "NODE215",
+          "18": "NODE258",
+          "19": "NODE226",
+          "20": "NODE30",
+          "21": "NODE259"
+        }
+      },
+      "28": {
+        "groupName": "GROUP264",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE264",
+          "1": "NODE260",
+          "2": "NODE199",
+          "3": "NODE265"
+        }
+      },
+      "29": {
+        "groupName": "GROUP267",
+        "memberCount": 12,
+        "members": {
+          "0": "NODE267",
+          "1": "NODE26",
+          "2": "NODE129",
+          "3": "NODE179",
+          "4": "NODE111",
+          "5": "NODE15",
+          "6": "NODE58",
+          "7": "NODE145",
+          "8": "NODE193",
+          "9": "NODE297",
+          "10": "NODE38",
+          "11": "NODE223"
+        }
+      },
+      "30": {
+        "groupName": "GROUP271",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE271"
+        }
+      },
+      "31": {
+        "groupName": "GROUP275",
+        "memberCount": 15,
+        "members": {
+          "0": "NODE275",
+          "1": "NODE208",
+          "2": "NODE66",
+          "3": "NODE116",
+          "4": "NODE242",
+          "5": "NODE279",
+          "6": "NODE18",
+          "7": "NODE104",
+          "8": "NODE114",
+          "9": "NODE294",
+          "10": "NODE295",
+          "11": "NODE146",
+          "12": "NODE35",
+          "13": "NODE196",
+          "14": "NODE156"
+        }
+      },
+      "32": {
+        "groupName": "GROUP281",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE281",
+          "1": "NODE280",
+          "2": "NODE139",
+          "3": "NODE274"
+        }
+      },
+      "33": {
+        "groupName": "GROUP287",
+        "memberCount": 16,
+        "members": {
+          "0": "NODE287",
+          "1": "NODE204",
+          "2": "NODE188",
+          "3": "NODE69",
+          "4": "NODE219",
+          "5": "NODE6",
+          "6": "NODE0",
+          "7": "NODE60",
+          "8": "NODE49",
+          "9": "NODE103",
+          "10": "NODE290",
+          "11": "NODE201",
+          "12": "NODE9",
+          "13": "NODE93",
+          "14": "NODE255",
+          "15": "NODE203"
+        }
+      },
+      "34": {
+        "groupName": "GROUP288",
+        "memberCount": 6,
+        "members": {
+          "0": "NODE288",
+          "1": "NODE64",
+          "2": "NODE112",
+          "3": "NODE83",
+          "4": "NODE24",
+          "5": "NODE68"
+        }
+      },
+      "35": {
+        "groupName": "GROUP291",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE291",
+          "1": "NODE140",
+          "2": "NODE147"
+        }
+      },
+      "36": {
+        "groupName": "GROUP299",
+        "memberCount": 10,
+        "members": {
+          "0": "NODE299",
+          "1": "NODE23",
+          "2": "NODE125",
+          "3": "NODE285",
+          "4": "NODE124",
+          "5": "NODE28",
+          "6": "NODE231",
+          "7": "NODE232",
+          "8": "NODE101",
+          "9": "NODE245"
+        }
+      },
+      "groupCount": 37
+    },
+    "4": {
+      "0": {
+        "groupName": "GROUP16",
+        "memberCount": 12,
+        "members": {
+          "0": "NODE16",
+          "1": "NODE98",
+          "2": "NODE286",
+          "3": "NODE250",
+          "4": "NODE241",
+          "5": "NODE182",
+          "6": "NODE44",
+          "7": "NODE169",
+          "8": "NODE131",
+          "9": "NODE130",
+          "10": "NODE249",
+          "11": "NODE256"
+        }
+      },
+      "1": {
+        "groupName": "GROUP107",
+        "memberCount": 16,
+        "members": {
+          "0": "NODE107",
+          "1": "NODE284",
+          "2": "NODE99",
+          "3": "NODE79",
+          "4": "NODE165",
+          "5": "NODE70",
+          "6": "NODE78",
+          "7": "NODE236",
+          "8": "NODE246",
+          "9": "NODE172",
+          "10": "NODE272",
+          "11": "NODE133",
+          "12": "NODE1",
+          "13": "NODE75",
+          "14": "NODE17",
+          "15": "NODE92"
+        }
+      },
+      "2": {
+        "groupName": "GROUP113",
+        "memberCount": 1,
+        "members": {
+          "0": "NODE113"
+        }
+      },
+      "3": {
+        "groupName": "GROUP142",
+        "memberCount": 9,
+        "members": {
+          "0": "NODE142",
+          "1": "NODE230",
+          "2": "NODE235",
+          "3": "NODE36",
+          "4": "NODE39",
+          "5": "NODE148",
+          "6": "NODE122",
+          "7": "NODE46",
+          "8": "NODE227"
+        }
+      },
+      "4": {
+        "groupName": "GROUP168",
+        "memberCount": 18,
+        "members": {
+          "0": "NODE168",
+          "1": "NODE162",
+          "2": "NODE136",
+          "3": "NODE202",
+          "4": "NODE32",
+          "5": "NODE53",
+          "6": "NODE8",
+          "7": "NODE85",
+          "8": "NODE27",
+          "9": "NODE254",
+          "10": "NODE76",
+          "11": "NODE144",
+          "12": "NODE288",
+          "13": "NODE64",
+          "14": "NODE112",
+          "15": "NODE83",
+          "16": "NODE24",
+          "17": "NODE68"
+        }
+      },
+      "5": {
+        "groupName": "GROUP176",
+        "memberCount": 5,
+        "members": {
+          "0": "NODE176",
+          "1": "NODE126",
+          "2": "NODE167",
+          "3": "NODE268",
+          "4": "NODE270"
+        }
+      },
+      "6": {
+        "groupName": "GROUP181",
+        "memberCount": 27,
+        "members": {
+          "0": "NODE181",
+          "1": "NODE184",
+          "2": "NODE244",
+          "3": "NODE237",
+          "4": "NODE212",
+          "5": "NODE198",
+          "6": "NODE159",
+          "7": "NODE138",
+          "8": "NODE166",
+          "9": "NODE3",
+          "10": "NODE132",
+          "11": "NODE20",
+          "12": "NODE243",
+          "13": "NODE134",
+          "14": "NODE190",
+          "15": "NODE11",
+          "16": "NODE154",
+          "17": "NODE194",
+          "18": "NODE210",
+          "19": "NODE192",
+          "20": "NODE213",
+          "21": "NODE106",
+          "22": "NODE50",
+          "23": "NODE277",
+          "24": "NODE105",
+          "25": "NODE37",
+          "26": "NODE234"
+        }
+      },
+      "7": {
+        "groupName": "GROUP200",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE200",
+          "1": "NODE108",
+          "2": "NODE22",
+          "3": "NODE157"
+        }
+      },
+      "8": {
+        "groupName": "GROUP205",
+        "memberCount": 16,
+        "members": {
+          "0": "NODE205",
+          "1": "NODE143",
+          "2": "NODE34",
+          "3": "NODE216",
+          "4": "NODE95",
+          "5": "NODE214",
+          "6": "NODE42",
+          "7": "NODE33",
+          "8": "NODE4",
+          "9": "NODE141",
+          "10": "NODE25",
+          "11": "NODE239",
+          "12": "NODE191",
+          "13": "NODE282",
+          "14": "NODE63",
+          "15": "NODE271"
+        }
+      },
+      "9": {
+        "groupName": "GROUP207",
+        "memberCount": 22,
+        "members": {
+          "0": "NODE207",
+          "1": "NODE269",
+          "2": "NODE253",
+          "3": "NODE155",
+          "4": "NODE96",
+          "5": "NODE19",
+          "6": "NODE86",
+          "7": "NODE102",
+          "8": "NODE174",
+          "9": "NODE225",
+          "10": "NODE267",
+          "11": "NODE26",
+          "12": "NODE129",
+          "13": "NODE179",
+          "14": "NODE111",
+          "15": "NODE15",
+          "16": "NODE58",
+          "17": "NODE145",
+          "18": "NODE193",
+          "19": "NODE297",
+          "20": "NODE38",
+          "21": "NODE223"
+        }
+      },
+      "10": {
+        "groupName": "GROUP209",
+        "memberCount": 37,
+        "members": {
+          "0": "NODE209",
+          "1": "NODE283",
+          "2": "NODE62",
+          "3": "NODE21",
+          "4": "NODE81",
+          "5": "NODE41",
+          "6": "NODE224",
+          "7": "NODE119",
+          "8": "NODE137",
+          "9": "NODE266",
+          "10": "NODE123",
+          "11": "NODE217",
+          "12": "NODE161",
+          "13": "NODE153",
+          "14": "NODE164",
+          "15": "NODE135",
+          "16": "NODE10",
+          "17": "NODE298",
+          "18": "NODE100",
+          "19": "NODE84",
+          "20": "NODE218",
+          "21": "NODE117",
+          "22": "NODE31",
+          "23": "NODE57",
+          "24": "NODE163",
+          "25": "NODE40",
+          "26": "NODE45",
+          "27": "NODE110",
+          "28": "NODE152",
+          "29": "NODE47",
+          "30": "NODE65",
+          "31": "NODE248",
+          "32": "NODE90",
+          "33": "NODE14",
+          "34": "NODE251",
+          "35": "NODE128",
+          "36": "NODE91"
+        }
+      },
+      "11": {
+        "groupName": "GROUP247",
+        "memberCount": 7,
+        "members": {
+          "0": "NODE247",
+          "1": "NODE240",
+          "2": "NODE261",
+          "3": "NODE273",
+          "4": "NODE222",
+          "5": "NODE82",
+          "6": "NODE97"
+        }
+      },
+      "12": {
+        "groupName": "GROUP262",
+        "memberCount": 22,
+        "members": {
+          "0": "NODE262",
+          "1": "NODE180",
+          "2": "NODE228",
+          "3": "NODE289",
+          "4": "NODE263",
+          "5": "NODE80",
+          "6": "NODE278",
+          "7": "NODE61",
+          "8": "NODE185",
+          "9": "NODE149",
+          "10": "NODE171",
+          "11": "NODE56",
+          "12": "NODE211",
+          "13": "NODE187",
+          "14": "NODE150",
+          "15": "NODE120",
+          "16": "NODE7",
+          "17": "NODE215",
+          "18": "NODE258",
+          "19": "NODE226",
+          "20": "NODE30",
+          "21": "NODE259"
+        }
+      },
+      "13": {
+        "groupName": "GROUP264",
+        "memberCount": 35,
+        "members": {
+          "0": "NODE264",
+          "1": "NODE260",
+          "2": "NODE199",
+          "3": "NODE265",
+          "4": "NODE127",
+          "5": "NODE195",
+          "6": "NODE52",
+          "7": "NODE292",
+          "8": "NODE173",
+          "9": "NODE177",
+          "10": "NODE77",
+          "11": "NODE158",
+          "12": "NODE67",
+          "13": "NODE257",
+          "14": "NODE71",
+          "15": "NODE59",
+          "16": "NODE229",
+          "17": "NODE115",
+          "18": "NODE183",
+          "19": "NODE73",
+          "20": "NODE175",
+          "21": "NODE74",
+          "22": "NODE29",
+          "23": "NODE72",
+          "24": "NODE48",
+          "25": "NODE276",
+          "26": "NODE186",
+          "27": "NODE54",
+          "28": "NODE238",
+          "29": "NODE293",
+          "30": "NODE197",
+          "31": "NODE43",
+          "32": "NODE87",
+          "33": "NODE220",
+          "34": "NODE296"
+        }
+      },
+      "14": {
+        "groupName": "GROUP281",
+        "memberCount": 4,
+        "members": {
+          "0": "NODE281",
+          "1": "NODE280",
+          "2": "NODE139",
+          "3": "NODE274"
+        }
+      },
+      "15": {
+        "groupName": "GROUP287",
+        "memberCount": 43,
+        "members": {
+          "0": "NODE287",
+          "1": "NODE204",
+          "2": "NODE188",
+          "3": "NODE69",
+          "4": "NODE219",
+          "5": "NODE6",
+          "6": "NODE0",
+          "7": "NODE60",
+          "8": "NODE49",
+          "9": "NODE103",
+          "10": "NODE290",
+          "11": "NODE201",
+          "12": "NODE9",
+          "13": "NODE93",
+          "14": "NODE255",
+          "15": "NODE203",
+          "16": "NODE88",
+          "17": "NODE94",
+          "18": "NODE189",
+          "19": "NODE5",
+          "20": "NODE118",
+          "21": "NODE51",
+          "22": "NODE170",
+          "23": "NODE233",
+          "24": "NODE55",
+          "25": "NODE13",
+          "26": "NODE252",
+          "27": "NODE109",
+          "28": "NODE275",
+          "29": "NODE208",
+          "30": "NODE66",
+          "31": "NODE116",
+          "32": "NODE242",
+          "33": "NODE279",
+          "34": "NODE18",
+          "35": "NODE104",
+          "36": "NODE114",
+          "37": "NODE294",
+          "38": "NODE295",
+          "39": "NODE146",
+          "40": "NODE35",
+          "41": "NODE196",
+          "42": "NODE156"
+        }
+      },
+      "groupCount": 18,
+      "17": {
+        "groupName": "GROUP299",
+        "memberCount": 19,
+        "members": {
+          "0": "NODE299",
+          "1": "NODE23",
+          "2": "NODE125",
+          "3": "NODE285",
+          "4": "NODE124",
+          "5": "NODE28",
+          "6": "NODE231",
+          "7": "NODE232",
+          "8": "NODE101",
+          "9": "NODE245",
+          "10": "NODE12",
+          "11": "NODE178",
+          "12": "NODE160",
+          "13": "NODE151",
+          "14": "NODE206",
+          "15": "NODE121",
+          "16": "NODE2",
+          "17": "NODE89",
+          "18": "NODE221"
+        }
+      },
+      "16": {
+        "groupName": "GROUP291",
+        "memberCount": 3,
+        "members": {
+          "0": "NODE291",
+          "1": "NODE140",
+          "2": "NODE147"
+        }
+      }
+    },
+    "5": {
+      "groupCount": 9,
+      "0": {
+        "groupName": "GROUP107",
+        "memberCount": 20,
+        "members": {
+          "0": "NODE107",
+          "1": "NODE284",
+          "2": "NODE99",
+          "3": "NODE79",
+          "4": "NODE165",
+          "5": "NODE70",
+          "6": "NODE78",
+          "7": "NODE236",
+          "8": "NODE246",
+          "9": "NODE172",
+          "10": "NODE272",
+          "11": "NODE133",
+          "12": "NODE1",
+          "13": "NODE75",
+          "14": "NODE17",
+          "15": "NODE92",
+          "16": "NODE281",
+          "17": "NODE280",
+          "18": "NODE139",
+          "19": "NODE274"
+        }
+      },
+      "2": {
+        "groupName": "GROUP142",
+        "memberCount": 31,
+        "members": {
+          "0": "NODE142",
+          "1": "NODE230",
+          "2": "NODE235",
+          "3": "NODE36",
+          "4": "NODE39",
+          "5": "NODE148",
+          "6": "NODE122",
+          "7": "NODE46",
+          "8": "NODE227",
+          "9": "NODE262",
+          "10": "NODE180",
+          "11": "NODE228",
+          "12": "NODE289",
+          "13": "NODE263",
+          "14": "NODE80",
+          "15": "NODE278",
+          "16": "NODE61",
+          "17": "NODE185",
+          "18": "NODE149",
+          "19": "NODE171",
+          "20": "NODE56",
+          "21": "NODE211",
+          "22": "NODE187",
+          "23": "NODE150",
+          "24": "NODE120",
+          "25": "NODE7",
+          "26": "NODE215",
+          "27": "NODE258",
+          "28": "NODE226",
+          "29": "NODE30",
+          "30": "NODE259"
+        }
+      },
+      "3": {
+        "groupName": "GROUP176",
+        "memberCount": 24,
+        "members": {
+          "0": "NODE176",
+          "1": "NODE126",
+          "2": "NODE167",
+          "3": "NODE268",
+          "4": "NODE270",
+          "5": "NODE299",
+          "6": "NODE23",
+          "7": "NODE125",
+          "8": "NODE285",
+          "9": "NODE124",
+          "10": "NODE28",
+          "11": "NODE231",
+          "12": "NODE232",
+          "13": "NODE101",
+          "14": "NODE245",
+          "15": "NODE12",
+          "16": "NODE178",
+          "17": "NODE160",
+          "18": "NODE151",
+          "19": "NODE206",
+          "20": "NODE121",
+          "21": "NODE2",
+          "22": "NODE89",
+          "23": "NODE221"
+        }
+      },
+      "4": {
+        "groupName": "GROUP181",
+        "memberCount": 34,
+        "members": {
+          "0": "NODE181",
+          "1": "NODE184",
+          "2": "NODE244",
+          "3": "NODE237",
+          "4": "NODE212",
+          "5": "NODE198",
+          "6": "NODE159",
+          "7": "NODE138",
+          "8": "NODE166",
+          "9": "NODE3",
+          "10": "NODE132",
+          "11": "NODE20",
+          "12": "NODE243",
+          "13": "NODE134",
+          "14": "NODE190",
+          "15": "NODE11",
+          "16": "NODE154",
+          "17": "NODE194",
+          "18": "NODE210",
+          "19": "NODE192",
+          "20": "NODE213",
+          "21": "NODE106",
+          "22": "NODE50",
+          "23": "NODE277",
+          "24": "NODE105",
+          "25": "NODE37",
+          "26": "NODE234",
+          "27": "NODE247",
+          "28": "NODE240",
+          "29": "NODE261",
+          "30": "NODE273",
+          "31": "NODE222",
+          "32": "NODE82",
+          "33": "NODE97"
+        }
+      },
+      "5": {
+        "groupName": "GROUP205",
+        "memberCount": 31,
+        "members": {
+          "0": "NODE205",
+          "1": "NODE143",
+          "2": "NODE34",
+          "3": "NODE216",
+          "4": "NODE95",
+          "5": "NODE214",
+          "6": "NODE42",
+          "7": "NODE33",
+          "8": "NODE4",
+          "9": "NODE141",
+          "10": "NODE25",
+          "11": "NODE239",
+          "12": "NODE191",
+          "13": "NODE282",
+          "14": "NODE63",
+          "15": "NODE271",
+          "16": "NODE16",
+          "17": "NODE98",
+          "18": "NODE286",
+          "19": "NODE250",
+          "20": "NODE241",
+          "21": "NODE182",
+          "22": "NODE44",
+          "23": "NODE169",
+          "24": "NODE131",
+          "25": "NODE130",
+          "26": "NODE249",
+          "27": "NODE256",
+          "28": "NODE291",
+          "29": "NODE140",
+          "30": "NODE147"
+        }
+      },
+      "6": {
+        "groupName": "GROUP209",
+        "memberCount": 37,
+        "members": {
+          "0": "NODE209",
+          "1": "NODE283",
+          "2": "NODE62",
+          "3": "NODE21",
+          "4": "NODE81",
+          "5": "NODE41",
+          "6": "NODE224",
+          "7": "NODE119",
+          "8": "NODE137",
+          "9": "NODE266",
+          "10": "NODE123",
+          "11": "NODE217",
+          "12": "NODE161",
+          "13": "NODE153",
+          "14": "NODE164",
+          "15": "NODE135",
+          "16": "NODE10",
+          "17": "NODE298",
+          "18": "NODE100",
+          "19": "NODE84",
+          "20": "NODE218",
+          "21": "NODE117",
+          "22": "NODE31",
+          "23": "NODE57",
+          "24": "NODE163",
+          "25": "NODE40",
+          "26": "NODE45",
+          "27": "NODE110",
+          "28": "NODE152",
+          "29": "NODE47",
+          "30": "NODE65",
+          "31": "NODE248",
+          "32": "NODE90",
+          "33": "NODE14",
+          "34": "NODE251",
+          "35": "NODE128",
+          "36": "NODE91"
+        }
+      },
+      "1": {
+        "groupName": "GROUP113",
+        "memberCount": 19,
+        "members": {
+          "0": "NODE113",
+          "1": "NODE168",
+          "2": "NODE162",
+          "3": "NODE136",
+          "4": "NODE202",
+          "5": "NODE32",
+          "6": "NODE53",
+          "7": "NODE8",
+          "8": "NODE85",
+          "9": "NODE27",
+          "10": "NODE254",
+          "11": "NODE76",
+          "12": "NODE144",
+          "13": "NODE288",
+          "14": "NODE64",
+          "15": "NODE112",
+          "16": "NODE83",
+          "17": "NODE24",
+          "18": "NODE68"
+        }
+      },
+      "8": {
+        "groupName": "GROUP287",
+        "memberCount": 43,
+        "members": {
+          "0": "NODE287",
+          "1": "NODE204",
+          "2": "NODE188",
+          "3": "NODE69",
+          "4": "NODE219",
+          "5": "NODE6",
+          "6": "NODE0",
+          "7": "NODE60",
+          "8": "NODE49",
+          "9": "NODE103",
+          "10": "NODE290",
+          "11": "NODE201",
+          "12": "NODE9",
+          "13": "NODE93",
+          "14": "NODE255",
+          "15": "NODE203",
+          "16": "NODE88",
+          "17": "NODE94",
+          "18": "NODE189",
+          "19": "NODE5",
+          "20": "NODE118",
+          "21": "NODE51",
+          "22": "NODE170",
+          "23": "NODE233",
+          "24": "NODE55",
+          "25": "NODE13",
+          "26": "NODE252",
+          "27": "NODE109",
+          "28": "NODE275",
+          "29": "NODE208",
+          "30": "NODE66",
+          "31": "NODE116",
+          "32": "NODE242",
+          "33": "NODE279",
+          "34": "NODE18",
+          "35": "NODE104",
+          "36": "NODE114",
+          "37": "NODE294",
+          "38": "NODE295",
+          "39": "NODE146",
+          "40": "NODE35",
+          "41": "NODE196",
+          "42": "NODE156"
+        }
+      },
+      "7": {
+        "groupName": "GROUP264",
+        "memberCount": 61,
+        "members": {
+          "0": "NODE264",
+          "1": "NODE260",
+          "2": "NODE199",
+          "3": "NODE265",
+          "4": "NODE127",
+          "5": "NODE195",
+          "6": "NODE52",
+          "7": "NODE292",
+          "8": "NODE173",
+          "9": "NODE177",
+          "10": "NODE77",
+          "11": "NODE158",
+          "12": "NODE67",
+          "13": "NODE257",
+          "14": "NODE71",
+          "15": "NODE59",
+          "16": "NODE229",
+          "17": "NODE115",
+          "18": "NODE183",
+          "19": "NODE73",
+          "20": "NODE175",
+          "21": "NODE74",
+          "22": "NODE29",
+          "23": "NODE72",
+          "24": "NODE48",
+          "25": "NODE276",
+          "26": "NODE186",
+          "27": "NODE54",
+          "28": "NODE238",
+          "29": "NODE293",
+          "30": "NODE197",
+          "31": "NODE43",
+          "32": "NODE87",
+          "33": "NODE220",
+          "34": "NODE296",
+          "35": "NODE200",
+          "36": "NODE108",
+          "37": "NODE22",
+          "38": "NODE157",
+          "39": "NODE207",
+          "40": "NODE269",
+          "41": "NODE253",
+          "42": "NODE155",
+          "43": "NODE96",
+          "44": "NODE19",
+          "45": "NODE86",
+          "46": "NODE102",
+          "47": "NODE174",
+          "48": "NODE225",
+          "49": "NODE267",
+          "50": "NODE26",
+          "51": "NODE129",
+          "52": "NODE179",
+          "53": "NODE111",
+          "54": "NODE15",
+          "55": "NODE58",
+          "56": "NODE145",
+          "57": "NODE193",
+          "58": "NODE297",
+          "59": "NODE38",
+          "60": "NODE223"
+        }
+      }
+    },
+    "6": {
+      "groupCount": 4,
+      "0": {
+        "groupName": "GROUP107",
+        "memberCount": 54,
+        "members": {
+          "0": "NODE107",
+          "1": "NODE284",
+          "2": "NODE99",
+          "3": "NODE79",
+          "4": "NODE165",
+          "5": "NODE70",
+          "6": "NODE78",
+          "7": "NODE236",
+          "8": "NODE246",
+          "9": "NODE172",
+          "10": "NODE272",
+          "11": "NODE133",
+          "12": "NODE1",
+          "13": "NODE75",
+          "14": "NODE17",
+          "15": "NODE92",
+          "16": "NODE281",
+          "17": "NODE280",
+          "18": "NODE139",
+          "19": "NODE274",
+          "20": "NODE181",
+          "21": "NODE184",
+          "22": "NODE244",
+          "23": "NODE237",
+          "24": "NODE212",
+          "25": "NODE198",
+          "26": "NODE159",
+          "27": "NODE138",
+          "28": "NODE166",
+          "29": "NODE3",
+          "30": "NODE132",
+          "31": "NODE20",
+          "32": "NODE243",
+          "33": "NODE134",
+          "34": "NODE190",
+          "35": "NODE11",
+          "36": "NODE154",
+          "37": "NODE194",
+          "38": "NODE210",
+          "39": "NODE192",
+          "40": "NODE213",
+          "41": "NODE106",
+          "42": "NODE50",
+          "43": "NODE277",
+          "44": "NODE105",
+          "45": "NODE37",
+          "46": "NODE234",
+          "47": "NODE247",
+          "48": "NODE240",
+          "49": "NODE261",
+          "50": "NODE273",
+          "51": "NODE222",
+          "52": "NODE82",
+          "53": "NODE97"
+        }
+      },
+      "2": {
+        "groupName": "GROUP176",
+        "memberCount": 67,
+        "members": {
+          "0": "NODE176",
+          "1": "NODE126",
+          "2": "NODE167",
+          "3": "NODE268",
+          "4": "NODE270",
+          "5": "NODE299",
+          "6": "NODE23",
+          "7": "NODE125",
+          "8": "NODE285",
+          "9": "NODE124",
+          "10": "NODE28",
+          "11": "NODE231",
+          "12": "NODE232",
+          "13": "NODE101",
+          "14": "NODE245",
+          "15": "NODE12",
+          "16": "NODE178",
+          "17": "NODE160",
+          "18": "NODE151",
+          "19": "NODE206",
+          "20": "NODE121",
+          "21": "NODE2",
+          "22": "NODE89",
+          "23": "NODE221",
+          "24": "NODE287",
+          "25": "NODE204",
+          "26": "NODE188",
+          "27": "NODE69",
+          "28": "NODE219",
+          "29": "NODE6",
+          "30": "NODE0",
+          "31": "NODE60",
+          "32": "NODE49",
+          "33": "NODE103",
+          "34": "NODE290",
+          "35": "NODE201",
+          "36": "NODE9",
+          "37": "NODE93",
+          "38": "NODE255",
+          "39": "NODE203",
+          "40": "NODE88",
+          "41": "NODE94",
+          "42": "NODE189",
+          "43": "NODE5",
+          "44": "NODE118",
+          "45": "NODE51",
+          "46": "NODE170",
+          "47": "NODE233",
+          "48": "NODE55",
+          "49": "NODE13",
+          "50": "NODE252",
+          "51": "NODE109",
+          "52": "NODE275",
+          "53": "NODE208",
+          "54": "NODE66",
+          "55": "NODE116",
+          "56": "NODE242",
+          "57": "NODE279",
+          "58": "NODE18",
+          "59": "NODE104",
+          "60": "NODE114",
+          "61": "NODE294",
+          "62": "NODE295",
+          "63": "NODE146",
+          "64": "NODE35",
+          "65": "NODE196",
+          "66": "NODE156"
+        }
+      },
+      "3": {
+        "groupName": "GROUP209",
+        "memberCount": 99,
+        "members": {
+          "0": "NODE209",
+          "1": "NODE283",
+          "2": "NODE62",
+          "3": "NODE21",
+          "4": "NODE81",
+          "5": "NODE41",
+          "6": "NODE224",
+          "7": "NODE119",
+          "8": "NODE137",
+          "9": "NODE266",
+          "10": "NODE123",
+          "11": "NODE217",
+          "12": "NODE161",
+          "13": "NODE153",
+          "14": "NODE164",
+          "15": "NODE135",
+          "16": "NODE10",
+          "17": "NODE298",
+          "18": "NODE100",
+          "19": "NODE84",
+          "20": "NODE218",
+          "21": "NODE117",
+          "22": "NODE31",
+          "23": "NODE57",
+          "24": "NODE163",
+          "25": "NODE40",
+          "26": "NODE45",
+          "27": "NODE110",
+          "28": "NODE152",
+          "29": "NODE47",
+          "30": "NODE65",
+          "31": "NODE248",
+          "32": "NODE90",
+          "33": "NODE14",
+          "34": "NODE251",
+          "35": "NODE128",
+          "36": "NODE91",
+          "37": "NODE142",
+          "38": "NODE230",
+          "39": "NODE235",
+          "40": "NODE36",
+          "41": "NODE39",
+          "42": "NODE148",
+          "43": "NODE122",
+          "44": "NODE46",
+          "45": "NODE227",
+          "46": "NODE262",
+          "47": "NODE180",
+          "48": "NODE228",
+          "49": "NODE289",
+          "50": "NODE263",
+          "51": "NODE80",
+          "52": "NODE278",
+          "53": "NODE61",
+          "54": "NODE185",
+          "55": "NODE149",
+          "56": "NODE171",
+          "57": "NODE56",
+          "58": "NODE211",
+          "59": "NODE187",
+          "60": "NODE150",
+          "61": "NODE120",
+          "62": "NODE7",
+          "63": "NODE215",
+          "64": "NODE258",
+          "65": "NODE226",
+          "66": "NODE30",
+          "67": "NODE259",
+          "68": "NODE205",
+          "69": "NODE143",
+          "70": "NODE34",
+          "71": "NODE216",
+          "72": "NODE95",
+          "73": "NODE214",
+          "74": "NODE42",
+          "75": "NODE33",
+          "76": "NODE4",
+          "77": "NODE141",
+          "78": "NODE25",
+          "79": "NODE239",
+          "80": "NODE191",
+          "81": "NODE282",
+          "82": "NODE63",
+          "83": "NODE271",
+          "84": "NODE16",
+          "85": "NODE98",
+          "86": "NODE286",
+          "87": "NODE250",
+          "88": "NODE241",
+          "89": "NODE182",
+          "90": "NODE44",
+          "91": "NODE169",
+          "92": "NODE131",
+          "93": "NODE130",
+          "94": "NODE249",
+          "95": "NODE256",
+          "96": "NODE291",
+          "97": "NODE140",
+          "98": "NODE147"
+        }
+      },
+      "1": {
+        "groupName": "GROUP113",
+        "memberCount": 80,
+        "members": {
+          "0": "NODE113",
+          "1": "NODE168",
+          "2": "NODE162",
+          "3": "NODE136",
+          "4": "NODE202",
+          "5": "NODE32",
+          "6": "NODE53",
+          "7": "NODE8",
+          "8": "NODE85",
+          "9": "NODE27",
+          "10": "NODE254",
+          "11": "NODE76",
+          "12": "NODE144",
+          "13": "NODE288",
+          "14": "NODE64",
+          "15": "NODE112",
+          "16": "NODE83",
+          "17": "NODE24",
+          "18": "NODE68",
+          "19": "NODE264",
+          "20": "NODE260",
+          "21": "NODE199",
+          "22": "NODE265",
+          "23": "NODE127",
+          "24": "NODE195",
+          "25": "NODE52",
+          "26": "NODE292",
+          "27": "NODE173",
+          "28": "NODE177",
+          "29": "NODE77",
+          "30": "NODE158",
+          "31": "NODE67",
+          "32": "NODE257",
+          "33": "NODE71",
+          "34": "NODE59",
+          "35": "NODE229",
+          "36": "NODE115",
+          "37": "NODE183",
+          "38": "NODE73",
+          "39": "NODE175",
+          "40": "NODE74",
+          "41": "NODE29",
+          "42": "NODE72",
+          "43": "NODE48",
+          "44": "NODE276",
+          "45": "NODE186",
+          "46": "NODE54",
+          "47": "NODE238",
+          "48": "NODE293",
+          "49": "NODE197",
+          "50": "NODE43",
+          "51": "NODE87",
+          "52": "NODE220",
+          "53": "NODE296",
+          "54": "NODE200",
+          "55": "NODE108",
+          "56": "NODE22",
+          "57": "NODE157",
+          "58": "NODE207",
+          "59": "NODE269",
+          "60": "NODE253",
+          "61": "NODE155",
+          "62": "NODE96",
+          "63": "NODE19",
+          "64": "NODE86",
+          "65": "NODE102",
+          "66": "NODE174",
+          "67": "NODE225",
+          "68": "NODE267",
+          "69": "NODE26",
+          "70": "NODE129",
+          "71": "NODE179",
+          "72": "NODE111",
+          "73": "NODE15",
+          "74": "NODE58",
+          "75": "NODE145",
+          "76": "NODE193",
+          "77": "NODE297",
+          "78": "NODE38",
+          "79": "NODE223"
+        }
+      }
+    }
+  },
+  "iterationCount": 7
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<style>
+body {
+	font-family: Verdana;
+	font-size: 12px;
+}
+
+h4 {
+	font-size: 14px;
+}
+.render_area {
+	position: relative;
+	width: 800px;
+	height: 800px; 
+	border: 1px solid black;
+	padding: 3px 3px 3px 3px;
+	display: inline;
+	float: left;
+	margin: 5px 30px 5px 5px;
+	z-index:999;
+	background-color: #eee;
+	
+}
+#wrapper {
+ width: 100%;
+margin: auto;
+
+}
+#sidebar {
+	z-index: 0;
+	position: relative;
+	margin: auto;
+}
+
+.node {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background-color:black;	
+	border-radius: 5px;
+}
+
+.group {
+
+}
+</style>
+<script src="jscolor.js"></script>
+<html>
+	<body>
+		
+		<div id="wrapper">
+			<div id="renderArea" class="render_area">
+
+			</div>
+			<div id="sidebar">
+				<div id="topoInfo" style="">
+					<h4> Topology Information </h4>
+					Height: <div style="display:inline" id="topoHeight">0</div><br>
+					Width: <div style="display:inline" id="topoWidth">0</div><br>
+					Node count: <div style="display:inline" id="nodeCount">0</div><br>
+					Selected node: <div style="display:inline" id="selected">None</div><br>
+				</div>
+				<div id="topoInfo" style="">
+					<h4> Group information</h4>
+					Group selected: <div style="display:inline" id="groupSelected">None</div><br>
+					Group color: <input id="jscolor" class="jscolor" value="000000" onChange="updateColor(this)"><br>
+					Member count:  <div style="display:inline" id="memberCount">0</div><br>
+				</div>
+
+				<h4>Upload topology and groups</h4>
+				<div id="uploadTopo">
+				<label><b>Step 1: Upload topology JSON-file: (.topo)</b></label><br>
+				<input type='file' accept='text/json' onchange='openFile(event, 1)'><br></div>
+				<img style="width:40px; height: 40px;" src="https://image.freepik.com/free-icon/arrow-bold-left-ios-7-interface-symbol_318-34824.jpg" id="decreaseIter" alt="Step left"></img>
+
+				<img style="width:40px; height: 40px;" src="https://image.freepik.com/free-icon/arrow-bold-right-ios-7-symbol_318-35504.jpg" id="increaseIter"></img><br>
+				Iteration <span id="iter">0</span> out of <span id="iterMax">0</span>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
+<script type="text/javascript">
+var height = 750
+var width = 750
+
+var hstep;
+var wstep;
+var step = 0;
+var maxstep = 0;
+var iterData;
+var colors;
+var groupSelected = "";
+document.getElementById("renderArea").style.height = height + "px";
+document.getElementById("renderArea").style.width = width + "px";
+
+function updateColor(colorobj) { 
+	p = document.querySelectorAll('[data]');
+	p.forEach((obj) => {
+		if (obj.getAttribute("data") == groupSelected) {
+			obj.style.backgroundColor = "#" + colorobj.value;
+		}
+	})
+}
+function openFile(event, action) {
+	var input = event.target;
+	var reader = new FileReader();
+	reader.onload = function(){
+		var text = reader.result;
+		if (action == 1)
+			parseJson(text);
+		else if (action == 2)
+			addGroups(text)
+
+	};
+	text = reader.readAsText(input.files[0]);
+}
+function rgb2hex(rgb) {
+	rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+	function hex(x) {
+		return ("0" + parseInt(x).toString(16)).slice(-2);
+	}
+	return "" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+function parseJson(txt) {
+	data = JSON.parse(txt);
+	ratio = data.mapWidth/data.mapHeight
+	//width = height * ratio
+	document.getElementById("renderArea").style.height = height + "px";
+	document.getElementById("renderArea").style.width = width + "px";
+
+	hstep = height/data.mapHeight;
+	wstep = width/data.mapWidth;
+	document.getElementById("topoHeight").innerHTML = data.mapHeight;
+	document.getElementById("topoWidth").innerHTML = data.mapWidth;
+	document.getElementById("nodeCount").innerHTML = data.nodeCount;
+	for (var i = 0; i < data.nodeCount; i++) {
+		addNewNode(data.nodes[i].ssid, data.nodes[i].posX, data.nodes[i].posY);
+	}
+
+	var uploadIterations = "<label>Step 2: Upload group creations JSON-file: </label><br><input type='file' accept='text/json' onchange='openFile(event, 2)'><br></div>"
+
+	document.getElementById("uploadTopo").innerHTML = uploadIterations
+	
+	}
+
+function updateSelected(obj) {
+	groupSelected = obj.getAttribute('data');
+	document.getElementById("selected").innerHTML = obj.id
+	document.getElementById("groupSelected").innerHTML = groupSelected; 
+	document.getElementById("jscolor").value = rgb2hex(obj.style.backgroundColor);
+	document.getElementById("jscolor").style.backgroundColor = obj.style.backgroundColor;
+	v = document.querySelectorAll("[data='"+groupSelected+"']");
+	document.getElementById("memberCount").innerHTML = v.length
+}
+function addNewNode(name, posx, posy) {
+	var area = document.getElementById("renderArea");
+	var newNode =  "<div onClick='updateSelected(this)' data='' id='" + name + "' class='node'></div>";
+	area.insertAdjacentHTML('beforeend', newNode);
+	document.getElementById(name).style.top = hstep * posy + "px";	
+	document.getElementById(name).style.left = wstep * posx + "px";	
+}
+
+function addGroups(txt) {
+	data = JSON.parse(txt);
+	colors = initializeColors(data);
+	maxstep = data['iterationCount'];
+	document.getElementById("iterMax").innerHTML = maxstep
+	iterData = data;
+	drawGroups();
+//	for (var i = 0; i < data.iterationCount
+	
+}
+
+nodeHover = function(e) {
+	group = this.getAttribute("data");	
+	d = data["iterations"][step];
+	c = d.groupCount;
+	for (var i = 0; i < c; i++) {
+		if (d[i].groupName == group) {
+			for (var j = 0; j < d[i].memberCount; j++) {	
+				node = document.getElementById(d[i].members[j]);
+				node.style.border = "2px solid black";
+			}
+			break;
+		}
+	}
+}
+
+nodeOut = function(e) {
+	group = this.getAttribute("data");	
+	d = data["iterations"][step];
+	c = d.groupCount;
+	for (var i = 0; i < c; i++) {
+		if (d[i].groupName == group) {
+			for (var j = 0; j < d[i].memberCount; j++) {	
+				node = document.getElementById(d[i].members[j]);
+				node.style.border = "";
+			}
+			break;
+		}
+	}
+
+}
+
+function initializeColors(data) {
+	var colors = {}
+	for (var i = 0; i < data['iterations'][0].groupCount; i++) {
+		colors[data['iterations'][0][i].groupName] = randomColor();
+	}
+	return colors
+}
+
+function randomColor() {
+	return '#'+(0x1000000+(Math.random())*0xffff55).toString(16).substr(1,6);
+
+}
+
+function drawGroups() {
+	var childDivs = document.getElementById('renderArea').getElementsByTagName('div');
+
+	for( i=0; i< childDivs.length; i++ ) {
+		var childDiv = childDivs[i];
+		childDiv.style.backgroundColor = "#000";
+		childDiv.setAttribute("data", "none");
+	}
+	d = data["iterations"][step];
+	groupCount = d.groupCount;
+	for (var i = 0; i < groupCount; i++) {
+		memberCount = d[i].memberCount;	
+		for (var j = 0; j < memberCount; j++) {
+			node = document.getElementById(d[i].members[j]);
+			color = colors[d[i].groupName];
+			if (typeof color == "undefined")
+				colors[d[i].groupName] = randomColor();
+			node.style.backgroundColor = colors[d[i].groupName];
+			node.setAttribute("data", d[i].groupName);
+			node.onmouseenter = nodeHover;
+			node.onmouseleave = nodeOut;
+
+		}
+	}
+}
+
+document.getElementById("increaseIter").onclick = function() {
+	if (step < maxstep - 1) {
+		step++;
+		document.getElementById("iter").innerHTML = step + 1
+		drawGroups();
+	}
+
+}
+
+document.getElementById("decreaseIter").onclick = function() {
+	if (step > 0) {
+		step--;
+		document.getElementById("iter").innerHTML = step + 1
+		drawGroups();
+	}
+}
+
+</script>
+
+
+
