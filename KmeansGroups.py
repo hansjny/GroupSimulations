@@ -214,6 +214,7 @@ class Group:
         if len(groups[0]) > maxSize or len(groups[1]) > maxSize:
             return 0
 
+        print("Keep!")
         for node in groups[0]:
             if node in group2.members: 
                 changes = changes + 1

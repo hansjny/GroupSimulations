@@ -74,6 +74,7 @@ class Node:
             if n["ssid"] == node.name:
                 return n["dbi"]
         return None
+            
     def distanceTo(self, node):
         x = node.x - self.x
         y = node.y - self.y
@@ -82,14 +83,22 @@ class Node:
     def getNeighbourCount(self):
         return len(self._neighbours)
 
-    def getMostDisturbing(self):
+    def getMostDisturbing(self, nodeList=None):
         highest = -100
         nodeinfo = None
-        for n in self._neighbours:
-            if n["dbi"] > highest and n["obj"].group.name != self.group.name and not n["obj"].group.locked:
-                nodeinfo = n
-                highest = n["dbi"]
+
+        if nodeList == None:
+            for n in self._neighbours:
+                if n["dbi"] > highest and n["obj"].group.name != self.group.name and not n["obj"].group.locked:
+                    nodeinfo = n
+                    highest = n["dbi"]
+        else:
+            for n in self._neighbours:
+                if n["dbi"] > highest and n["obj"] not in nodeList and not n["obj"].group.locked:
+                    nodeinfo = n
+                    highest = n["dbi"]
         return nodeinfo
+
 
     def getLeastDisturbingCompanion(self):
         lowest = 100
@@ -109,7 +118,7 @@ class Node:
 
     def calculateInterferenceTo(self, nodeObject):
         if self == nodeObject:
-            return
+            return None
         dist = round(self.distanceTo(nodeObject))
         if (dist == 0):
             dBi = -40
@@ -117,6 +126,7 @@ class Node:
             dBi  = self.measureDbi(dist)*-1
         if (dBi > self._minimumInterference):
             self._neighbours.append({"ssid": nodeObject._ssid, "dbi": dBi, "obj:": nodeObject})
+        return dBi
             #print("Distance:", dist, "m,  dBi:", dBi)
 
     def getData(self):

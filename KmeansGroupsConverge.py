@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from GroupEvaluation import Evaluation 
 import json
 import GenerateTopology as gt
 import sys
@@ -162,7 +163,8 @@ class Group:
             point1 = initiator
             point2 = node
             #self.KmeansSplit((initiator.x, initiator.y), (node.x, node.y))
-            split = self.KmeansSplit((point1.x, point1.y), (point2.x, point2.y), self.members, oldMembers)
+            #split = self.KmeansSplit((point1.x, point1.y), (point2.x, point2.y), self.members, oldMembers)
+            split = self.KmeansSplit((point1.x, point1.y), (point2.x, point2.y), self, node.group)
             if split == 0: 
                 return 0
             groupCollection.removeGroupByName(oldName) 
@@ -195,25 +197,34 @@ class Group:
     # who wants to merge
     def KmeansSplit(self, point1, point2, origGroup1, origGroup2): 
         global GroupCollection
+        global maxSize
+        oldMembers1 = origGroup1.members.copy()
+        oldMembers2 = origGroup2.members.copy()
+        _, _, oldHighest = origGroup1.getMostDisturbing()
         old = [(0,0), (0,0)]
         mu = [point1, point2]
-        groups = (origGroup1 + origGroup2, [])
+        groups = (origGroup1.members + origGroup2.members, [])
         while not mu == old:
             groups = self.assignGroups(mu, groups)
             old = mu;
             mu = self.computeMu(groups, mu)
     
-        originalMu = self.computeMu([origGroup1, origGroup2])
+        originalMu = self.computeMu([origGroup1.members, origGroup2.members])
 
         newDist1 = self.nodeClosestToPoint(groups[0], mu[1])
         newDist2 = self.nodeClosestToPoint(groups[1], mu[0])
-        oldDist1 = self.nodeClosestToPoint(origGroup1, point2)
-        oldDist2 = self.nodeClosestToPoint(origGroup2, point1)
+        oldDist1 = self.nodeClosestToPoint(origGroup1.members, point2)
+        oldDist2 = self.nodeClosestToPoint(origGroup2.members, point1)
          
         newDistSum = newDist1 + newDist2
         oldDistSum = oldDist1 + oldDist2
-        if (newDistSum + 100 < oldDistSum):
+        #if (newDistSum > oldDistSum):
+            #return 0
+
+        if (len(groups[0]) > maxSize and len(groups[1]) > maxSize):
             return 0
+
+
 
         try:
             newGroup = groupCollection.newGroup(groups[1][0])
@@ -230,6 +241,19 @@ class Group:
             if node not in self.members:
                 node.group = self
                 self.members.append(node)
+        _, _, newHighest = self.getMostDisturbing()
+        if (oldHighest <= newHighest): 
+            #Restore old groups
+            for n in oldMembers1:
+                origGroup1.members = oldMembers1
+                n.group = origGroup1
+            for n in oldMembers2:
+                origGroup2.members = oldMembers2
+                n.group = origGroup2 
+            groupCollection.removeGroupByName(newGroup.name)
+            return 0
+ 
+        print("Old: ", oldHighest,"New:", newHighest)
         return 1
 
     def computeMu(self, groups, oldMu = [(0,0), (0,0)]):
@@ -358,6 +382,14 @@ def main():
     s = Simulation(outfile)
     s.start()
     outfile.close()
+    print("Groups written to file")
+    ev = Evaluation(topology)
+    print(groupCollection.groups)
+    ev.calculateGroupFitness(groupCollection.groups)
+
+
+
+
 
 if __name__ == "__main__":
     main()

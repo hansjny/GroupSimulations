@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import sys
+import matplotlib.pyplot as plt
+import numpy as np
 
 def dbKey(obj):
     return int(obj["dbi"])
@@ -8,26 +10,41 @@ class Evaluation:
     topology = None
 
     def __init__(self, t):
-        #print("Evaluation init")
         self.topology = t
 
-        
+    def calculateGroupFitness(self, groups):
+        self.accumulatedInterferences(groups)
 
-    def prioritizeClosest(self):
-        #Go through all nodes
-        #Go through all neighbours of node
-        #Find most disturbing. Share group? Penalty 0.
-        #Not sharing group, find node N with highest disturbance that shares group
-        #and penalize Ndisturbing + (mostDisturbing *-1)
-        if 1 == 1:
-            return 
-        for n in self.topology._nodes:
-            neighbs = sorted(n._neighbours, key=dbKey, reverse=True)
-            nearest = self.topology._nodesDict[neighbs[0]["ssid"]]
-            if (n.group.name == nearest.group.name):
-                sys.stdout.write(".")
-            else:
-                sys.stdout.write("x")
-            #for i in neighbs
-               #neighbs[0]
+    def accumulatedInterferences(self, groups): 
+        """ Accumulate all interferences between nodes inside the group,
+        and accumulate all interferences between nodes inside the group."""
+        for group in groups:
+                internal, external = self.getInternalAndExternalDbi(group)
+                total = internal + external 
+                if (total != 0):
+                    print(internal / total, len(group.members))
+                    plt.hist(internal/total)
+        plt.show()
+
+
+
+    def getInternalAndExternalDbi(self, group):
+        internal = 0
+        external = 0
+        for node in group.members:
+            for neighbour in node._neighbours:
+                if group.name == neighbour["obj"].group.name:
+                    internal += 100 - neighbour["dbi"]
+                else: 
+                    external += 100 - neighbour["dbi"]
+
+        return internal, external
+
+
+
+
+
+
+                
+
 

@@ -64,7 +64,8 @@ margin: auto;
 				<div id="topoInfo" style="">
 					<h4> Group information</h4>
 					Group selected: <div style="display:inline" id="groupSelected">None</div><br>
-					Group color: <input id="jscolor" class="jscolor" value="000000" onChange="updateColor(this)">
+					Group color: <input id="jscolor" class="jscolor" value="000000" onChange="updateColor(this)"><br>
+					Member count:  <div style="display:inline" id="memberCount">0</div><br>
 				</div>
 
 				<h4>Upload topology and groups</h4>
@@ -153,6 +154,8 @@ function updateSelected(obj) {
 	document.getElementById("groupSelected").innerHTML = groupSelected; 
 	document.getElementById("jscolor").value = rgb2hex(obj.style.backgroundColor);
 	document.getElementById("jscolor").style.backgroundColor = obj.style.backgroundColor;
+	v = document.querySelectorAll("[data='"+groupSelected+"']");
+	document.getElementById("memberCount").innerHTML = v.length
 }
 function addNewNode(name, posx, posy) {
 	var area = document.getElementById("renderArea");
