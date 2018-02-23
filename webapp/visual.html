@@ -234,6 +234,7 @@ function drawGroups() {
 		memberCount = d[i].memberCount;	
 		for (var j = 0; j < memberCount; j++) {
 			node = document.getElementById(d[i].members[j]);
+			console.log(node)
 			color = colors[d[i].groupName];
 			if (typeof color == "undefined")
 				colors[d[i].groupName] = randomColor();

@@ -35,6 +35,7 @@ def parseOptions():
 class Simulation:
     global topology
     output = None
+    iterationIndex = 0;
     def __init__(self, outfile, splitMethod):
         global groupCollection
         global jsonOutput
@@ -43,10 +44,11 @@ class Simulation:
 
         self.output = outfile
         groupCollection = GroupCollection(splitMethod)
-    
+
     def start(self): 
         self.initiateGroups()
         self.runIteration()
+        self.writeOutput()
 
     #Create one group for each node as initiation
     def initiateGroups(self):
@@ -56,31 +58,30 @@ class Simulation:
             node.group = groupCollection.newGroup(node)
 
         jsonOutput["iterations"][0] = groupCollection.getOutput()
-        #print("Number of groups created: ", groupCollection.size())
-        #groupCollection.dumpGroups()
         input("Press enter to start simulation...") 
-    
+
     def runIteration(self): 
         global groupCollection 
-        i = 1
+        self.iterationIndex += 1;
         while (groupCollection.iterateGroups() != 0):
-            #groupCollection.dumpGroups()
-            jsonOutput["iterations"][i] = groupCollection.getOutput()
-            i += 1
-            print("iteration", i)
-            if (i == 20):
+            jsonOutput["iterations"][self.iterationIndex] = groupCollection.getOutput()
+            self.iterationIndex += 1
+            print("iteration", self.iterationIndex)
+            if (self.iterationIndex == 30):
                 break;
-        
-        #for g in groupCollection.groups:
-            #print(nx.edges(g.graph))
 
+    def writeOutput(self):
+        print("Interation index", self.iterationIndex) 
         print("Lengde", len(groupCollection.groups), groupCollection.groupCount)
-        jsonOutput["iterationCount"] = i
+        jsonOutput["iterationCount"] = self.iterationIndex
         j = json.dumps(jsonOutput, indent=2)
         self.output.write(j)
-        #groupCollection.dumpGroups()
-        
 
+    def introduceNode(self, posx, posy, name):
+        node = gt.Node(posx, posy, 0, 0, 75, name=name)
+        node.group = groupCollection.newGroup(node)
+        self.runIteration()
+    
 class GroupCollection:
     groups = None
     groupDict = {}
@@ -94,7 +95,6 @@ class GroupCollection:
     def size(self):
         return self.groupCount;
      
-    #Structure dictionairy suitable for JSON-output
     def getOutput(self):
         data = {}
         for i in range(len(self.groups)):
@@ -108,7 +108,6 @@ class GroupCollection:
         return data
 
     def dumpGroups(self):
-        #return 
         for g in self.groups:
             print("#############################")
             print("GROUP ID:", g.name)
@@ -121,7 +120,6 @@ class GroupCollection:
         group = Group(member, groupName)
         member.group = group
         self.appendGroup(group)
-        #print("Made new group: ", group.name, "for node", member.name)
         return group
 
     def appendGroup(self, group):
@@ -131,7 +129,6 @@ class GroupCollection:
     
     def iterateGroups(self):
         changes = 0
-       # print("Num groups", len(self.groups))
         if len(self.groups) == 1:
             return changes
         
@@ -153,7 +150,6 @@ class Group:
     locked = False
     merges = 1
 
-
     def __init__(self, node, name):
         self.members = []
         self.members.append(node)
@@ -165,74 +161,137 @@ class Group:
         global maxSize
         oldName = node.group.name
         oldMembers = node.group.members
+        print("Performing split")
+        startMu = self.computeNewMu([(0,0), (0,0)], [self.members, oldMembers])
+        return self.KmeansSplit(startMu[0], startMu[1], self, node.group, dbi)
 
-        if (len(self.members) + len(node.group.members) > maxSize):
-            print("Performing split")
-            startMu = self.computeNewMu([(0,0), (0,0)], [self.members, oldMembers])
-            return self.KmeansSplit(startMu[0], startMu[1], self, node.group)
+    def nosplit(self, node, initiator):       
+            return 0
+ 
+    def wagner(self, receiver, initiator, dbi): 
+        return self.createGraphAndCut(receiver.group, receiver, dbi);
 
-        for n in oldMembers:
-            n.group = self
+    def mincut(self, receiver, initiator, dbi): 
+        oldSelf = self.members.copy()
+        oldGroup2 = receiver.group.members.copy()
+        remove = self.mincutCreateGraphAndCut(receiver.group, receiver, dbi);
+        self.members = self.members + receiver.group.members
+        receiver.group.reaffirmMembers()
 
-        #Update the memberlist to include the new members
-        self.members = self.members + oldMembers
+        for n in remove:
+            self.members.remove(n)
 
-        #Remove the old group
-        groupCollection.removeGroupByName(oldName) 
+        for n in remove:
+            for m in self.members:
+                nDbi = m.rssiNeighbour(n) 
+                if (nDbi != None):
+                    if nDbi > dbi:
+                        print(nDbi, dbi, "cancel")
+                        self.members = oldSelf
+                        self.reaffirmMembers()
+                        receiver.group.members = oldGroup2
+                        receiver.group.reaffirmMembers()
+                        return 0
 
-
+        groupCollection.removeGroupByName(receiver.group.name) 
+        print("keep")
+        for n in remove:
+            groupCollection.newGroup(n)
         return 1
 
-    def nosplit(self, node, initiator):
+    def merge(self, node, initiator, dbi):
+        global groupCollection
+        global topology 
         global maxSize
         oldName = node.group.name
         oldMembers = node.group.members
-        #print("OLDMEMBERS", oldMembers)
-        
-        if (len(self.members) + len(node.group.members) > maxSize):
-            return 0
-        #Update group name for members
+
+        if (node.group.name == self.name):
+            print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
+            print("MEMBERS", self.members)
+            sys.exit(0)
+
+        if (len(self.members) + len(oldMembers) > maxSize): 
+            if groupCollection.splitMethod == "none":
+                return self.nosplit(node, initiator)
+            elif groupCollection.splitMethod == "wagner":
+                return self.wagner(node, initiator, dbi)
+            elif groupCollection.splitMethod == "mincut":
+                if (len(self.members) + len(node.group.members) > (maxSize * 1.5)):
+                    return 0
+                return self.mincut(node, initiator, dbi)
+
+            elif groupCollection.splitMethod == "kmeans":
+                return self.kmeans(node, initiator, dbi)
+
         for n in oldMembers:
             n.group = self
-        #    print("Setting group for", n.name, "to", self.name)
 
         self.members = self.members + oldMembers
         groupCollection.removeGroupByName(oldName) 
-
-
-                #Split algorithm
         return 1
-        
-    def mincut(self, receiver, initiator, dbi): 
+
+    def mincutCreateGraphAndCut(self, group2, receiver, dbi): 
+        global groupCollection
         global maxSize
-        oldName = receiver.group.name
-        oldMembers = receiver.group.members
+        G = self.mincutBuildGraph(self.members, group2.members, dbi)
+        #print(self.name, group2.name, receiver.name)
+        #print(len(self.members), len(group2.members))
+        #print(G.number_of_nodes())
+        minval = 9999
+        cutFrom = None
+        cut = None
+        removedNodes = []
+        while (G.number_of_nodes() > maxSize):
+            cut, partition = nx.stoer_wagner(G, "capacity")
+            exclude = None
+            if len(partition[0]) > len(partition[1]):
+                exclude = partition[1]
+            else:
+                exclude = partition[0]
+                
+            removedNodes.extend(exclude)
+            for n in exclude:
+                G.remove_node(n)
+            
+        print(G.number_of_nodes())
+        return removedNodes;
+       # for node in self.members: 
+       #     val, cut = nx.minimum_cut(G, node, receiver, "capacity")
+       #     #print(val, node.name)
+       #     if (val < minval):
+       #         minval = val
+       #         cutFrom = node.name
+       #         cut = cut
+       #         
+       # print(G.number_of_nodes())
+       # print(minval, len(cut[0]), len(cut[1]), cutFrom)
+       # if (len(cut[1]) != 1 and len(cut[0]) != 1):
+       #     print(cut)
+       #     sys.exit(0)
+       # #if (len(list(cut[1])[0] != receiver):
 
-        #If group is too big to merge without splitting
-        if (len(self.members) + len(receiver.group.members) > maxSize):
-            return self.createGraphAndCut(receiver.group, receiver, dbi);
-            #graph = self.joinGraphs(self, receiver.group, initiator, receiver, dbi)
-            #return self.doMinCut(graph, receiver, dbi)
+       # return 0
 
-        
-        #The initial graph of the receiver of the merge request (Node 2)
-        I = receiver.group.graph 
-
-        #Join the graphs of the initiator and the receiver
-
-        #Change the group membership from the old group to the new
-        for n in oldMembers:
-            n.group = self
-
-        #Update the memberlist to include the new members
-        self.members = self.members + oldMembers
-
-        #Remove the old group
-        groupCollection.removeGroupByName(oldName) 
-
-        #print(self.name, nx.number_of_edges(self.graph))
-        return 1
-
+    def mincutBuildGraph(self, members1, members2, minDbi): 
+        joined = members1 + members2
+        G = nx.Graph()
+        for node in joined:
+            node.combined = 0
+            node.cHighest = 0
+            for otherNode in joined:
+                dbi = node.calculateInterferenceTo(otherNode)
+                if dbi != None:
+                    if (dbi < -75):
+                        dbi = -99
+                    if (dbi > minDbi):
+                        
+                        
+                    G.add_edge(node, otherNode, capacity=int(100 + dbi))
+                    node.combined += 100 + dbi
+                    if (100 + dbi) > node.cHighest:
+                        node.cHighest = 100 + dbi
+        return G
     def createGraphAndCut(self, group2, receiver, dbi):
         global groupCollection
         r, d = self.buildGraph(self.members, group2.members, dbi);
@@ -253,8 +312,6 @@ class Group:
         print("returned 1 change")
         return 1
 
-        
-
     def buildGraph(self, members1, members2, minDbi):
         joined = members1 + members2
         interferences = []
@@ -272,7 +329,6 @@ class Group:
                     node.combined += 100 + dbi
                     if (100 + dbi)  > node.cHighest: 
                         node.cHighest = 100 + dbi
-        #print(G.number_of_edges())
         r, d = self.minCut(G, minDbi)
         if (r == 1):
             print("Minimum cut discarded")
@@ -312,14 +368,7 @@ class Group:
                 return p1, p2
             else:
                 return p2, p1
-            #print("No buildGraph call")
-        #Todo, optimize the graph creation. Maybe just remove edge
-        #Rebuild groups and add them back to the simulation
-        #Test
         return r, l;
-
-        
-        #cut, partition = list(nx.minimum_cut(graph, n, toNode))
 
     def doMinCut(self, graph, toNode, dbi):
         global maxSize
@@ -340,8 +389,6 @@ class Group:
             print("ABORTS")
             return 0
         
-        #nx.nodes(G)
-        print("WE GOTTA MERGE GUYSS")
         print(reachable, cval, "highest DBI", self.highestExternalDbi(reachable))
         sys.exit(0)
 
@@ -359,8 +406,6 @@ class Group:
                     initiator = n
         return highest
 
-
-        
     def joinGraphs(self, graph1, graph2, initiator, receiver, w): 
         #Only add the link between merging nodes, or add all connected nodes?
         graph = nx.Graph()
@@ -370,39 +415,12 @@ class Group:
 
         for n in graph2.edges_iter(data=True):
             graph.add_edge(n[0], n[1], n[2])
-        
         return graph
 
-        #print(dict(self.graph.edges))
-        #self.graph = nx.disjoint_union(G, I)
-        #self.graph.add_edge(initiator, receiver, weight=4.7 )
-        #print(list(I.edges_iter(data=True)))
-        #self.graph.add_nodes_from(self.graph.nodes()+I.nodes())
+    def reaffirmMembers(self):
+        for n in self.members:
+            n.group = self
 
-
-
-    def merge(self, node, initiator, dbi):
-        global groupCollection
-        global topology 
-        global maxSize
-
-        #print("Merging", node.group.name, "into", self.name)  
-
-        if (node.group.name == self.name):
-            print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
-            print("MEMBERS", self.members)
-            sys.exit(0)
-
-        if groupCollection.splitMethod == "none":
-            return self.nosplit(node, initiator)
-        elif groupCollection.splitMethod == "mincut":
-            r = self.mincut(node, initiator, dbi)
-            return r 
-        elif groupCollection.splitMethod == "kmeans":
-            return self.kmeans(node, initiator, dbi)
-    
-
-    #
     def findNodeWithMostNeighbours(self):
         neighbours = 0 
         node = None
@@ -415,13 +433,15 @@ class Group:
 
 
     #Instead of regular K-means, using random values 
-    # for mu, instead use the position of the nodes
+    # for mu, instead use centroid position of the nodes
     # who wants to merge
-    def KmeansSplit(self, point1, point2, group1, group2): 
+    def KmeansSplit(self, point1, point2, group1, group2, oldDbi): 
         global GroupCollection
         global maxSize
+        group1copy = group1.members.copy()
+        group2copy = group2.members.copy()
         changes = 0
-        print(point1, point2)
+        newDbi = -100
         old = [(0,0), (0,0)]
         mu = [point1, point2]
         groups = (group1.members, group2.members)
@@ -433,7 +453,6 @@ class Group:
         if len(groups[0]) > maxSize or len(groups[1]) > maxSize:
             return 0
 
-        print("Keep!")
         for node in groups[0]:
             if node in group2.members: 
                 changes = changes + 1
@@ -447,7 +466,22 @@ class Group:
                 group1.members.remove(node)
                 group2.members.append(node)
                 node.group = group2
+                
+        _, _, dbi1 = group1.getMostDisturbing()
+        _, _, dbi2 = group2.getMostDisturbing()
+        newDbi = max(dbi1, dbi2)
+        if (newDbi > oldDbi):
+            print("DBI Bad: Restore groups! Old dbi:", oldDbi, "newDbi", newDbi)
+            group1.members = group1copy
+            group2.members = group2copy
+            for node in group1.members:
+                node.group = group1
 
+            for node in group2.members:
+                 node.group = group2 
+            return 0
+
+        print("Keep!", group1, group2)
         return changes
 
 
