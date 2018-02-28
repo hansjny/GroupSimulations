@@ -67,7 +67,7 @@ class Simulation:
             jsonOutput["iterations"][self.iterationIndex] = groupCollection.getOutput()
             self.iterationIndex += 1
             print("iteration", self.iterationIndex)
-            if (self.iterationIndex == 30):
+            if (self.iterationIndex == 15):
                 break;
 
     def writeOutput(self):
@@ -149,13 +149,12 @@ class Group:
     graph = None
     locked = False
     merges = 1
+    dbiMinVal = -9999;
 
     def __init__(self, node, name):
         self.members = []
         self.members.append(node)
         self.name = name
-        self.graph = nx.Graph() 
-        self.graph.add_node(node)
 
     def kmeans(self, node, initiator, dbi):
         global maxSize
@@ -172,29 +171,35 @@ class Group:
         return self.createGraphAndCut(receiver.group, receiver, dbi);
 
     def mincut(self, receiver, initiator, dbi): 
+        if (dbi < receiver.group.dbiMinVal or dbi < self.dbiMinVal):
+            print("Merging but tresh too high!")
+            return 0;
+        if receiver.group.dbiMinVal > self.dbiMinVal:
+            self.dbiMinVal = receiver.group.dbiMinVal;
+
         oldSelf = self.members.copy()
         oldGroup2 = receiver.group.members.copy()
-        remove = self.mincutCreateGraphAndCut(receiver.group, receiver, dbi);
-        self.members = self.members + receiver.group.members
-        receiver.group.reaffirmMembers()
+        receiverGroup = receiver.group
+        remove = self.mincutCreateGraphAndCut(receiverGroup, receiver, dbi);
+        self.members = self.members + receiverGroup.members
+        self.reaffirmMembers()
 
         for n in remove:
             self.members.remove(n)
 
-        for n in remove:
-            for m in self.members:
-                nDbi = m.rssiNeighbour(n) 
-                if (nDbi != None):
-                    if nDbi > dbi:
-                        print(nDbi, dbi, "cancel")
-                        self.members = oldSelf
-                        self.reaffirmMembers()
-                        receiver.group.members = oldGroup2
-                        receiver.group.reaffirmMembers()
-                        return 0
+        if (len(self.members) > 128):
+            receiverGroup.members = oldGroup2
+            receiverGroup.reaffirmMembers()
+            self.members = oldSelf
+            self.reaffirmMembers()
+            for n in self.members:
+                if n in receiver.group.members:
+                    print("SOmething wrong bro")
+            return 0
 
-        groupCollection.removeGroupByName(receiver.group.name) 
+        groupCollection.removeGroupByName(receiverGroup.name) 
         print("keep")
+        self.dbiMinVal = dbi;
         for n in remove:
             groupCollection.newGroup(n)
         return 1
@@ -207,7 +212,7 @@ class Group:
         oldMembers = node.group.members
 
         if (node.group.name == self.name):
-            print("NODE", node.name, "of group", node.group, "wants to merge with", self.name)
+            print("NODE", node.name, "of group", node.group, "wants to merge with", self.name, initiator.name)
             print("MEMBERS", self.members)
             sys.exit(0)
 
@@ -217,8 +222,6 @@ class Group:
             elif groupCollection.splitMethod == "wagner":
                 return self.wagner(node, initiator, dbi)
             elif groupCollection.splitMethod == "mincut":
-                if (len(self.members) + len(node.group.members) > (maxSize * 1.5)):
-                    return 0
                 return self.mincut(node, initiator, dbi)
 
             elif groupCollection.splitMethod == "kmeans":
@@ -235,20 +238,25 @@ class Group:
         global groupCollection
         global maxSize
         G = self.mincutBuildGraph(self.members, group2.members, dbi)
-        #print(self.name, group2.name, receiver.name)
-        #print(len(self.members), len(group2.members))
-        #print(G.number_of_nodes())
         minval = 9999
         cutFrom = None
         cut = None
+        
         removedNodes = []
-        while (G.number_of_nodes() > maxSize):
+        while (1):
             cut, partition = nx.stoer_wagner(G, "capacity")
+            if (cut >= 9999):
+                break; 
             exclude = None
             if len(partition[0]) > len(partition[1]):
+                if len(partition[1]) > 1:
+                    print(partition)
                 exclude = partition[1]
             else:
+                if len(partition[0]) > 1:
+                    print(partition)
                 exclude = partition[0]
+
                 
             removedNodes.extend(exclude)
             for n in exclude:
@@ -256,22 +264,6 @@ class Group:
             
         print(G.number_of_nodes())
         return removedNodes;
-       # for node in self.members: 
-       #     val, cut = nx.minimum_cut(G, node, receiver, "capacity")
-       #     #print(val, node.name)
-       #     if (val < minval):
-       #         minval = val
-       #         cutFrom = node.name
-       #         cut = cut
-       #         
-       # print(G.number_of_nodes())
-       # print(minval, len(cut[0]), len(cut[1]), cutFrom)
-       # if (len(cut[1]) != 1 and len(cut[0]) != 1):
-       #     print(cut)
-       #     sys.exit(0)
-       # #if (len(list(cut[1])[0] != receiver):
-
-       # return 0
 
     def mincutBuildGraph(self, members1, members2, minDbi): 
         joined = members1 + members2
@@ -284,14 +276,15 @@ class Group:
                 if dbi != None:
                     if (dbi < -75):
                         dbi = -99
-                    if (dbi > minDbi):
-                        
+                    if (dbi > minDbi):    
+                        dbi = 9998
                         
                     G.add_edge(node, otherNode, capacity=int(100 + dbi))
                     node.combined += 100 + dbi
                     if (100 + dbi) > node.cHighest:
                         node.cHighest = 100 + dbi
         return G
+
     def createGraphAndCut(self, group2, receiver, dbi):
         global groupCollection
         r, d = self.buildGraph(self.members, group2.members, dbi);
