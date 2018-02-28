@@ -67,7 +67,7 @@ class Simulation:
             jsonOutput["iterations"][self.iterationIndex] = groupCollection.getOutput()
             self.iterationIndex += 1
             print("iteration", self.iterationIndex)
-            if (self.iterationIndex == 15):
+            if (self.iterationIndex == 50):
                 break;
 
     def writeOutput(self):
@@ -171,38 +171,20 @@ class Group:
         return self.createGraphAndCut(receiver.group, receiver, dbi);
 
     def mincut(self, receiver, initiator, dbi): 
-        if (dbi < receiver.group.dbiMinVal or dbi < self.dbiMinVal):
-            print("Merging but tresh too high!")
+        if (dbi <= receiver.group.dbiMinVal or dbi <= self.dbiMinVal):
+            print("Merging but tresh too high!", self.name)
             return 0;
-        if receiver.group.dbiMinVal > self.dbiMinVal:
-            self.dbiMinVal = receiver.group.dbiMinVal;
-
+       
         oldSelf = self.members.copy()
         oldGroup2 = receiver.group.members.copy()
         receiverGroup = receiver.group
-        remove = self.mincutCreateGraphAndCut(receiverGroup, receiver, dbi);
-        self.members = self.members + receiverGroup.members
-        self.reaffirmMembers()
-
-        for n in remove:
-            self.members.remove(n)
-
-        if (len(self.members) > 128):
-            receiverGroup.members = oldGroup2
-            receiverGroup.reaffirmMembers()
-            self.members = oldSelf
-            self.reaffirmMembers()
-            for n in self.members:
-                if n in receiver.group.members:
-                    print("SOmething wrong bro")
-            return 0
-
-        groupCollection.removeGroupByName(receiverGroup.name) 
-        print("keep")
+        cutout = self.mincutCreateGraphAndCut(dbi);
+        cutout += receiver.group.mincutCreateGraphAndCut(dbi)
         self.dbiMinVal = dbi;
-        for n in remove:
-            groupCollection.newGroup(n)
-        return 1
+        receiverGroup.dbiMinVal = dbi;
+        #for n in remove:
+            #groupCollection.newGroup(n)
+        return cutout
 
     def merge(self, node, initiator, dbi):
         global groupCollection
@@ -223,9 +205,11 @@ class Group:
                 return self.wagner(node, initiator, dbi)
             elif groupCollection.splitMethod == "mincut":
                 return self.mincut(node, initiator, dbi)
-
             elif groupCollection.splitMethod == "kmeans":
                 return self.kmeans(node, initiator, dbi)
+
+        if node.group.dbiMinVal > self.dbiMinVal:
+               self.dbiMinVal = node.group.dbiMinVal
 
         for n in oldMembers:
             n.group = self
@@ -234,10 +218,13 @@ class Group:
         groupCollection.removeGroupByName(oldName) 
         return 1
 
-    def mincutCreateGraphAndCut(self, group2, receiver, dbi): 
+    def mincutCreateGraphAndCut(self, dbi): 
         global groupCollection
         global maxSize
-        G = self.mincutBuildGraph(self.members, group2.members, dbi)
+        if len(self.members) == 1:
+            return 1;
+        retval = 0
+        G = self.mincutBuildGraph(self.members, [],  dbi)
         minval = 9999
         cutFrom = None
         cut = None
@@ -245,25 +232,32 @@ class Group:
         removedNodes = []
         while (1):
             cut, partition = nx.stoer_wagner(G, "capacity")
-            if (cut >= 9999):
+            if (cut >= 1090):
                 break; 
+            retval = 1
+
             exclude = None
             if len(partition[0]) > len(partition[1]):
-                if len(partition[1]) > 1:
-                    print(partition)
+                self.removePartition(partition[1], dbi)
                 exclude = partition[1]
             else:
-                if len(partition[0]) > 1:
-                    print(partition)
+                self.removePartition(partition[0], dbi)
                 exclude = partition[0]
-
-                
-            removedNodes.extend(exclude)
             for n in exclude:
                 G.remove_node(n)
             
         print(G.number_of_nodes())
-        return removedNodes;
+        return retval;
+
+    def removePartition(self, partition, dbi):
+        global groupCollection;
+        for n in partition:
+            self.members.remove(n)
+
+        gr = groupCollection.newGroup(partition[0])
+        for n in partition[1:]:
+            gr.members.append(n)
+            n.group = gr
 
     def mincutBuildGraph(self, members1, members2, minDbi): 
         joined = members1 + members2
