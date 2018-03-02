@@ -15,7 +15,31 @@ groupCollection = None
 jsonOutput = None
 maxSize = 0
 
+
 #Parse commandline arguments
+def StoerWagnerMincut(G, initiator):
+    excluded = []
+    while(1):
+        print(G.number_of_nodes())
+        if (G.number_of_nodes() <= 1):
+            break;
+        cut, partition = nx.stoer_wagner(G, "capacity")
+        if (cut >= 99999):
+            break;
+        if initiator in partition[0]:
+            exclude = partition[1]
+        elif initiator in partition[1]:
+            exclude = partition[0]
+        else: 
+            print("Couldn't find initiating node in stoer_wagner cut partitions!")
+            sys.exit(0)
+        tmp = []
+        for n in exclude:
+            G.remove_node(n)
+            tmp.append(n)
+        excluded.append(tmp)
+    return excluded;
+
 def parseOptions():
     parser = OptionParser()
     #Width
@@ -67,7 +91,7 @@ class Simulation:
             jsonOutput["iterations"][self.iterationIndex] = groupCollection.getOutput()
             self.iterationIndex += 1
             print("iteration", self.iterationIndex)
-            if (self.iterationIndex == 50):
+            if (self.iterationIndex == 30):
                 break;
 
     def writeOutput(self):
@@ -170,21 +194,64 @@ class Group:
     def wagner(self, receiver, initiator, dbi): 
         return self.createGraphAndCut(receiver.group, receiver, dbi);
 
-    def mincut(self, receiver, initiator, dbi): 
-        if (dbi <= receiver.group.dbiMinVal or dbi <= self.dbiMinVal):
-            print("Merging but tresh too high!", self.name)
-            return 0;
+    def mincut(self, receiver, initiator, dbi):
+        
+        if (self.buildGraphAndMinCut(receiver, initiator, dbi) == True):
+            return 1
+        return 0
+
+    def buildGraphAndMinCut(self, receiver, initiator, minDbi):
+        global maxSize
+        global groupCollection
+        G1 = initiator.group.buildNxGraph(minDbi)
+        G2 = receiver.group.buildNxGraph(minDbi)
+            
+        excl1 = StoerWagnerMincut(G1, initiator)
+        excl2 = StoerWagnerMincut(G2, receiver)
+
+        if (G1.number_of_nodes() + G2.number_of_nodes()) > maxSize:
+            return False;
+
+        excludedNodes = excl1 + excl2
+        self.members = self.members + receiver.group.members;
+        groupCollection.removeGroupByName(receiver.group.name)
+        for n in self.members:
+            n.group = self
        
-        oldSelf = self.members.copy()
-        oldGroup2 = receiver.group.members.copy()
-        receiverGroup = receiver.group
-        cutout = self.mincutCreateGraphAndCut(dbi);
-        cutout += receiver.group.mincutCreateGraphAndCut(dbi)
-        self.dbiMinVal = dbi;
-        receiverGroup.dbiMinVal = dbi;
-        #for n in remove:
-            #groupCollection.newGroup(n)
-        return cutout
+        for l in excludedNodes:
+            try:
+                self.members.remove(l[0])
+                gr = groupCollection.newGroup(l[0])
+                for n in l[1:]:
+                    self.members.remove(n)
+                    gr.members.append(n)
+                    n.group = gr
+
+            except ValueError:
+                continue;
+                
+        print("Let's keep this cut!")
+
+
+        return True
+
+
+    def buildNxGraph(self, minDbi):
+        G = nx.Graph()
+        for n in self.members:
+            for m in self.members:
+                if n == m:
+                    continue
+                rssi = n.rssiNeighbour(m)
+                if (rssi == None):
+                    continue
+                if (rssi > minDbi):
+                    rssi = 99999;
+                else:
+                    rssi = 100 + rssi;
+                G.add_edge(n, m, capacity=rssi)
+        return G;
+
 
     def merge(self, node, initiator, dbi):
         global groupCollection
@@ -192,6 +259,7 @@ class Group:
         global maxSize
         oldName = node.group.name
         oldMembers = node.group.members
+
 
         if (node.group.name == self.name):
             print("NODE", node.name, "of group", node.group, "wants to merge with", self.name, initiator.name)
@@ -208,76 +276,14 @@ class Group:
             elif groupCollection.splitMethod == "kmeans":
                 return self.kmeans(node, initiator, dbi)
 
-        if node.group.dbiMinVal > self.dbiMinVal:
-               self.dbiMinVal = node.group.dbiMinVal
-
-        for n in oldMembers:
+        self.members = self.members + oldMembers
+        for n in self.members:
             n.group = self
 
-        self.members = self.members + oldMembers
-        groupCollection.removeGroupByName(oldName) 
+        groupCollection.removeGroupByName(oldName)
         return 1
-
-    def mincutCreateGraphAndCut(self, dbi): 
-        global groupCollection
-        global maxSize
-        if len(self.members) == 1:
-            return 1;
-        retval = 0
-        G = self.mincutBuildGraph(self.members, [],  dbi)
-        minval = 9999
-        cutFrom = None
-        cut = None
+   
         
-        removedNodes = []
-        while (1):
-            cut, partition = nx.stoer_wagner(G, "capacity")
-            if (cut >= 1090):
-                break; 
-            retval = 1
-
-            exclude = None
-            if len(partition[0]) > len(partition[1]):
-                self.removePartition(partition[1], dbi)
-                exclude = partition[1]
-            else:
-                self.removePartition(partition[0], dbi)
-                exclude = partition[0]
-            for n in exclude:
-                G.remove_node(n)
-            
-        print(G.number_of_nodes())
-        return retval;
-
-    def removePartition(self, partition, dbi):
-        global groupCollection;
-        for n in partition:
-            self.members.remove(n)
-
-        gr = groupCollection.newGroup(partition[0])
-        for n in partition[1:]:
-            gr.members.append(n)
-            n.group = gr
-
-    def mincutBuildGraph(self, members1, members2, minDbi): 
-        joined = members1 + members2
-        G = nx.Graph()
-        for node in joined:
-            node.combined = 0
-            node.cHighest = 0
-            for otherNode in joined:
-                dbi = node.calculateInterferenceTo(otherNode)
-                if dbi != None:
-                    if (dbi < -75):
-                        dbi = -99
-                    if (dbi > minDbi):    
-                        dbi = 9998
-                        
-                    G.add_edge(node, otherNode, capacity=int(100 + dbi))
-                    node.combined += 100 + dbi
-                    if (100 + dbi) > node.cHighest:
-                        node.cHighest = 100 + dbi
-        return G
 
     def createGraphAndCut(self, group2, receiver, dbi):
         global groupCollection
@@ -403,10 +409,6 @@ class Group:
         for n in graph2.edges_iter(data=True):
             graph.add_edge(n[0], n[1], n[2])
         return graph
-
-    def reaffirmMembers(self):
-        for n in self.members:
-            n.group = self
 
     def findNodeWithMostNeighbours(self):
         neighbours = 0 
