@@ -83,6 +83,7 @@ def MincutWorst(G, initiator):
             minCutVal = cut;
             if initiator in partition[0]:
                 minCutPart = partition[1]
+                exclude = partition[1]
             elif initiator in partition[1]:
                 minCutPart = partition[0]
     print(initiator.group.name, minCutPart)
@@ -143,7 +144,7 @@ class Simulation:
             jsonOutput["iterations"][self.iterationIndex] = groupCollection.getOutput()
             self.iterationIndex += 1
             print("iteration", self.iterationIndex)
-            if (self.iterationIndex == 100):
+            if (self.iterationIndex == 20):
                 break;
 
     def writeOutput(self):
@@ -234,13 +235,10 @@ class Group:
         self.name = name
     
     def __hash__(self):
-        hstr = ""
-        bigstr = []
+        bigstr = ""
         for n in self.members:
-            bigstr.append(n.name)
-        for n in sorted(bigstr):
-                hstr = hstr + n
-        return hash(hstr)
+            bigstr = bigstr + n.name
+        return hash(bigstr)
 
     def kmeans(self, node, initiator, dbi):
         global maxSize
@@ -367,12 +365,6 @@ class Group:
             elif groupCollection.splitMethod == "wagner":
                 return self.wagner(node, initiator, dbi)
             elif groupCollection.splitMethod == "mincut":
-                try:
-                        if self.memoiser[oldGr.__hash__()] == self.__hash__():
-                                print("Already tried to merge with group in same state");
-                                return 0;
-                except KeyError:
-                        self.memoiser[oldGr.__hash__()] = self.__hash__()
                 return self.mincut(node, initiator, dbi)
             elif groupCollection.splitMethod == "kmeans":
                 return self.kmeans(node, initiator, dbi)
