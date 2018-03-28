@@ -339,7 +339,7 @@ class Group:
                 rssi = n.rssiNeighbour(m)
                 if (rssi == None):
                     continue
-                if (rssi > minDbi):
+                if (rssi >= minDbi):
                     rssi = 99999;
                 else:
                     rssi = 100 + rssi;
