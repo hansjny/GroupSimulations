@@ -283,7 +283,7 @@ class Group:
         print("Group size before merge: ", G1.number_of_nodes() + G2.number_of_nodes())
         doExcl1 = True
         doExcl2 = True
-        while ((G1.number_of_nodes() + G2.number_of_nodes()) > maxSize):
+        while (doExcl1 and doExcl2):
                 if (doExcl1):
                         newExcl1 = MincutWorst(G1, initiator)
                         if (newExcl1 == []):
@@ -298,7 +298,7 @@ class Group:
                                 excl2.append(newExcl2)
                 if (not doExcl1 and not doExcl2):
                         break;
-
+        
        
 
         print("Group size after merge: ", G1.number_of_nodes() + G2.number_of_nodes())
