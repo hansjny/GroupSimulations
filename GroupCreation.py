@@ -45,7 +45,7 @@ def RegularMincut(G, initiator):
     excluded = []
     minCutVal = 1000000; 
     minCutPart = None; 
-        #Todo: run thorough all nodes and kick every shit where cut is less than line
+
     for source in gr:
             if source == initiator:
                 continue;
