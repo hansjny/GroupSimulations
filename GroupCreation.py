@@ -230,7 +230,8 @@ class Group:
 
     def __init__(self, node, name):
         self.members = []
-        self.members.append(node)
+        if (node != None):
+            self.members.append(node)
         self.name = name
     
     def __hash__(self):
@@ -590,6 +591,16 @@ class Group:
             else:
                 newMu.append(oldMu[g])
         return newMu
+
+    def computeGroupCentroid(self):
+        x = 0;
+        y = 0;
+        for node in self.members:
+            x = x + node.x;
+            y = y + node.y;
+            
+        return  np.array((math.ceil(x / len(self.members)),  math.ceil(y / len(self.members))))
+
 
     def assignGroups(self, mu, groups):
         nodes = groups[0] + groups[1]
